@@ -1,0 +1,50 @@
+{
+  "name": "gianlu-api/laravel-ddd",
+  "description": "library to generate custom design structure in laravel",
+  "type": "library",
+  "version": "0.0.0",
+  "license": "copyright",
+  "autoload": {
+    "psr-4": {
+      "gianluApi\\laravelDesign\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "GianluApi\\LaravelDesign\\Test\\": "tests/"
+    }
+  },
+  "authors": [
+    {
+      "name": "Gianluca Apicella",
+      "email": "gianluca.api96@gmail.com"
+    }
+  ],
+  "require": {
+    "php": "^8.1"
+  },
+  "require-dev": {
+    "laravel/framework": "^10 || ^11",
+    "pestphp/pest": "^2.0 || ^3.0",
+    "larastan/larastan": "^2.0 || ^3.0",
+    "orchestra/testbench": "^8.0 || ^9.0"
+  },
+  "config": {
+    "allow-plugins": {
+      "pestphp/pest-plugin": true
+    }
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "LaravelDesignServiceProvider"
+      ]
+    }
+  },
+  "keywords": [
+    "php",
+    "laravel",
+    "ddd",
+    "domain driven design"
+  ]
+}
