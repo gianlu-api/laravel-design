@@ -8,7 +8,7 @@ use InvalidArgumentException;
 class ClassMakeCommand extends GeneratorCommand
 {
 
-    protected $signature = 'make:class {namespace} {name}';
+    protected $signature = 'make:class {name} {namespace}';
     protected $description = 'Create new class';
     protected $type = 'Class';
 

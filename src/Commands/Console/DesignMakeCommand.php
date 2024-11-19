@@ -11,7 +11,7 @@ class DesignMakeCommand extends Command
 {
 
     protected $signature = "make:design {--config}";
-    protected $description = "Create a new domain with DDD structure";
+    protected $description = "Create a new design structure";
 
     public function handle(TypeHandler $typeHandler): int
     {

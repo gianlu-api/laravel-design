@@ -291,7 +291,6 @@ it('creates a new design structure with blade view correctly', function () {
         'blade_views' => [
             [
                 'name' =>'TestBladeView',
-                'type' => 'blade',
             ],
         ],
     ];

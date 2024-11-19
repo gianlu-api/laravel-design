@@ -10,6 +10,11 @@ it("creates a new complete design structure correctly", function () {
                 "name" => "test_domain",
             ],
         ],
+        'models' => [
+            [
+                'name' => '/Domains/TestDomain/Domain/Models/ModelTest',
+            ]
+        ],
         "classes" => [
             [
                 "namespace" =>"/Domains/TestDomain/Domain/Services",
@@ -39,25 +44,21 @@ it("creates a new complete design structure correctly", function () {
         "requests" => [
             [
                 "name" =>"../../App/Http/TestDomain/Requests/TestDomainRequest",
-                "type" => "request",
             ],
         ],
         "middlewares" => [
             [
                 "name" =>"../../App/Http/TestDomain/Middlewares/TestDomainMiddleware",
-                "type" => "middleware",
             ],
         ],
         "resources" => [
             [
                 "name" =>"../../App/Http/TestDomain/Resources/TestDomainResource",
-                "type" => "resource",
             ]
         ],
         "controllers" => [
             [
                 "name" =>"../../App/Http/TestDomain/Controllers/TestDomainController",
-                "type" => "controller",
             ],
         ],
         "blade_views" => [
@@ -90,6 +91,7 @@ it("creates a new complete design structure correctly", function () {
     //Assert
     expect($migrationFile)->not()->toBeNull()
         ->and(File::exists(base_path("app/Domains/TestDomain")))->toBeTrue()
+        ->and(File::exists(base_path("app/Domains/TestDomain/Domain/Models/ModelTest.php")))->toBeTrue()
         ->and(File::exists(base_path("app/Domains/TestDomain/Domain/Interfaces/TestDomainServiceInterface.php")))->toBeTrue()
         ->and(File::exists(base_path("app/Domains/TestDomain/Domain/Interfaces/TestDomainRepositoryInterface.php")))->toBeTrue()
         ->and(File::exists(base_path("app/Domains/TestDomain/Domain/Services")))->toBeTrue()
