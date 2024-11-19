@@ -134,16 +134,7 @@ If you want to create only specific components, simply leave the unwanted arrays
     "react_components" => []
 ];
 ```
-For Vue components, the default is the Composition API. If you want to create the component using the Options API, configure the file as follows:
-```
-'vue_components' => [
-    [
-        'name' => 'VueComponent',
-        'namespace' => 'js/Pages',
-        'component_type' => 'options',
-    ]
-]
-```
+
 Once the configuration file is ready, if you are using the laravel-design configuration file run:
 
 ```bash
@@ -155,18 +146,75 @@ Otherwise, if you are using your own configuration file:
 php artisan make:design {your_config_name}
 ```
 
-## Vue Components
-For Vue components, the default is the Composition API. If you want to create the component using the Options API, configure the file as follows:
+## Classes
+
 ```
-'vue_components' => [
-    [
-        'name' => 'VueComponent',
-        'namespace' => 'js/Pages',
-        'component_type' => 'options',
-    ]
+'classes' => [
+   [
+       'name' =>'UserService',
+       'namespace' => '/Domains/User/Domain/Services',
+   ]
 ]
 ```
+
+## Interfaces
+
+```
+'interfaces' => [
+   [
+       'name' =>'UserServiceInterface',
+       'namespace' => '/Domains/User/Domain/Contracts',
+   ]
+]
+```
+
+## Abstract Classes
+
+```
+'abstarct_classes' => [
+   [
+       'name' =>'UserServiceAbstract',
+       'namespace' => '/Domains/User/Domain/Contracts',
+   ]
+]
+```
+
+## Models
+Creating a model with the laravel default namespace:
+```
+'models' => [
+   [
+       'name' =>'User',
+   ]
+]
+```
+
+Creating a model with custom namespace:
+```
+'models' => [
+   [
+       'name' =>'/Domains/User/Domain/Models/User',
+   ]
+]
+```
+
 ## Controllers
+Creating a controller with the laravel default namespace:
+```
+'controllers' => [
+   [
+       'name' =>'UserController',
+   ]
+]
+```
+Creating a controller with custom namespace:
+```
+'controllers' => [
+   [
+       'name' =>'../../App/Http/User/Controllers/UserController',
+   ]
+]
+```
 You can create Controllers with resources (with index, create edit, show, destroy, store and update methods), configure the file as follows:
 ```
 'controllers' => [
@@ -176,6 +224,7 @@ You can create Controllers with resources (with index, create edit, show, destro
    ],
 ]
 ```
+
 You can also create api Controllers (with index, show, destroy, store and update methods), configure the file as follows:
 ```
 'controllers' => [
@@ -185,6 +234,93 @@ You can also create api Controllers (with index, show, destroy, store and update
    ],
 ]
 ```
+
+## Requests
+Creating a request with the laravel default namespace:
+```
+'requests' => [
+   [
+       'name' =>'UserRequest',
+   ]
+]
+```
+Creating a request with custom namespace:
+```
+'requests' => [
+   [
+       'name' =>'../../App/Http/User/Requests/UserRequest',
+   ]
+]
+```
+
+## Middlewares
+Creating a middleware with the laravel default namespace:
+```
+'requests' => [
+   [
+       'name' =>'UserMiddleware',
+   ]
+]
+```
+Creating a middleware with custom namespace:
+```
+'requests' => [
+   [
+       'name' =>'../../App/Http/User/Middlewares/UserMiddleware',
+   ]
+]
+```
+
+## Resources
+Creating a resource with the laravel default namespace:
+```
+'requests' => [
+   [
+       'name' =>'UserResource',
+   ]
+]
+```
+Creating a resource with custom namespace:
+```
+'requests' => [
+   [
+       'name' =>'../../App/Http/User/Resources/UserResource',
+   ]
+]
+```
+
+## Vue Components
+For Vue components, the default is the Composition API. If you want to create the component using the Options API, configure the file as follows:
+```
+'vue_components' => [
+    [
+        'name' => 'UserPage',
+        'namespace' => 'js/Pages/User',
+        'component_type' => 'options',
+    ]
+]
+```
+
+## React Components
+```
+'react_components' => [
+    [
+        'name' => 'UserPage',
+        'namespace' => 'js/Pages/User',
+        'component_type' => 'options',
+    ]
+]
+```
+
+## Blade Components
+```
+'blade' => [
+    [
+        'name' => 'UserPage',
+    ]
+]
+```
+
 ## Laravel Commands
 Add ```../../``` before the namespace where you want to create the class; otherwise, the class will be created following Laravel's default namespace. For example, for the Controller: ```name => ../../App/Http/TestDomain/Controllers/TestDomainController```, the Controller will be created in ```app/App/Http/TestDomain/Controllers/TestDomainController```. On the other hand, if we use ```name => TestDomainController```, it will be created in ```app/Http/Controllers/TestDomainController```.
 ## Other Commands
