@@ -17,11 +17,11 @@ it("generates a migration config correctly", function () {
     ]);
 });
 
-it("generates an abstract class config correctly", function () {
+it("generates an abstract class config with correctly", function () {
     //Arrange
     $config = [
         "name" => "testDomainAbstract",
-        "namespace" => "app/Domains/TestDomain/Domain/Abstracts"
+        "namespace" => "/Domains/TestDomain/Domain/Abstracts"
     ];
 
     //Act
@@ -30,15 +30,15 @@ it("generates an abstract class config correctly", function () {
     //Assert
     expect($config)->toBe([
         "name" => "testDomainAbstract",
-        "namespace" => "app/Domains/TestDomain/Domain/Abstracts",
+        "namespace" => "/Domains/TestDomain/Domain/Abstracts",
     ]);
 });
 
-it("generates an interface config correctly", function () {
+it("generates an interface config with leading slash correctly", function () {
     //Arrange
     $config = [
         "name" => "testDomainInterface",
-        "namespace" => "app/Domains/TestDomain/Domain/Interfaces"
+        "namespace" => "/Domains/TestDomain/Domain/Interfaces"
     ];
 
     //Act
@@ -47,15 +47,15 @@ it("generates an interface config correctly", function () {
     //Assert
     expect($config)->toBe([
         "name" => "testDomainInterface",
-        "namespace" => "app/Domains/TestDomain/Domain/Interfaces",
+        "namespace" => "/Domains/TestDomain/Domain/Interfaces",
     ]);
 });
 
-it("generates a class config correctly", function () {
+it("generates a class config with leading slash correctly", function () {
     //Arrange
     $config = [
         "name" => "testDomainClass",
-        "namespace" => "app/Domains/TestDomain/Domain/Classes"
+        "namespace" => "/Domains/TestDomain/Domain/Classes"
     ];
 
     //Act
@@ -64,7 +64,58 @@ it("generates a class config correctly", function () {
     //Assert
     expect($config)->toBe([
         "name" => "testDomainClass",
-        "namespace" => "app/Domains/TestDomain/Domain/Classes",
+        "namespace" => "/Domains/TestDomain/Domain/Classes",
+    ]);
+});
+
+it("generates an abstract class without leading slash config correctly", function () {
+    //Arrange
+    $config = [
+        "name" => "testDomainAbstract",
+        "namespace" => "Domains/TestDomain/Domain/Abstracts"
+    ];
+
+    //Act
+    $config = TypeConfigGenerator::generate($config, Types::AbstractClass);
+
+    //Assert
+    expect($config)->toBe([
+        "name" => "testDomainAbstract",
+        "namespace" => "/Domains/TestDomain/Domain/Abstracts",
+    ]);
+});
+
+it("generates an interface config without leading slash correctly", function () {
+    //Arrange
+    $config = [
+        "name" => "testDomainInterface",
+        "namespace" => "Domains/TestDomain/Domain/Interfaces"
+    ];
+
+    //Act
+    $config = TypeConfigGenerator::generate($config, Types::Interface);
+
+    //Assert
+    expect($config)->toBe([
+        "name" => "testDomainInterface",
+        "namespace" => "/Domains/TestDomain/Domain/Interfaces",
+    ]);
+});
+
+it("generates a class config without leading slash correctly", function () {
+    //Arrange
+    $config = [
+        "name" => "testDomainClass",
+        "namespace" => "Domains/TestDomain/Domain/Classes"
+    ];
+
+    //Act
+    $config = TypeConfigGenerator::generate($config, Types::CustomClass);
+
+    //Assert
+    expect($config)->toBe([
+        "name" => "testDomainClass",
+        "namespace" => "/Domains/TestDomain/Domain/Classes",
     ]);
 });
 
