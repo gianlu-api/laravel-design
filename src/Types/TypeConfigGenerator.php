@@ -38,9 +38,11 @@ final class TypeConfigGenerator
      */
     private static function generateClassConfig(array $config): array
     {
+        $namespace = self::checkLeadingSlash($config[ "namespace" ]);
+
         return [
             "name" => $config[ "name" ],
-            "namespace" => $config[ "namespace" ],
+            "namespace" => $namespace,
         ];
     }
 
@@ -51,9 +53,11 @@ final class TypeConfigGenerator
      */
     private static function generateInterfaceConfig(array $config): array
     {
+        $namespace = self::checkLeadingSlash($config[ "namespace" ]);
+
         return [
             "name" => $config[ "name" ],
-            "namespace" => $config[ "namespace" ],
+            "namespace" => $namespace,
         ];
     }
 
@@ -64,9 +68,11 @@ final class TypeConfigGenerator
      */
     private static function generateAbstractClassConfig(array $config): array
     {
+        $namespace = self::checkLeadingSlash($config[ "namespace" ]);
+
         return [
             "name" => $config[ "name" ],
-            "namespace" => $config[ "namespace" ],
+            "namespace" => $namespace,
         ];
     }
 
@@ -195,6 +201,11 @@ final class TypeConfigGenerator
             "name" => "create_{$table}_table",
             "--create" => $table,
         ];
+    }
+
+    private static function checkLeadingSlash(string $namespace): string
+    {
+        return Str::startsWith($namespace, "/") ? $namespace : "/{$namespace}";
     }
 
 }
