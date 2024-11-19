@@ -91,8 +91,8 @@ final class TypeConfigGenerator
     {
         $newConfig = [ "name" => $config[ "name" ] ];
 
-        if ( isset($config[ "with_resources" ]) ) {
-            $newConfig[ "--resource" ] = $config[ "with_resources" ];
+        if ( isset($config[ "is_resource" ]) ) {
+            $newConfig[ "--resource" ] = $config[ "is_resource" ];
         }
 
         if ( isset($config[ "is_api" ]) ) {

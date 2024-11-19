@@ -99,8 +99,6 @@ First, you will need to fill out the configuration file as follows.
 ];
 ```
 
-For Laravel's native commands, add ```../../``` before the namespace where you want to create the class; otherwise, the class will be created following Laravel's default namespace. For example, for the Controller: ```name => ../../App/Http/TestDomain/Controllers/TestDomainController```, the Controller will be created in ```app/App/Http/TestDomain/Controllers/TestDomainController```. On the other hand, if we use ```name => TestDomainController```, it will be created in ```app/Http/Controllers/TestDomainController```.
-
 If you want to create only specific components, simply leave the unwanted arrays empty. For example, if you need to create only a migration, model, service, and repository.
 
 ```
@@ -156,6 +154,39 @@ Otherwise, if you are using your own configuration file:
 ```bash
 php artisan make:design {your_config_name}
 ```
+
+## Vue Components
+For Vue components, the default is the Composition API. If you want to create the component using the Options API, configure the file as follows:
+```
+'vue_components' => [
+    [
+        'name' => 'VueComponent',
+        'namespace' => 'js/Pages',
+        'component_type' => 'options',
+    ]
+]
+```
+## Controllers
+You can create Controllers with resources (with index, create edit, show, destroy, store and update methods), configure the file as follows:
+```
+'controllers' => [
+   [
+       'name' =>'TestDomainController',
+       'is_resource' => true,
+   ],
+]
+```
+You can also create api Controllers (with index, show, destroy, store and update methods), configure the file as follows:
+```
+'controllers' => [
+   [
+       'name' =>'TestDomainController',
+       'is_api' => true,
+   ],
+]
+```
+## Laravel Commands
+Add ```../../``` before the namespace where you want to create the class; otherwise, the class will be created following Laravel's default namespace. For example, for the Controller: ```name => ../../App/Http/TestDomain/Controllers/TestDomainController```, the Controller will be created in ```app/App/Http/TestDomain/Controllers/TestDomainController```. On the other hand, if we use ```name => TestDomainController```, it will be created in ```app/Http/Controllers/TestDomainController```.
 ## Other Commands
 ```bash
 php artisan make:class {class_name} {class_namespace}

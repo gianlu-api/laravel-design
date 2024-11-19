@@ -150,7 +150,7 @@ it('creates a new design structure with controller with resources correctly', fu
         'controllers' => [
             [
                 'name' =>'TestDomainController',
-                'with_resources' => true,
+                'is_resource' => true,
             ],
         ],
     ];

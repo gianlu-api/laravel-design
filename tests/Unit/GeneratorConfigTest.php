@@ -96,7 +96,7 @@ it("generates a controller config correctly", function () {
 
 it("generates a controller with resource config correctly", function () {
     //Arrange
-    $config = ["name" => "app/Http/TestDomain/Controllers/TestDomainController", "with_resources" => true];
+    $config = ["name" => "app/Http/TestDomain/Controllers/TestDomainController", "is_resource" => true];
 
     //Act
     $config = TypeConfigGenerator::generate($config, Types::Controller);
