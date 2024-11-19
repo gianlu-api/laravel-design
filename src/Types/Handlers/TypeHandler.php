@@ -1,4 +1,4 @@
-<?php declare(strict_types=1);
+<?php declare( strict_types=1 );
 
 namespace gianluApi\laravelDesign\Types\Handlers;
 
@@ -8,6 +8,7 @@ use gianluApi\laravelDesign\Types\TypeConfigGenerator;
 
 class TypeHandler
 {
+
     /** @var array<string, Types> */
     protected array $mapping = [
         "classes" => Types::CustomClass,
@@ -29,9 +30,9 @@ class TypeHandler
      */
     public function process(array $config): void
     {
-        foreach ($this->mapping as $key => $type) {
-            if (!empty($config[$key])) {
-                self::handleItems($config[$key], $type);
+        foreach ( $this->mapping as $key => $type ) {
+            if ( !empty($config[ $key ]) ) {
+                self::handleItems($config[ $key ], $type);
             }
         }
     }
@@ -41,11 +42,12 @@ class TypeHandler
      */
     protected static function handleItems(array $items, Types $type): void
     {
-        foreach ($items as $item) {
-            if (is_array($item)) {
+        foreach ( $items as $item ) {
+            if ( is_array($item) ) {
                 $config = TypeConfigGenerator::generate($item, $type);
                 CommandCaller::call($config, $type);
             }
         }
     }
+
 }

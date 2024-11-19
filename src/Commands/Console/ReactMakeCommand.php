@@ -1,4 +1,4 @@
-<?php declare(strict_types=1);
+<?php declare( strict_types=1 );
 
 namespace gianluApi\laravelDesign\Commands\Console;
 
@@ -20,19 +20,20 @@ class ReactMakeCommand extends GeneratorCommand
 
     /**
      * @param $name
+     *
      * @return string
      */
     protected function getPath($name): string
     {
         $path = $this->argument('namespace') ?? resource_path('js/Pages');
 
-        if (!is_string($path)) {
+        if ( !is_string($path) ) {
             throw new InvalidArgumentException("namespace must be a string");
         }
 
         $name = $this->argument('name');
 
-        if (!is_string($name)) {
+        if ( !is_string($name) ) {
             throw new InvalidArgumentException("name must be a string");
         }
 
@@ -41,6 +42,7 @@ class ReactMakeCommand extends GeneratorCommand
 
     /**
      * @param $name
+     *
      * @return string
      * @throws FileNotFoundException
      */
@@ -50,7 +52,7 @@ class ReactMakeCommand extends GeneratorCommand
 
         $name = $this->argument('name');
 
-        if (!is_string($name)) {
+        if ( !is_string($name) ) {
             throw new InvalidArgumentException("name must be a string");
         }
 

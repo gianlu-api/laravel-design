@@ -1,4 +1,4 @@
-<?php declare(strict_types=1);
+<?php declare( strict_types=1 );
 
 namespace gianluApi\laravelDesign\Commands\Console;
 
@@ -24,7 +24,7 @@ class ClassMakeCommand extends GeneratorCommand
     {
         $namespace = $this->argument('namespace');
 
-        if (!is_string($namespace)) {
+        if ( !is_string($namespace) ) {
             throw new InvalidArgumentException("namespace must be a string");
         }
 

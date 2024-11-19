@@ -1,4 +1,4 @@
-<?php declare(strict_types=1);
+<?php declare( strict_types=1 );
 
 namespace gianluApi\laravelDesign\Commands\Console;
 
@@ -18,7 +18,7 @@ class DesignMakeCommand extends Command
         try {
             $configOption = $this->option("config");
 
-            if (is_string($configOption) || is_array($configOption)) {
+            if ( is_string($configOption) || is_array($configOption) ) {
                 $config = config($configOption);
             } else {
                 $config = config("laravel-design");
@@ -28,9 +28,11 @@ class DesignMakeCommand extends Command
             $typeHandler->process($config);
 
             $this->output->success("Design created successfully");
+
             return CommandAlias::SUCCESS;
-        } catch (Throwable $th) {
+        } catch ( Throwable $th ) {
             $this->output->error($th->getMessage());
+
             return CommandAlias::FAILURE;
         }
     }

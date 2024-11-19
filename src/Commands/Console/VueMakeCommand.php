@@ -1,4 +1,4 @@
-<?php declare(strict_types=1);
+<?php declare( strict_types=1 );
 
 namespace gianluApi\laravelDesign\Commands\Console;
 
@@ -17,7 +17,7 @@ class VueMakeCommand extends GeneratorCommand
     {
         $type = $this->option('type');
 
-        if ($type === 'options') {
+        if ( $type === 'options' ) {
             return __DIR__ . '/../../../stubs/VueOptionsApi.stub';
         }
 
@@ -26,19 +26,20 @@ class VueMakeCommand extends GeneratorCommand
 
     /**
      * @param $name
+     *
      * @return string
      */
     protected function getPath($name): string
     {
         $path = $this->argument('namespace') ?? resource_path('js/Pages');
 
-        if (!is_string($path)) {
+        if ( !is_string($path) ) {
             throw new InvalidArgumentException("namespace must be a string");
         }
 
         $name = $this->argument('name');
 
-        if (!is_string($name)) {
+        if ( !is_string($name) ) {
             throw new InvalidArgumentException("name must be a string");
         }
 
@@ -47,6 +48,7 @@ class VueMakeCommand extends GeneratorCommand
 
     /**
      * @param $name
+     *
      * @return string
      * @throws FileNotFoundException
      */
@@ -56,7 +58,7 @@ class VueMakeCommand extends GeneratorCommand
 
         $name = $this->argument('name');
 
-        if (!is_string($name)) {
+        if ( !is_string($name) ) {
             throw new InvalidArgumentException("name must be a string");
         }
 

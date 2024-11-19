@@ -1,4 +1,4 @@
-<?php declare(strict_types=1);
+<?php declare( strict_types=1 );
 
 namespace gianluApi\laravelDesign\Commands\Selectors;
 
@@ -6,9 +6,10 @@ use gianluApi\laravelDesign\Types\Enums\Types;
 
 final class CommandSelector
 {
+
     public static function handle(Types $type): string
     {
-        return match ($type) {
+        return match ( $type ) {
             Types::Migration => "make:migration",
             Types::CustomClass => "make:class",
             Types::Interface => "make:interface",
@@ -23,4 +24,5 @@ final class CommandSelector
             Types::React => "make:react",
         };
     }
+
 }

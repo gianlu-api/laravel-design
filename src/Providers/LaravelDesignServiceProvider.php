@@ -1,4 +1,4 @@
-<?php declare(strict_types=1);
+<?php declare( strict_types=1 );
 
 namespace gianluApi\laravelDesign\Providers;
 
@@ -12,9 +12,10 @@ use Illuminate\Support\ServiceProvider;
 
 class LaravelDesignServiceProvider extends ServiceProvider
 {
+
     public function boot(): void
     {
-        $this->publishes([__DIR__ . '/../../config/laravel-design.php' => config_path('laravel-design.php')], 'gianlu-api:laravel-design:config');
+        $this->publishes([ __DIR__ . '/../../config/laravel-design.php' => config_path('laravel-design.php') ], 'gianlu-api:laravel-design:config');
 
         $this->commands([
             DesignMakeCommand::class,
@@ -30,4 +31,5 @@ class LaravelDesignServiceProvider extends ServiceProvider
     {
 
     }
+
 }

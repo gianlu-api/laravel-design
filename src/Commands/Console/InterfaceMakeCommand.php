@@ -1,4 +1,4 @@
-<?php declare(strict_types=1);
+<?php declare( strict_types=1 );
 
 namespace gianluApi\laravelDesign\Commands\Console;
 
@@ -9,9 +9,7 @@ class InterfaceMakeCommand extends GeneratorCommand
 {
 
     protected $signature = 'make:interface {name} {namespace}';
-
     protected $description = 'Create new interface';
-
     protected $type = 'Interface';
 
     protected function getStub(): string
@@ -26,10 +24,11 @@ class InterfaceMakeCommand extends GeneratorCommand
     {
         $namespace = $this->argument('namespace');
 
-        if (!is_string($namespace)) {
+        if ( !is_string($namespace) ) {
             throw new InvalidArgumentException("namespace must be a string");
         }
 
         return $rootNamespace . $namespace;
     }
+
 }
