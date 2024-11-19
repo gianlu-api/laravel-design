@@ -205,7 +205,7 @@ final class TypeConfigGenerator
 
     private static function checkLeadingSlash(string $namespace): string
     {
-        return Str::startsWith($namespace, "/") ? $namespace : "/{$namespace}";
+        return Str::startsWith($namespace, "/") ? $namespace : "/$namespace";
     }
 
 }
