@@ -42,9 +42,21 @@
     }
   },
   "keywords": [
+    "PHP",
     "php",
     "laravel",
-    "ddd",
-    "domain driven design"
+    "Laravel",
+    "Domain Driven Design",
+    "Event-Driven Architecture",
+    "CQRS",
+    "DDD",
+    "Model-View-Controller",
+    "Command Query Responsibility Segregation",
+    "Clean Architecture",
+    "Clean Code",
+    "Service-Oriented Architecture",
+    "Hexagonal Architecture",
+    "Microservices",
+    "Design Patterns"
   ]
 }
