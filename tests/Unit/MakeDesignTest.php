@@ -45,12 +45,72 @@ it('creates a new design structure with model correctly', function () {
         ->and(File::exists(base_path('app/Domains/TestDomain/Domain/Models/TestDomain.php')))->toBeTrue();
 });
 
+it('creates a new design structure with class correctly', function () {
+    //Arrange
+    $config = [
+        'classes' => [
+            [
+                'namespace' =>'/Domains/TestDomain/Domain/Classes',
+                'name' => 'TestDomainClass',
+            ],
+        ],
+    ];
+
+    $this->setConfig($config);
+
+    //Act
+    $this->artisan('make:design')->assertSuccessful();
+
+    expect(File::exists(base_path('app/Domains/TestDomain')))->toBeTrue()
+        ->and(File::exists(base_path('app/Domains/TestDomain/Domain/Classes/TestDomainClass.php')))->toBeTrue();
+});
+
+it('creates a new design structure with class with leading slash correctly', function () {
+    //Arrange
+    $config = [
+        'abstract_classes' => [
+            [
+                'namespace' =>'Domains/TestDomain/Domain/Classes',
+                'name' => 'TestDomainClass',
+            ],
+        ],
+    ];
+
+    $this->setConfig($config);
+
+    //Act
+    $this->artisan('make:design')->assertSuccessful();
+
+    expect(File::exists(base_path('app/Domains/TestDomain')))->toBeTrue()
+        ->and(File::exists(base_path('app/Domains/TestDomain/Domain/Classes/TestDomainClass.php')))->toBeTrue();
+});
+
 it('creates a new design structure with abstract class correctly', function () {
     //Arrange
     $config = [
         'abstract_classes' => [
             [
                 'namespace' =>'/Domains/TestDomain/Domain/Abstracts',
+                'name' => 'TestDomainAbstract',
+            ],
+        ],
+    ];
+
+    $this->setConfig($config);
+
+    //Act
+    $this->artisan('make:design')->assertSuccessful();
+
+    expect(File::exists(base_path('app/Domains/TestDomain')))->toBeTrue()
+        ->and(File::exists(base_path('app/Domains/TestDomain/Domain/Abstracts/TestDomainAbstract.php')))->toBeTrue();
+});
+
+it('creates a new design structure with abstract class with leading slash correctly', function () {
+    //Arrange
+    $config = [
+        'abstract_classes' => [
+            [
+                'namespace' =>'Domains/TestDomain/Domain/Abstracts',
                 'name' => 'TestDomainAbstract',
             ],
         ],
@@ -111,6 +171,26 @@ it('creates a new design structure with interfaces correctly', function () {
         'interfaces' => [
             [
                 'namespace' =>'/Domains/TestDomain/Domain/Interfaces',
+                'name' => 'TestDomainRepositoryInterface',
+            ]
+        ],
+    ];
+
+    $this->setConfig($config);
+
+    //Act
+    $this->artisan('make:design')->assertSuccessful();
+
+    expect(File::exists(base_path('app/Domains/TestDomain')))->toBeTrue()
+        ->and(File::exists(base_path('app/Domains/TestDomain/Domain/Interfaces/TestDomainRepositoryInterface.php')))->toBeTrue();
+});
+
+it('creates a new design structure with interfaces without leading slash correctly', function () {
+    //Arrange
+    $config = [
+        'interfaces' => [
+            [
+                'namespace' =>'Domains/TestDomain/Domain/Interfaces',
                 'name' => 'TestDomainRepositoryInterface',
             ]
         ],
