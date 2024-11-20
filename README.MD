@@ -145,8 +145,9 @@ Otherwise, if you are using your own configuration file:
 ```bash
 php artisan make:design {your_config_name}
 ```
-
-## Classes
+________________________________
+## Configurations
+### Classes
 
 ```
 'classes' => [
@@ -157,7 +158,7 @@ php artisan make:design {your_config_name}
 ]
 ```
 
-## Interfaces
+### Interfaces
 
 ```
 'interfaces' => [
@@ -168,7 +169,7 @@ php artisan make:design {your_config_name}
 ]
 ```
 
-## Abstract Classes
+### Abstract Classes
 
 ```
 'abstarct_classes' => [
@@ -179,7 +180,7 @@ php artisan make:design {your_config_name}
 ]
 ```
 
-## Models
+### Models
 Creating a model with the laravel default namespace:
 ```
 'models' => [
@@ -198,7 +199,7 @@ Creating a model with custom namespace:
 ]
 ```
 
-## Controllers
+### Controllers
 Creating a controller with the laravel default namespace:
 ```
 'controllers' => [
@@ -235,7 +236,7 @@ You can also create api Controllers (with index, show, destroy, store and update
 ]
 ```
 
-## Requests
+### Requests
 Creating a request with the laravel default namespace:
 ```
 'requests' => [
@@ -253,7 +254,7 @@ Creating a request with custom namespace:
 ]
 ```
 
-## Middlewares
+### Middlewares
 Creating a middleware with the laravel default namespace:
 ```
 'requests' => [
@@ -271,7 +272,7 @@ Creating a middleware with custom namespace:
 ]
 ```
 
-## Resources
+### Resources
 Creating a resource with the laravel default namespace:
 ```
 'requests' => [
@@ -289,7 +290,7 @@ Creating a resource with custom namespace:
 ]
 ```
 
-## Vue Components
+### Vue Components
 For Vue components, the default is the Composition API. If you want to create the component using the Options API, configure the file as follows:
 ```
 'vue_components' => [
@@ -301,7 +302,7 @@ For Vue components, the default is the Composition API. If you want to create th
 ]
 ```
 
-## React Components
+### React Components
 ```
 'react_components' => [
     [
@@ -312,7 +313,7 @@ For Vue components, the default is the Composition API. If you want to create th
 ]
 ```
 
-## Blade Components
+### Blade Components
 ```
 'blade' => [
     [
