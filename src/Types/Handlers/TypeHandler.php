@@ -44,6 +44,7 @@ class TypeHandler
     {
         foreach ( $items as $item ) {
             if ( is_array($item) ) {
+                /** @var array<string, string> $item */
                 $config = TypeConfigGenerator::generate($item, $type);
                 CommandCaller::call($config, $type);
             }

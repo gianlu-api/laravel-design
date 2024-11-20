@@ -2,9 +2,6 @@
 
 namespace gianluApi\laravelDesign\Commands\Console;
 
-use Illuminate\Console\GeneratorCommand;
-use InvalidArgumentException;
-
 class InterfaceMakeCommand extends MakeCommand
 {
 
