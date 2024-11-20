@@ -2,14 +2,14 @@
 
 namespace gianluApi\laravelDesign\Commands\Console;
 
-use gianluApi\laravelDesign\Helpers\NamespaceHelper;
+use gianluApi\laravelDesign\Helpers\PathHelper;
 use Illuminate\Console\GeneratorCommand;
 use InvalidArgumentException;
 
 class MakeCommand extends GeneratorCommand
 {
 
-    use NamespaceHelper;
+    use PathHelper;
 
     protected function getStub(): string
     {
@@ -21,11 +21,11 @@ class MakeCommand extends GeneratorCommand
      */
     protected function getDefaultNamespace($rootNamespace): string
     {
-        if (!is_string($this->argument('namespace'))) {
-            throw new InvalidArgumentException("namespace must be a string");
+        if (!is_string($this->argument('path'))) {
+            throw new InvalidArgumentException("path must be a string");
         }
 
-        $namespace = self::checkNamespace($this->argument('namespace'));
+        $namespace = self::checkPath($this->argument('path'));
 
         return $rootNamespace . $namespace;
     }

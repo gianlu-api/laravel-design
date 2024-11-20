@@ -17,27 +17,27 @@ it("creates a new complete design structure correctly", function () {
         ],
         "classes" => [
             [
-                "namespace" =>"/Domains/TestDomain/Domain/Services",
+                "path" =>"/Domains/TestDomain/Domain/Services",
                 "name" => "TestDomainService",
             ],
             [
-                "namespace" =>"/Domains/TestDomain/Domain/Repositories",
+                "path" =>"/Domains/TestDomain/Domain/Repositories",
                 "name" => "TestDomainRepository",
             ],
         ],
         "interfaces" => [
             [
-                "namespace" =>"/Domains/TestDomain/Domain/Interfaces",
+                "path" =>"/Domains/TestDomain/Domain/Interfaces",
                 "name" => "TestDomainServiceInterface",
             ],
             [
-                "namespace" =>"/Domains/TestDomain/Domain/Interfaces",
+                "path" =>"/Domains/TestDomain/Domain/Interfaces",
                 "name" => "TestDomainRepositoryInterface",
             ],
         ],
         "abstract_classes" => [
             [
-                "namespace" =>"/Domains/TestDomain/Domain/Abstracts",
+                "path" =>"/Domains/TestDomain/Domain/Abstracts",
                 "name" => "TestDomainAbstract",
             ],
         ],
@@ -69,13 +69,13 @@ it("creates a new complete design structure correctly", function () {
         "vue_components" => [
             [
                 "name" => "TestVue",
-                "namespace" => "js/Pages",
+                "path" => "js/Pages",
             ],
         ],
         "react_components" => [
             [
                 "name" => "TestReact",
-                "namespace" => "js/Pages",
+                "path" => "js/Pages",
             ],
         ]
     ];
@@ -126,27 +126,27 @@ it("creates a new complete design structure without leading slash correctly", fu
         ],
         "classes" => [
             [
-                "namespace" =>"Domains/TestDomain/Domain/Services",
+                "path" =>"Domains/TestDomain/Domain/Services",
                 "name" => "TestDomainService",
             ],
             [
-                "namespace" =>"Domains/TestDomain/Domain/Repositories",
+                "path" =>"Domains/TestDomain/Domain/Repositories",
                 "name" => "TestDomainRepository",
             ],
         ],
         "interfaces" => [
             [
-                "namespace" =>"Domains/TestDomain/Domain/Interfaces",
+                "path" =>"Domains/TestDomain/Domain/Interfaces",
                 "name" => "TestDomainServiceInterface",
             ],
             [
-                "namespace" =>"Domains/TestDomain/Domain/Interfaces",
+                "path" =>"Domains/TestDomain/Domain/Interfaces",
                 "name" => "TestDomainRepositoryInterface",
             ],
         ],
         "abstract_classes" => [
             [
-                "namespace" =>"Domains/TestDomain/Domain/Abstracts",
+                "path" =>"Domains/TestDomain/Domain/Abstracts",
                 "name" => "TestDomainAbstract",
             ],
         ],
@@ -178,13 +178,13 @@ it("creates a new complete design structure without leading slash correctly", fu
         "vue_components" => [
             [
                 "name" => "TestVue",
-                "namespace" => "js/Pages",
+                "path" => "js/Pages",
             ],
         ],
         "react_components" => [
             [
                 "name" => "TestReact",
-                "namespace" => "js/Pages",
+                "path" => "js/Pages",
             ],
         ]
     ];
@@ -219,4 +219,3 @@ it("creates a new complete design structure without leading slash correctly", fu
         ->and(File::exists(resource_path("js/Pages/TestVue.vue")))->toBeTrue()
         ->and(File::exists(resource_path("js/Pages/TestReact.jsx")))->toBeTrue();
 });
-

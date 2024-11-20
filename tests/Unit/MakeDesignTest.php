@@ -50,7 +50,7 @@ it('creates a new design structure with class correctly', function () {
     $config = [
         'classes' => [
             [
-                'namespace' =>'/Domains/TestDomain/Domain/Classes',
+                'path' =>'/Domains/TestDomain/Domain/Classes',
                 'name' => 'TestDomainClass',
             ],
         ],
@@ -70,7 +70,7 @@ it('creates a new design structure with class with leading slash correctly', fun
     $config = [
         'abstract_classes' => [
             [
-                'namespace' =>'Domains/TestDomain/Domain/Classes',
+                'path' =>'Domains/TestDomain/Domain/Classes',
                 'name' => 'TestDomainClass',
             ],
         ],
@@ -90,7 +90,7 @@ it('creates a new design structure with abstract class correctly', function () {
     $config = [
         'abstract_classes' => [
             [
-                'namespace' =>'/Domains/TestDomain/Domain/Abstracts',
+                'path' =>'/Domains/TestDomain/Domain/Abstracts',
                 'name' => 'TestDomainAbstract',
             ],
         ],
@@ -110,7 +110,7 @@ it('creates a new design structure with abstract class with leading slash correc
     $config = [
         'abstract_classes' => [
             [
-                'namespace' =>'Domains/TestDomain/Domain/Abstracts',
+                'path' =>'Domains/TestDomain/Domain/Abstracts',
                 'name' => 'TestDomainAbstract',
             ],
         ],
@@ -170,7 +170,7 @@ it('creates a new design structure with interfaces correctly', function () {
     $config = [
         'interfaces' => [
             [
-                'namespace' =>'/Domains/TestDomain/Domain/Interfaces',
+                'path' =>'/Domains/TestDomain/Domain/Interfaces',
                 'name' => 'TestDomainRepositoryInterface',
             ]
         ],
@@ -190,7 +190,7 @@ it('creates a new design structure with interfaces without leading slash correct
     $config = [
         'interfaces' => [
             [
-                'namespace' =>'Domains/TestDomain/Domain/Interfaces',
+                'path' =>'Domains/TestDomain/Domain/Interfaces',
                 'name' => 'TestDomainRepositoryInterface',
             ]
         ],
@@ -390,7 +390,7 @@ it('creates a new design structure with vue composition api component correctly'
         'vue_components' => [
             [
                 'name' => 'TestVue',
-                'namespace' => 'js/Pages',
+                'path' => 'js/Pages',
             ],
         ]
     ];
@@ -411,7 +411,7 @@ it('creates a new design structure with vue options api component correctly', fu
         'vue_components' => [
             [
                 'name' => 'TestVue',
-                'namespace' => 'js/Pages',
+                'path' => 'js/Pages',
                 'component_type' => 'options',
             ],
         ]
@@ -434,7 +434,7 @@ it('creates a new design structure with react component correctly', function () 
         'react_components' => [
             [
                 'name' => 'TestReact',
-                'namespace' => 'js/Pages',
+                'path' => 'js/Pages',
             ],
         ]
     ];

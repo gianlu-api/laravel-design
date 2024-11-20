@@ -2,14 +2,14 @@
 
 namespace gianluApi\laravelDesign\Commands\Console;
 
-use gianluApi\laravelDesign\Helpers\NamespaceHelper;
+use gianluApi\laravelDesign\Helpers\PathHelper;
 
 class AbstractClassMakeCommand extends MakeCommand
 {
 
-    use NamespaceHelper;
+    use PathHelper;
 
-    protected $signature = 'make:class:abstract {name} {namespace}';
+    protected $signature = 'make:class:abstract {name} {path}';
     protected $description = 'Create new abstract class';
     protected $type = 'Abstract Class';
 

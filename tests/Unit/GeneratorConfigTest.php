@@ -21,7 +21,7 @@ it("generates an abstract class config with correctly", function () {
     //Arrange
     $config = [
         "name" => "testDomainAbstract",
-        "namespace" => "/Domains/TestDomain/Domain/Abstracts"
+        "path" => "/Domains/TestDomain/Domain/Abstracts"
     ];
 
     //Act
@@ -30,7 +30,7 @@ it("generates an abstract class config with correctly", function () {
     //Assert
     expect($config)->toBe([
         "name" => "testDomainAbstract",
-        "namespace" => "/Domains/TestDomain/Domain/Abstracts",
+        "path" => "/Domains/TestDomain/Domain/Abstracts",
     ]);
 });
 
@@ -38,7 +38,7 @@ it("generates an interface config with leading slash correctly", function () {
     //Arrange
     $config = [
         "name" => "testDomainInterface",
-        "namespace" => "/Domains/TestDomain/Domain/Interfaces"
+        "path" => "/Domains/TestDomain/Domain/Interfaces"
     ];
 
     //Act
@@ -47,7 +47,7 @@ it("generates an interface config with leading slash correctly", function () {
     //Assert
     expect($config)->toBe([
         "name" => "testDomainInterface",
-        "namespace" => "/Domains/TestDomain/Domain/Interfaces",
+        "path" => "/Domains/TestDomain/Domain/Interfaces",
     ]);
 });
 
@@ -55,7 +55,7 @@ it("generates a class config with leading slash correctly", function () {
     //Arrange
     $config = [
         "name" => "testDomainClass",
-        "namespace" => "/Domains/TestDomain/Domain/Classes"
+        "path" => "/Domains/TestDomain/Domain/Classes"
     ];
 
     //Act
@@ -64,7 +64,7 @@ it("generates a class config with leading slash correctly", function () {
     //Assert
     expect($config)->toBe([
         "name" => "testDomainClass",
-        "namespace" => "/Domains/TestDomain/Domain/Classes",
+        "path" => "/Domains/TestDomain/Domain/Classes",
     ]);
 });
 
@@ -72,7 +72,7 @@ it("generates an abstract class without leading slash config correctly", functio
     //Arrange
     $config = [
         "name" => "testDomainAbstract",
-        "namespace" => "Domains/TestDomain/Domain/Abstracts"
+        "path" => "Domains/TestDomain/Domain/Abstracts"
     ];
 
     //Act
@@ -81,7 +81,7 @@ it("generates an abstract class without leading slash config correctly", functio
     //Assert
     expect($config)->toBe([
         "name" => "testDomainAbstract",
-        "namespace" => "/Domains/TestDomain/Domain/Abstracts",
+        "path" => "/Domains/TestDomain/Domain/Abstracts",
     ]);
 });
 
@@ -89,7 +89,7 @@ it("generates an interface config without leading slash correctly", function () 
     //Arrange
     $config = [
         "name" => "testDomainInterface",
-        "namespace" => "Domains/TestDomain/Domain/Interfaces"
+        "path" => "Domains/TestDomain/Domain/Interfaces"
     ];
 
     //Act
@@ -98,7 +98,7 @@ it("generates an interface config without leading slash correctly", function () 
     //Assert
     expect($config)->toBe([
         "name" => "testDomainInterface",
-        "namespace" => "/Domains/TestDomain/Domain/Interfaces",
+        "path" => "/Domains/TestDomain/Domain/Interfaces",
     ]);
 });
 
@@ -106,7 +106,7 @@ it("generates a class config without leading slash correctly", function () {
     //Arrange
     $config = [
         "name" => "testDomainClass",
-        "namespace" => "Domains/TestDomain/Domain/Classes"
+        "path" => "Domains/TestDomain/Domain/Classes"
     ];
 
     //Act
@@ -115,7 +115,7 @@ it("generates a class config without leading slash correctly", function () {
     //Assert
     expect($config)->toBe([
         "name" => "testDomainClass",
-        "namespace" => "/Domains/TestDomain/Domain/Classes",
+        "path" => "/Domains/TestDomain/Domain/Classes",
     ]);
 });
 
@@ -229,7 +229,7 @@ it("generates a vue composition api config correctly", function () {
     //Arrange
     $config = [
         "name" => "VueTest",
-        "namespace" => "resources/js/Pages"
+        "path" => "resources/js/Pages"
     ];
 
     //Act
@@ -238,7 +238,7 @@ it("generates a vue composition api config correctly", function () {
     //Assert
     expect($config)->toBe([
         "name" => "VueTest",
-        "namespace" => "resources/js/Pages",
+        "path" => "resources/js/Pages",
     ]);
 });
 
@@ -246,7 +246,7 @@ it("generates a vue options api config correctly", function () {
     //Arrange
     $config = [
         "name" => "VueTest",
-        "namespace" => "resources/js/Pages",
+        "path" => "resources/js/Pages",
         "component_type" => "options"
     ];
 
@@ -256,7 +256,7 @@ it("generates a vue options api config correctly", function () {
     //Assert
     expect($config)->toBe([
         "name" => "VueTest",
-        "namespace" => "resources/js/Pages",
+        "path" => "resources/js/Pages",
         "--type" => "options"
     ]);
 });
@@ -265,7 +265,7 @@ it("generates a react config correctly", function () {
     //Arrange
     $config = [
         "name" => "ReactTest",
-        "namespace" => "resources/js/Pages",
+        "path" => "resources/js/Pages",
     ];
 
     //Act
@@ -274,7 +274,6 @@ it("generates a react config correctly", function () {
     //Assert
     expect($config)->toBe([
         "name" => "ReactTest",
-        "namespace" => "resources/js/Pages",
+        "path" => "resources/js/Pages",
     ]);
 });
-

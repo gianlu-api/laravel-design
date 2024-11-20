@@ -6,7 +6,7 @@ it('creates a new class correctly', function () {
     //Arrange
     $config = [
         'name' => 'TestClass',
-        'namespace' => '/Classes',
+        'path' => '/Classes',
     ];
 
     //Act
@@ -21,7 +21,7 @@ it('creates a new class content correctly', function () {
     //Arrange
     $config = [
         'name' => 'TestClass',
-        'namespace' => '/Classes',
+        'path' => '/Classes',
     ];
 
     //Act

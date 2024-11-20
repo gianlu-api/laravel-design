@@ -6,7 +6,7 @@ it('creates a new abstract class correctly', function () {
     //Arrange
     $config = [
         'name' => 'TestAbstractClass',
-        'namespace' => '/AbstractClasses',
+        'path' => '/AbstractClasses',
     ];
 
     //Act
@@ -21,7 +21,7 @@ it('creates a new abstract class without leading slash correctly', function () {
     //Arrange
     $config = [
         'name' => 'TestAbstractClass',
-        'namespace' => 'AbstractClasses',
+        'path' => 'AbstractClasses',
     ];
 
     //Act
@@ -36,7 +36,7 @@ it('creates a new abstract class content correctly', function () {
     //Arrange
     $config = [
         'name' => 'TestAbstractClass',
-        'namespace' => '/AbstractClasses',
+        'path' => '/AbstractClasses',
     ];
 
     //Act

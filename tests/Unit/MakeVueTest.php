@@ -6,7 +6,7 @@ it('creates a new vue composition api component correctly', function () {
     //Arrange
     $config = [
         'name' => 'TestVue',
-        'namespace' => 'js/Pages',
+        'path' => 'js/Pages',
     ];
 
     //Act
@@ -21,7 +21,7 @@ it('creates a new vue composition api component content correctly', function () 
     //Arrange
     $config = [
         'name' => 'TestVue',
-        'namespace' => 'js/Pages',
+        'path' => 'js/Pages',
     ];
 
     //Act
@@ -53,7 +53,7 @@ it('creates a new vue options api component correctly', function () {
     //Arrange
     $config = [
         'name' => 'TestVue',
-        'namespace' => 'js/Pages',
+        'path' => 'js/Pages',
         '--type' => 'options',
     ];
 
@@ -69,7 +69,7 @@ it('creates a new vue options api component content correctly', function () {
     //Arrange
     $config = [
         'name' => 'TestVue',
-        'namespace' => 'js/Pages',
+        'path' => 'js/Pages',
         '--type' => 'options',
     ];
 

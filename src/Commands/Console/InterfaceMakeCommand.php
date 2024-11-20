@@ -5,7 +5,7 @@ namespace gianluApi\laravelDesign\Commands\Console;
 class InterfaceMakeCommand extends MakeCommand
 {
 
-    protected $signature = 'make:interface {name} {namespace}';
+    protected $signature = 'make:interface {name} {path}';
     protected $description = 'Create new interface';
     protected $type = 'Interface';
 

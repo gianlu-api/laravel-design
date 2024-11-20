@@ -9,7 +9,7 @@ use InvalidArgumentException;
 class ReactMakeCommand extends GeneratorCommand
 {
 
-    protected $signature = 'make:react {name} {namespace?}';
+    protected $signature = 'make:react {name} {path?}';
     protected $description = 'Create new react file';
     protected $type = 'React';
 
@@ -25,10 +25,10 @@ class ReactMakeCommand extends GeneratorCommand
      */
     protected function getPath($name): string
     {
-        $path = $this->argument('namespace') ?? resource_path('js/Pages');
+        $path = $this->argument('path') ?? resource_path('js/Pages');
 
         if ( !is_string($path) ) {
-            throw new InvalidArgumentException("namespace must be a string");
+            throw new InvalidArgumentException("path must be a string");
         }
 
         $name = $this->argument('name');

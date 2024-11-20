@@ -3,16 +3,10 @@
 arch('globals')
     ->expect(['dd', 'dump', 'die', 'echo', 'print_r', 'var_dump'])
     ->not
-    ->toBeUsed();
+    ->toBeUsed()
+    ->and(['src', 'tests'])
+    ->toUseStrictTypes();
 
 arch('src')
-    ->expect('Commands')
-    ->expect('Providers')
-    ->expect('Caller')
-    ->toUseStrictTypes();
-
-arch('tests')
-    ->expect('Unit')
-    ->expect('Feature')
-    ->expect('Architecture')
-    ->toUseStrictTypes();
+    ->expect('Commands\Console')
+    ->toHaveSuffix('Command');

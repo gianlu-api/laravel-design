@@ -6,7 +6,7 @@ it('creates a new react component correctly', function () {
     //Arrange
     $config = [
         'name' => 'TestReact',
-        'namespace' => 'js/Pages',
+        'path' => 'js/Pages',
     ];
 
     //Act
@@ -21,7 +21,7 @@ it('creates a new react component content correctly', function () {
     //Arrange
     $config = [
         'name' => 'TestReact',
-        'namespace' => 'js/Pages',
+        'path' => 'js/Pages',
     ];
 
     //Act

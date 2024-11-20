@@ -2,14 +2,14 @@
 
 namespace gianluApi\laravelDesign\Types;
 
-use gianluApi\laravelDesign\Helpers\NamespaceHelper;
+use gianluApi\laravelDesign\Helpers\PathHelper;
 use gianluApi\laravelDesign\Types\Enums\Types;
 use Illuminate\Support\Str;
 
 final class TypeConfigGenerator
 {
 
-    use NamespaceHelper;
+    use PathHelper;
 
     /**
      * @param array<string, string> $config
@@ -41,11 +41,11 @@ final class TypeConfigGenerator
      */
     private static function generateClassConfig(array $config): array
     {
-        $namespace = self::checkNamespace($config["namespace"]);
+        $path = self::checkPath($config["path"]);
 
         return [
             "name" => $config["name"],
-            "namespace" => $namespace,
+            "path" => $path,
         ];
     }
 
@@ -56,11 +56,11 @@ final class TypeConfigGenerator
      */
     private static function generateInterfaceConfig(array $config): array
     {
-        $namespace = self::checkNamespace($config["namespace"]);
+        $path = self::checkPath($config["path"]);
 
         return [
             "name" => $config["name"],
-            "namespace" => $namespace,
+            "path" => $path,
         ];
     }
 
@@ -71,11 +71,12 @@ final class TypeConfigGenerator
      */
     private static function generateAbstractClassConfig(array $config): array
     {
-        $namespace = self::checkNamespace($config["namespace"]);
+
+        $path = self::checkPath($config["path"]);
 
         return [
             "name" => $config["name"],
-            "namespace" => $namespace,
+            "path" => $path,
         ];
     }
 
@@ -168,7 +169,7 @@ final class TypeConfigGenerator
     {
         $newConfig = [
             "name" => $config["name"],
-            "namespace" => $config["namespace"],
+            "path" => $config["path"],
         ];
 
         if ( isset($config["component_type"]) ) {
@@ -187,7 +188,7 @@ final class TypeConfigGenerator
     {
         return [
             "name" => $config["name"],
-            "namespace" => $config["namespace"],
+            "path" => $config["path"],
         ];
     }
 

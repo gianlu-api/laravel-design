@@ -9,7 +9,7 @@ use InvalidArgumentException;
 class VueMakeCommand extends GeneratorCommand
 {
 
-    protected $signature = 'make:vue {name} {namespace?} {--type=composition}';
+    protected $signature = 'make:vue {name} {path?} {--type=composition}';
     protected $description = 'Create new vue file';
     protected $type = 'Vue';
 
@@ -31,10 +31,10 @@ class VueMakeCommand extends GeneratorCommand
      */
     protected function getPath($name): string
     {
-        $path = $this->argument('namespace') ?? resource_path('js/Pages');
+        $path = $this->argument('path') ?? resource_path('js/Pages');
 
         if ( !is_string($path) ) {
-            throw new InvalidArgumentException("namespace must be a string");
+            throw new InvalidArgumentException("path must be a string");
         }
 
         $name = $this->argument('name');

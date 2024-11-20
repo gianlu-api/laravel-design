@@ -6,7 +6,7 @@ it('creates a new interface correctly', function () {
     //Arrange
     $config = [
         'name' => 'TestInterface',
-        'namespace' => '/Interfaces',
+        'path' => '/Interfaces',
     ];
 
     //Act
@@ -21,7 +21,7 @@ it('creates a new interface content correctly', function () {
     //Arrange
     $config = [
         'name' => 'TestInterface',
-        'namespace' => '/Interfaces',
+        'path' => '/Interfaces',
     ];
 
     //Act
