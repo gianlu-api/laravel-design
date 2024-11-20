@@ -32,5 +32,5 @@ jobs:
           composer require "laravel/framework:${{ matrix.laravel }}" --no-update
           composer install --prefer-dist --no-progress --no-suggest
 
-      - name: Larastan
+      - name: Run Larastan
         run:  vendor/bin/phpstan analyse --memory-limit=2G
