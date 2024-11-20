@@ -1,4 +1,5 @@
 # Laravel Design
+Tests **main**: ![badge](https://github.com/gianlu-api/laravel-design/blob/main/.github/workflows/tests.yml/badge.svg?branch=main)
 
 Laravel Design is the library that allows you, through a command and a configuration file where you specify the architecture you want for your project, to quickly generate the architecture you desire.
 
@@ -321,9 +322,10 @@ For Vue components, the default is the Composition API. If you want to create th
     ]
 ]
 ```
-
+________________________________________________
 ## Laravel Commands
 Add ```../../``` before the namespace where you want to create the class; otherwise, the class will be created following Laravel's default namespace. For example, for the Controller: ```name => ../../App/Http/TestDomain/Controllers/TestDomainController```, the Controller will be created in ```app/App/Http/TestDomain/Controllers/TestDomainController```. On the other hand, if we use ```name => TestDomainController```, it will be created in ```app/Http/Controllers/TestDomainController```.
+________________________________________________
 ## Other Commands
 ```bash
 php artisan make:class {class_name} {class_namespace}
