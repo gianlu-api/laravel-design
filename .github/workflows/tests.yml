@@ -32,5 +32,5 @@ jobs:
           composer require "laravel/framework:${{ matrix.laravel }}" --no-update
           composer install --prefer-dist --no-progress --no-suggest
 
-      - name: Run tests
+      - name: tests
         run: ./vendor/bin/pest

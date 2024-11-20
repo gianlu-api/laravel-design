@@ -1,5 +1,7 @@
 # Laravel Design
-Tests **main**: ![badge](https://github.com/gianlu-api/laravel-design/actions/workflows/tests.yml/badge.svg)
+
+![badge](https://github.com/gianlu-api/laravel-design/actions/workflows/tests.yml/badge.svg)&nbsp;&nbsp;&nbsp;
+![badge](https://github.com/gianlu-api/laravel-design/actions/workflows/larastan.yml/badge.svg)
 
 Laravel Design is the library that allows you, through a command and a configuration file where you specify the architecture you want for your project, to quickly generate the architecture you desire.
 
