@@ -6,8 +6,8 @@ use gianluApi\laravelDesign\Commands\Console\AbstractClassMakeCommand;
 use gianluApi\laravelDesign\Commands\Console\ClassMakeCommand;
 use gianluApi\laravelDesign\Commands\Console\DesignMakeCommand;
 use gianluApi\laravelDesign\Commands\Console\InterfaceMakeCommand;
-use gianluApi\laravelDesign\Commands\Console\ReactMakeCommand;
-use gianluApi\laravelDesign\Commands\Console\VueMakeCommand;
+use gianluApi\laravelDesign\Commands\Console\Views\ReactMakeCommand;
+use gianluApi\laravelDesign\Commands\Console\Views\VueMakeCommand;
 use Illuminate\Support\ServiceProvider;
 
 class LaravelDesignServiceProvider extends ServiceProvider

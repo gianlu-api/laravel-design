@@ -10,7 +10,7 @@ it('creates a new vue composition api component correctly', function () {
     ];
 
     //Act
-    $this->artisan('make:vue', $config)->assertSuccessful();
+    $this->artisan('make:view:vue', $config)->assertSuccessful();
 
     //Assert
     expect(File::exists(resource_path('js/Pages')))->toBeTrue()
@@ -25,7 +25,7 @@ it('creates a new vue composition api component content correctly', function () 
     ];
 
     //Act
-    $this->artisan('make:vue', $config)->assertSuccessful();
+    $this->artisan('make:view:vue', $config)->assertSuccessful();
 
     //Assert
     expect(File::exists(resource_path('js/Pages')))->toBeTrue()
@@ -58,7 +58,7 @@ it('creates a new vue options api component correctly', function () {
     ];
 
     //Act
-    $this->artisan('make:vue', $config)->assertSuccessful();
+    $this->artisan('make:view:vue', $config)->assertSuccessful();
 
     //Assert
     expect(File::exists(resource_path('js/Pages')))->toBeTrue()
@@ -74,7 +74,7 @@ it('creates a new vue options api component content correctly', function () {
     ];
 
     //Act
-    $this->artisan('make:vue', $config)->assertSuccessful();
+    $this->artisan('make:view:vue', $config)->assertSuccessful();
 
     //Assert
     expect(File::exists(resource_path('js/Pages')))->toBeTrue()

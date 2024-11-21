@@ -20,8 +20,8 @@ final class CommandSelector
             Types::Resource => "make:resource",
             Types::Middleware => "make:middleware",
             Types::Blade => "make:view",
-            Types::Vue => "make:vue",
-            Types::React => "make:react",
+            Types::Vue => "make:view:vue",
+            Types::React => "make:view:react",
         };
     }
 

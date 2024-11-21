@@ -88,7 +88,7 @@ it('returns vue command correctly', function () {
     $command = CommandSelector::handle(Types::Vue);
 
     //Assert
-    expect($command)->toBe("make:vue");
+    expect($command)->toBe("make:view:vue");
 });
 
 it('returns react command correctly', function () {
@@ -96,5 +96,5 @@ it('returns react command correctly', function () {
     $command = CommandSelector::handle(Types::React);
 
     //Assert
-    expect($command)->toBe("make:react");
+    expect($command)->toBe("make:view:react");
 });
