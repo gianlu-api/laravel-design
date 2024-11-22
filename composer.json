@@ -1,9 +1,9 @@
 {
   "name": "gianlu-api/laravel-design",
-  "description": "library to generate custom design structure in laravel",
+  "description": "Library to generate custom design structure in laravel",
   "type": "library",
-  "version": "0.0.0",
-  "license": "copyright",
+  "version": "0.1.0",
+  "license": "MIT",
   "autoload": {
     "psr-4": {
       "gianluApi\\laravelDesign\\": "src/"
@@ -45,18 +45,6 @@
     "PHP",
     "php",
     "laravel",
-    "Laravel",
-    "Domain Driven Design",
-    "Event-Driven Architecture",
-    "CQRS",
-    "DDD",
-    "Model-View-Controller",
-    "Command Query Responsibility Segregation",
-    "Clean Architecture",
-    "Clean Code",
-    "Service-Oriented Architecture",
-    "Hexagonal Architecture",
-    "Microservices",
-    "Design Patterns"
+    "Laravel"
   ]
 }
