@@ -1,11 +1,11 @@
 <?php declare(strict_types=1);
 
 use gianluApi\laravelDesign\Commands\Selectors\CommandSelector;
-use gianluApi\laravelDesign\Types\Enums\Types;
+use gianluApi\laravelDesign\GeneratorTypes\Enums\GeneratorTypes;
 
 it('returns migration command correctly', function () {
    //Act
-    $command = CommandSelector::handle(Types::Migration);
+    $command = CommandSelector::handle(GeneratorTypes::Migration);
 
     //Assert
     expect($command)->toBe("make:migration");
@@ -13,7 +13,7 @@ it('returns migration command correctly', function () {
 
 it('returns class command correctly', function () {
     //Act
-    $command = CommandSelector::handle(Types::CustomClass);
+    $command = CommandSelector::handle(GeneratorTypes::CustomClass);
 
     //Assert
     expect($command)->toBe("make:class");
@@ -21,7 +21,7 @@ it('returns class command correctly', function () {
 
 it('returns abstract class command correctly', function () {
     //Act
-    $command = CommandSelector::handle(Types::AbstractClass);
+    $command = CommandSelector::handle(GeneratorTypes::AbstractClass);
 
     //Assert
     expect($command)->toBe("make:class:abstract");
@@ -29,7 +29,7 @@ it('returns abstract class command correctly', function () {
 
 it('returns interface command correctly', function () {
     //Act
-    $command = CommandSelector::handle(Types::Interface);
+    $command = CommandSelector::handle(GeneratorTypes::Interface);
 
     //Assert
     expect($command)->toBe("make:interface");
@@ -37,7 +37,7 @@ it('returns interface command correctly', function () {
 
 it('returns model command correctly', function () {
     //Act
-    $command = CommandSelector::handle(Types::Model);
+    $command = CommandSelector::handle(GeneratorTypes::Model);
 
     //Assert
     expect($command)->toBe("make:model");
@@ -45,7 +45,7 @@ it('returns model command correctly', function () {
 
 it('returns controller command correctly', function () {
     //Act
-    $command = CommandSelector::handle(Types::Controller);
+    $command = CommandSelector::handle(GeneratorTypes::Controller);
 
     //Assert
     expect($command)->toBe("make:controller");
@@ -53,7 +53,7 @@ it('returns controller command correctly', function () {
 
 it('returns request command correctly', function () {
     //Act
-    $command = CommandSelector::handle(Types::Request);
+    $command = CommandSelector::handle(GeneratorTypes::Request);
 
     //Assert
     expect($command)->toBe("make:request");
@@ -61,7 +61,7 @@ it('returns request command correctly', function () {
 
 it('returns resource command correctly', function () {
     //Act
-    $command = CommandSelector::handle(Types::Resource);
+    $command = CommandSelector::handle(GeneratorTypes::Resource);
 
     //Assert
     expect($command)->toBe("make:resource");
@@ -69,7 +69,7 @@ it('returns resource command correctly', function () {
 
 it('returns middleware command correctly', function () {
     //Act
-    $command = CommandSelector::handle(Types::Middleware);
+    $command = CommandSelector::handle(GeneratorTypes::Middleware);
 
     //Assert
     expect($command)->toBe("make:middleware");
@@ -77,7 +77,7 @@ it('returns middleware command correctly', function () {
 
 it('returns view command correctly', function () {
     //Act
-    $command = CommandSelector::handle(Types::Blade);
+    $command = CommandSelector::handle(GeneratorTypes::Blade);
 
     //Assert
     expect($command)->toBe("make:view");
@@ -85,7 +85,7 @@ it('returns view command correctly', function () {
 
 it('returns vue command correctly', function () {
     //Act
-    $command = CommandSelector::handle(Types::Vue);
+    $command = CommandSelector::handle(GeneratorTypes::Vue);
 
     //Assert
     expect($command)->toBe("make:vue");
@@ -93,7 +93,7 @@ it('returns vue command correctly', function () {
 
 it('returns react command correctly', function () {
     //Act
-    $command = CommandSelector::handle(Types::React);
+    $command = CommandSelector::handle(GeneratorTypes::React);
 
     //Assert
     expect($command)->toBe("make:react");
