@@ -20,8 +20,8 @@ final class CommandSelector
             GeneratorTypes::Resource => "make:resource",
             GeneratorTypes::Middleware => "make:middleware",
             GeneratorTypes::Blade => "make:view",
-            GeneratorTypes::Vue => "make:vue",
-            GeneratorTypes::React => "make:react",
+            GeneratorTypes::Vue => "make:view:vue",
+            GeneratorTypes::React => "make:view:react",
         };
     }
 

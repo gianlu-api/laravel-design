@@ -37,7 +37,7 @@
   "extra": {
     "laravel": {
       "providers": [
-        "LaravelDesignServiceProvider"
+        "gianluApi\\laravelDesign\\Providers\\LaravelDesignServiceProvider"
       ]
     }
   },

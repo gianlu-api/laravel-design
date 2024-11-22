@@ -342,9 +342,9 @@ php artisan make:class:abstract {abstarct_class_name} {abstract_class_path}
 ```
 
 ```bash
-php artisan make:vue {vue_component_name} {vue_component_path} {--type=options || compositions}
+php artisan make:view:vue {vue_component_name} {vue_component_path} {--type=options || compositions}
 ```
 Default type for Vue components is composition api.
 ```bash
-php artisan make:react {react_component_name} {react_component_path}
+php artisan make:view:react {react_component_name} {react_component_path}
 ```

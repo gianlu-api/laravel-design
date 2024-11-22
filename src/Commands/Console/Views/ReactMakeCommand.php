@@ -1,27 +1,21 @@
 <?php declare( strict_types=1 );
 
-namespace gianluApi\laravelDesign\Commands\Console;
+namespace gianluApi\laravelDesign\Commands\Console\Views;
 
 use Illuminate\Console\GeneratorCommand;
 use Illuminate\Contracts\Filesystem\FileNotFoundException;
 use InvalidArgumentException;
 
-class VueMakeCommand extends GeneratorCommand
+class ReactMakeCommand extends GeneratorCommand
 {
 
-    protected $signature = 'make:vue {name} {path?} {--type=composition}';
-    protected $description = 'Create new vue file';
-    protected $type = 'Vue';
+    protected $signature = 'make:view:react {name} {path?}';
+    protected $description = 'Create new react file';
+    protected $type = 'React';
 
     protected function getStub(): string
     {
-        $type = $this->option('type');
-
-        if ( $type === 'options' ) {
-            return __DIR__ . '/../../../stubs/VueOptionsApi.stub';
-        }
-
-        return __DIR__ . '/../../../stubs/VueCompositionApi.stub';
+        return __DIR__ . '/../../../../stubs/React.stub';
     }
 
     /**
@@ -43,7 +37,7 @@ class VueMakeCommand extends GeneratorCommand
             throw new InvalidArgumentException("name must be a string");
         }
 
-        return resource_path("$path/$name.vue");
+        return resource_path("$path/$name.jsx");
     }
 
     /**
