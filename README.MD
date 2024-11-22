@@ -12,7 +12,7 @@ Laravel Design is the library that allows you, through a command and a configura
 
 ## Installation
 ```bash
-composer require gianlu-api/laravel-design --dev
+composer require gianlu-api/laravel-design
 ```
 
 ## Publish Resources
