@@ -2,26 +2,26 @@
 
 namespace gianluApi\laravelDesign\Commands\Selectors;
 
-use gianluApi\laravelDesign\Types\Enums\Types;
+use gianluApi\laravelDesign\GeneratorTypes\Enums\GeneratorTypes;
 
 final class CommandSelector
 {
 
-    public static function handle(Types $type): string
+    public static function handle(GeneratorTypes $type): string
     {
         return match ( $type ) {
-            Types::Migration => "make:migration",
-            Types::CustomClass => "make:class",
-            Types::Interface => "make:interface",
-            Types::AbstractClass => "make:class:abstract",
-            Types::Model => "make:model",
-            Types::Controller => "make:controller",
-            Types::Request => "make:request",
-            Types::Resource => "make:resource",
-            Types::Middleware => "make:middleware",
-            Types::Blade => "make:view",
-            Types::Vue => "make:view:vue",
-            Types::React => "make:view:react",
+            GeneratorTypes::Migration => "make:migration",
+            GeneratorTypes::CustomClass => "make:class",
+            GeneratorTypes::Interface => "make:interface",
+            GeneratorTypes::AbstractClass => "make:class:abstract",
+            GeneratorTypes::Model => "make:model",
+            GeneratorTypes::Controller => "make:controller",
+            GeneratorTypes::Request => "make:request",
+            GeneratorTypes::Resource => "make:resource",
+            GeneratorTypes::Middleware => "make:middleware",
+            GeneratorTypes::Blade => "make:view",
+            GeneratorTypes::Vue => "make:view:vue",
+            GeneratorTypes::React => "make:view:react",
         };
     }
 

@@ -1,8 +1,8 @@
 <?php declare( strict_types=1 );
 
-namespace gianluApi\laravelDesign\Types\Enums;
+namespace gianluApi\laravelDesign\GeneratorTypes\Enums;
 
-enum Types: string
+enum GeneratorTypes: string
 {
 
     case CustomClass = 'class';

@@ -2,7 +2,7 @@
 
 namespace gianluApi\laravelDesign\Commands\Console;
 
-use gianluApi\laravelDesign\Types\Handlers\TypeHandler;
+use gianluApi\laravelDesign\GeneratorTypes\Handlers\GeneratorTypeHandler;
 use Illuminate\Console\Command;
 use Symfony\Component\Console\Command\Command as CommandAlias;
 use Throwable;
@@ -13,7 +13,7 @@ class DesignMakeCommand extends Command
     protected $signature = "make:design {--config}";
     protected $description = "Create a new design structure";
 
-    public function handle(TypeHandler $typeHandler): int
+    public function handle(GeneratorTypeHandler $typeHandler): int
     {
         try {
             $configOption = $this->option("config");

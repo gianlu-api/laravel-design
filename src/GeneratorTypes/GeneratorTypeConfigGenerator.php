@@ -1,12 +1,12 @@
 <?php declare( strict_types=1 );
 
-namespace gianluApi\laravelDesign\Types;
+namespace gianluApi\laravelDesign\GeneratorTypes;
 
 use gianluApi\laravelDesign\Helpers\PathHelper;
-use gianluApi\laravelDesign\Types\Enums\Types;
+use gianluApi\laravelDesign\GeneratorTypes\Enums\GeneratorTypes;
 use Illuminate\Support\Str;
 
-final class TypeConfigGenerator
+final class GeneratorTypeConfigGenerator
 {
 
     use PathHelper;
@@ -16,21 +16,21 @@ final class TypeConfigGenerator
      *
      * @return array<string, string|null>
      */
-    public static function generate(array $config, Types $type): array
+    public static function generate(array $config, GeneratorTypes $type): array
     {
         return match ( $type ) {
-            Types::CustomClass => self::generateClassConfig($config),
-            Types::Interface => self::generateInterfaceConfig($config),
-            Types::AbstractClass => self::generateAbstractClassConfig($config),
-            Types::Model => self::generateModelConfig($config),
-            Types::Controller => self::generateControllerConfig($config),
-            Types::Request => self::generateRequestConfig($config),
-            Types::Resource => self::generateResourceConfig($config),
-            Types::Middleware => self::generateMiddlewareConfig($config),
-            Types::Blade => self::generateBladeConfig($config),
-            Types::Vue => self::generateVueConfig($config),
-            Types::Migration => self::generateMigrationConfig($config),
-            Types::React => self::generateReactConfig($config),
+            GeneratorTypes::CustomClass => self::generateClassConfig($config),
+            GeneratorTypes::Interface => self::generateInterfaceConfig($config),
+            GeneratorTypes::AbstractClass => self::generateAbstractClassConfig($config),
+            GeneratorTypes::Model => self::generateModelConfig($config),
+            GeneratorTypes::Controller => self::generateControllerConfig($config),
+            GeneratorTypes::Request => self::generateRequestConfig($config),
+            GeneratorTypes::Resource => self::generateResourceConfig($config),
+            GeneratorTypes::Middleware => self::generateMiddlewareConfig($config),
+            GeneratorTypes::Blade => self::generateBladeConfig($config),
+            GeneratorTypes::Vue => self::generateVueConfig($config),
+            GeneratorTypes::Migration => self::generateMigrationConfig($config),
+            GeneratorTypes::React => self::generateReactConfig($config),
         };
     }
 
