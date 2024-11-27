@@ -1,14 +1,14 @@
 <?php declare(strict_types=1);
 
-use gianluApi\laravelDesign\GeneratorTypes\Enums\GeneratorTypes;
-use gianluApi\laravelDesign\GeneratorTypes\GeneratorTypeConfigGenerator;
+use gianluApi\laravelDesign\ConfigGenerator\Enums\GeneratorTypes;
+use gianluApi\laravelDesign\ConfigGenerator\ConfigItemGenerator;
 
 it("generates a migration config correctly", function () {
     //Arrange
     $config = ["name" => "testDomain"];
 
     //Act
-    $config = GeneratorTypeConfigGenerator::generate($config, GeneratorTypes::Migration);
+    $config = ConfigItemGenerator::generate($config, GeneratorTypes::Migration);
 
     //Assert
     expect($config)->toBe([
@@ -25,7 +25,7 @@ it("generates an abstract class config with correctly", function () {
     ];
 
     //Act
-    $config = GeneratorTypeConfigGenerator::generate($config, GeneratorTypes::AbstractClass);
+    $config = ConfigItemGenerator::generate($config, GeneratorTypes::AbstractClass);
 
     //Assert
     expect($config)->toBe([
@@ -42,7 +42,7 @@ it("generates an interface config with leading slash correctly", function () {
     ];
 
     //Act
-    $config = GeneratorTypeConfigGenerator::generate($config, GeneratorTypes::Interface);
+    $config = ConfigItemGenerator::generate($config, GeneratorTypes::Interface);
 
     //Assert
     expect($config)->toBe([
@@ -59,7 +59,7 @@ it("generates a class config with leading slash correctly", function () {
     ];
 
     //Act
-    $config = GeneratorTypeConfigGenerator::generate($config, GeneratorTypes::CustomClass);
+    $config = ConfigItemGenerator::generate($config, GeneratorTypes::CustomClass);
 
     //Assert
     expect($config)->toBe([
@@ -76,7 +76,7 @@ it("generates an abstract class without leading slash config correctly", functio
     ];
 
     //Act
-    $config = GeneratorTypeConfigGenerator::generate($config, GeneratorTypes::AbstractClass);
+    $config = ConfigItemGenerator::generate($config, GeneratorTypes::AbstractClass);
 
     //Assert
     expect($config)->toBe([
@@ -93,7 +93,7 @@ it("generates an interface config without leading slash correctly", function () 
     ];
 
     //Act
-    $config = GeneratorTypeConfigGenerator::generate($config, GeneratorTypes::Interface);
+    $config = ConfigItemGenerator::generate($config, GeneratorTypes::Interface);
 
     //Assert
     expect($config)->toBe([
@@ -110,7 +110,7 @@ it("generates a class config without leading slash correctly", function () {
     ];
 
     //Act
-    $config = GeneratorTypeConfigGenerator::generate($config, GeneratorTypes::CustomClass);
+    $config = ConfigItemGenerator::generate($config, GeneratorTypes::CustomClass);
 
     //Assert
     expect($config)->toBe([
@@ -124,7 +124,7 @@ it("generates a model config correctly", function () {
     $config = ["name" => "app/Domains/TestDomain/Domain/Models/ModelTest"];
 
     //Act
-    $config = GeneratorTypeConfigGenerator::generate($config, GeneratorTypes::Model);
+    $config = ConfigItemGenerator::generate($config, GeneratorTypes::Model);
 
     //Assert
     expect($config)->toBe([
@@ -137,7 +137,7 @@ it("generates a controller config correctly", function () {
     $config = ["name" => "app/Http/TestDomain/Controllers/TestDomainController"];
 
     //Act
-    $config = GeneratorTypeConfigGenerator::generate($config, GeneratorTypes::Controller);
+    $config = ConfigItemGenerator::generate($config, GeneratorTypes::Controller);
 
     //Assert
     expect($config)->toBe([
@@ -150,7 +150,7 @@ it("generates a controller with resource config correctly", function () {
     $config = ["name" => "app/Http/TestDomain/Controllers/TestDomainController", "is_resource" => true];
 
     //Act
-    $config = GeneratorTypeConfigGenerator::generate($config, GeneratorTypes::Controller);
+    $config = ConfigItemGenerator::generate($config, GeneratorTypes::Controller);
 
     //Assert
     expect($config)->toBe([
@@ -164,7 +164,7 @@ it("generates a api controller config correctly", function () {
     $config = ["name" => "app/Http/TestDomain/Controllers/TestDomainController", "is_api" => true];
 
     //Act
-    $config = GeneratorTypeConfigGenerator::generate($config, GeneratorTypes::Controller);
+    $config = ConfigItemGenerator::generate($config, GeneratorTypes::Controller);
 
     //Assert
     expect($config)->toBe([
@@ -178,7 +178,7 @@ it("generates a request config correctly", function () {
     $config = ["name" => "app/Http/TestDomain/Requests/TestDomainRequest"];
 
     //Act
-    $config = GeneratorTypeConfigGenerator::generate($config, GeneratorTypes::Request);
+    $config = ConfigItemGenerator::generate($config, GeneratorTypes::Request);
 
     //Assert
     expect($config)->toBe([
@@ -191,7 +191,7 @@ it("generates a resource config correctly", function () {
     $config = ["name" => "app/Http/TestDomain/Resources/TestDomainResource"];
 
     //Act
-    $config = GeneratorTypeConfigGenerator::generate($config, GeneratorTypes::Resource);
+    $config = ConfigItemGenerator::generate($config, GeneratorTypes::Resource);
 
     //Assert
     expect($config)->toBe([
@@ -204,7 +204,7 @@ it("generates a middleware config correctly", function () {
     $config = ["name" => "app/Http/TestDomain/Middlewares/TestDomainMiddleware"];
 
     //Act
-    $config = GeneratorTypeConfigGenerator::generate($config, GeneratorTypes::Middleware);
+    $config = ConfigItemGenerator::generate($config, GeneratorTypes::Middleware);
 
     //Assert
     expect($config)->toBe([
@@ -217,7 +217,7 @@ it("generates a blade config correctly", function () {
     $config = ["name" => "resources/views/BladeView"];
 
     //Act
-    $config = GeneratorTypeConfigGenerator::generate($config, GeneratorTypes::Blade);
+    $config = ConfigItemGenerator::generate($config, GeneratorTypes::Blade);
 
     //Assert
     expect($config)->toBe([
@@ -233,7 +233,7 @@ it("generates a vue composition api config correctly", function () {
     ];
 
     //Act
-    $config = GeneratorTypeConfigGenerator::generate($config, GeneratorTypes::Vue);
+    $config = ConfigItemGenerator::generate($config, GeneratorTypes::Vue);
 
     //Assert
     expect($config)->toBe([
@@ -251,7 +251,7 @@ it("generates a vue options api config correctly", function () {
     ];
 
     //Act
-    $config = GeneratorTypeConfigGenerator::generate($config, GeneratorTypes::Vue);
+    $config = ConfigItemGenerator::generate($config, GeneratorTypes::Vue);
 
     //Assert
     expect($config)->toBe([
@@ -269,7 +269,7 @@ it("generates a react config correctly", function () {
     ];
 
     //Act
-    $config = GeneratorTypeConfigGenerator::generate($config, GeneratorTypes::React);
+    $config = ConfigItemGenerator::generate($config, GeneratorTypes::React);
 
     //Assert
     expect($config)->toBe([

@@ -1,12 +1,11 @@
 <?php declare( strict_types=1 );
 
-namespace gianluApi\laravelDesign\GeneratorTypes\Handlers;
+namespace gianluApi\laravelDesign\ConfigGenerator\Handlers;
 
 use gianluApi\laravelDesign\Commands\Callers\CommandCaller;
-use gianluApi\laravelDesign\GeneratorTypes\Enums\GeneratorTypes;
-use gianluApi\laravelDesign\GeneratorTypes\GeneratorTypeConfigGenerator;
+use gianluApi\laravelDesign\ConfigGenerator\Enums\GeneratorTypes;
 
-class GeneratorTypeHandler
+class GeneratorItemHandler
 {
 
     /** @var array<string, GeneratorTypes> */
@@ -42,13 +41,11 @@ class GeneratorTypeHandler
      */
     protected static function handleConfigItem(array $config, GeneratorTypes $type): void
     {
+
         foreach ( $config as $item ) {
-            if ( is_array($item) ) {
-                /** @var array<string, string> $item */
-                $config = GeneratorTypeConfigGenerator::generate($item, $type);
-                CommandCaller::call($config, $type);
-            }
+            CommandCaller::call($item, $type);
         }
+
     }
 
 }
