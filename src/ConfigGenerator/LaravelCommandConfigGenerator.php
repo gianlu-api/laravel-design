@@ -2,25 +2,54 @@
 
 namespace gianluApi\laravelDesign\ConfigGenerator;
 
-use gianluApi\laravelDesign\ConfigGenerator\Contracts\ConfigGeneratorContract;
+use gianluApi\laravelDesign\ConfigGenerator\Contracts\AbstractConfigGenerator;
 
-class LaravelCommandConfigGenerator extends ConfigGeneratorContract
+class LaravelCommandConfigGenerator extends AbstractConfigGenerator
 {
 
     /**
-     * @param array<array<string, string>> $config
+     * @param array<string, string> $config
      *
-     * @return array<array<string,string>>
+     * @return array<string, string>
      */
-    public static function generate(array $config): array
+    protected static function generateItemFromNameAndPathConfig(array $config): array
+    {
+        return [
+            "name" => self::checkPath($config["path"]) . $config["name"],
+        ];
+    }
+
+    /**
+     * @param array<string, string> $config
+     *
+     * @return array<string, string>
+     */
+    protected static function generateItemFromOnlyNameConfig(array $config): array
+    {
+        return [
+            "name" => $config["name"],
+        ];
+    }
+
+    /**
+     * @param array<string, array<string, string>|string> $config
+     *
+     * @return list<array<string, string>>
+     */
+    protected static function generateItemFromNamesAndPathConfig(array $config): array
     {
         $newConfig = [];
 
-        foreach ( $config as $configItem ) {
+        if ( !is_array($config["names"]) ) {
+            return $newConfig;
+        }
 
-            $newConfig[] = [
-                "name" => $configItem["name"],
-            ];
+        foreach ( $config["names"] as $name ) {
+            if ( !is_string($config["path"]) ) {
+                continue;
+            }
+
+            $newConfig[] = ["name" => self::checkPath($config["path"]) . $name];
         }
 
         return $newConfig;

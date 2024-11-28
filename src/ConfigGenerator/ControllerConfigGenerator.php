@@ -2,32 +2,39 @@
 
 namespace gianluApi\laravelDesign\ConfigGenerator;
 
+use Illuminate\Support\Str;
+
 final class ControllerConfigGenerator extends LaravelCommandConfigGenerator
 {
 
-    /**
-     * @param array<array<string, string>> $config
-     *
-     * @return array<array<string,string>>
-     */
-    public static function generate(array $config): array
+    protected static function generateItemFromNameAndPathConfig(array $config): array
     {
-        $newConfig = [];
+        $configOptions = [];
 
-        foreach ( $config as $configItem ) {
-            $newConfig[] = ["name" => $configItem["name"]];
-
-            if ( isset($config["is_resource"]) ) {
-                $newConfig[]["--resource"] = $configItem["is_resource"];
-            }
-
-            if ( isset($config["is_api"]) ) {
-                $newConfig[]["--api"] = $configItem["is_api"];
-            }
-
+        if ( isset($config["is_resource"]) ) {
+            $configOptions["--resource"] = $config["is_resource"];
         }
 
-        return $newConfig;
+        if ( isset($config["is_api"]) ) {
+            $configOptions["--api"] = $config["is_api"];
+        }
+
+        return array_merge(["name" => self::checkPath($config["path"]) . $config["name"]], $configOptions);
+    }
+
+    protected static function generateItemFromOnlyNameConfig(array $config): array
+    {
+        $configOptions = [];
+
+        if ( isset($config["is_resource"]) ) {
+            $configOptions["--resource"] = $config["is_resource"];
+        }
+
+        if ( isset($config["is_api"]) ) {
+            $configOptions["--api"] = $config["is_api"];
+        }
+
+        return array_merge(["name" => $config["name"]], $configOptions);
     }
 
 }

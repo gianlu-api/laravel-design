@@ -30,7 +30,7 @@ class DesignMakeCommand extends Command
             $this->output->success("Design created successfully");
 
             return CommandAlias::SUCCESS;
-        } catch ( Throwable $th ) {
+        } catch (Throwable $th) {
             $this->output->error($th->getMessage());
 
             return CommandAlias::FAILURE;

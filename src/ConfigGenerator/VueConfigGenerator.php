@@ -2,30 +2,47 @@
 
 namespace gianluApi\laravelDesign\ConfigGenerator;
 
+use Illuminate\Support\Str;
+
 final class VueConfigGenerator extends CustomCommandConfigGenerator
 {
 
     /**
-     * @param array<array<string, string>> $config
+     * @param array<string, string> $config
      *
-     * @return array<array<string,string>>
+     * @return array<string, string>
      */
-    public static function generate(array $config): array
+    protected static function generateItemFromNameAndPathConfig(array $config): array
     {
-        $newConfig = [];
+        $configOptions = [];
 
-        foreach ( $config as $configItem ) {
-            $newConfig[] = [
-                "name" => $configItem["name"],
-                "path" => $configItem["path"],
-            ];
-
-            if ( isset($config["component_type"]) ) {
-                $newConfig["--type"] = $configItem["component_type"];
-            }
+        if ( isset($config["component_type"]) ) {
+            $configOptions["--type"] = $config["component_type"];
         }
 
-        return $newConfig;
+        return array_merge([
+            "name" => $config["name"],
+            "path" => self::checkPath($config["path"]),
+        ], $configOptions);
+    }
+
+    /**
+     * @param array<string, string> $config
+     *
+     * @return array<string, string>
+     */
+    protected static function generateItemFromOnlyNameConfig(array $config): array
+    {
+        $configOptions = [];
+
+        if ( isset($config["component_type"]) ) {
+            $configOptions["--type"] = $config["component_type"];
+        }
+
+        return array_merge([
+            "name" => Str::afterLast($config["name"], "/"),
+            "path" => self::checkPath(Str::beforeLast($config["name"], "/"))
+        ], $configOptions);
     }
 
 }

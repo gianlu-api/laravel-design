@@ -7,21 +7,35 @@ use Illuminate\Support\Str;
 trait PathHelper
 {
 
-    public static function checkPath(string $path): string
+    public static function checkPath(string $path, bool $trailingSlash = true): string
     {
-        $path = self::checkLeadingSlash($path);
+        $path = self::addLeadingSlash($path);
 
-        return self::checkTrailingSlash($path);
+        if ($trailingSlash) {
+            return self::addTrailingSlash($path);
+        }
+
+        return self::removeTrailingSlash($path);
     }
 
-    public static function checkLeadingSlash(string $path): string
+    public static function addLeadingSlash(string $path): string
     {
-        return Str::startsWith($path, "/") ? $path : "/$path";
+        return Str::startsWith($path,'app') ? $path : Str::start($path, "/");
     }
 
-    public static function checkTrailingSlash(string $path): string
+    public static function removeLeadingSlash(string $path): string
+    {
+        return ltrim($path, "/");
+    }
+
+    public static function removeTrailingSlash(string $path): string
     {
         return rtrim($path, '/');
+    }
+
+    public static function addTrailingSlash(string $path): string
+    {
+        return Str::finish($path, '/');
     }
 
 }

@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\File;
 
+//Base config tests
 it("creates a new complete design structure correctly", function () {
     //Arrange
     $config = [
