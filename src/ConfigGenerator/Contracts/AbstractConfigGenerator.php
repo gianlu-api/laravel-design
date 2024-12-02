@@ -23,6 +23,14 @@ abstract class AbstractConfigGenerator implements ConfigGeneratorInterface
             if ( Arr::exists($config, "names") && Arr::exists($config, "path") ) {
                 $newConfig = static::generateItemFromNamesAndPathConfig($config);
             }
+
+            if ( Arr::exists($config, "name") && Arr::exists($config, "path") ) {
+                $newConfig[] = static::generateItemFromNameAndPathConfig($config);
+            }
+
+            if ( Arr::exists($config, "name") && !Arr::exists($config, "path") ) {
+                $newConfig[] = static::generateItemFromOnlyNameConfig($config);
+            }
         } else {
             foreach ( $config as $configItem ) {
                 if ( Arr::exists($configItem, "name") && Arr::exists($configItem, "path") ) {
@@ -34,7 +42,7 @@ abstract class AbstractConfigGenerator implements ConfigGeneratorInterface
                 }
 
                 if ( Arr::exists($configItem, "names") && Arr::exists($configItem, "path") ) {
-                    $newConfig = static::generateItemFromNamesAndPathConfig($configItem);
+                    $newConfig = array_merge($newConfig, static::generateItemFromNamesAndPathConfig($configItem));
                 }
             }
         }
@@ -62,4 +70,5 @@ abstract class AbstractConfigGenerator implements ConfigGeneratorInterface
      * @return array<string,string>
      */
     abstract protected static function generateItemFromNamesAndPathConfig(array $config): array;
+
 }
