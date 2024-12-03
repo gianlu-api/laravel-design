@@ -19,7 +19,7 @@ abstract class AbstractConfigGenerator implements ConfigGeneratorInterface
     {
         $newConfig = [];
 
-        if (Arr::isAssoc($config)) {
+        if ( Arr::isAssoc($config) ) {
             if ( Arr::exists($config, "names") && Arr::exists($config, "path") ) {
                 $newConfig = static::generateItemFromNamesAndPathConfig($config);
             }
@@ -51,7 +51,7 @@ abstract class AbstractConfigGenerator implements ConfigGeneratorInterface
     }
 
     /**
-     * @param array<string, string> $config
+     * @param array<string, array<string, string>|string> $config
      *
      * @return array<string,string>
      */

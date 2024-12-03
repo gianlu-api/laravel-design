@@ -1,4 +1,4 @@
-<?php declare(strict_types=1);
+<?php declare( strict_types=1 );
 
 use Illuminate\Support\Facades\File;
 
@@ -15,7 +15,7 @@ it('creates a new design structure with migration correctly', function () {
     $this->artisan('make:design')->assertSuccessful();
 
     $migrationFile = collect(File::files(database_path('migrations')))
-        ->first(fn ($file) => str_contains($file->getFilename(), $config['migration']['table_name']));
+        ->first(fn($file) => str_contains($file->getFilename(), $config['migration']['table_name']));
 
     //Assert
     expect(File::exists(base_path('database/migrations')))->toBeTrue()
@@ -28,7 +28,7 @@ it('creates a new design structure with model correctly', function () {
     $config = [
         'models' => [
             [
-                'name' =>'/Domains/TestDomain/Domain/Models/TestDomain',
+                'name' => '/Domains/TestDomain/Domain/Models/TestDomain',
             ],
         ],
     ];
@@ -50,7 +50,7 @@ it('creates a new design structure with class correctly', function () {
     $config = [
         'classes' => [
             [
-                'path' =>'/Domains/TestDomain/Domain/Classes',
+                'path' => '/Domains/TestDomain/Domain/Classes',
                 'name' => 'TestDomainClass',
             ],
         ],
@@ -70,7 +70,7 @@ it('creates a new design structure with class with leading slash correctly', fun
     $config = [
         'classes' => [
             [
-                'path' =>'Domains/TestDomain/Domain/Classes',
+                'path' => 'Domains/TestDomain/Domain/Classes',
                 'name' => 'TestDomainClass',
             ],
         ],
@@ -90,7 +90,7 @@ it('creates a new design structure with abstract class correctly', function () {
     $config = [
         'abstract_classes' => [
             [
-                'path' =>'/Domains/TestDomain/Domain/Abstracts',
+                'path' => '/Domains/TestDomain/Domain/Abstracts',
                 'name' => 'TestDomainAbstract',
             ],
         ],
@@ -110,7 +110,7 @@ it('creates a new design structure with abstract class with leading slash correc
     $config = [
         'abstract_classes' => [
             [
-                'path' =>'Domains/TestDomain/Domain/Abstracts',
+                'path' => 'Domains/TestDomain/Domain/Abstracts',
                 'name' => 'TestDomainAbstract',
             ],
         ],
@@ -130,7 +130,7 @@ it('creates a new design structure with request correctly', function () {
     $config = [
         'requests' => [
             [
-                'name' =>'TestDomainRequest',
+                'name' => 'TestDomainRequest',
             ],
         ],
     ];
@@ -149,7 +149,7 @@ it('creates a new design structure with custom path request correctly', function
     $config = [
         'requests' => [
             [
-                'name' =>'../../App/Http/TestDomain/Requests/TestDomainRequest',
+                'name' => '../../App/Http/TestDomain/Requests/TestDomainRequest',
             ],
         ],
     ];
@@ -170,7 +170,7 @@ it('creates a new design structure with interfaces correctly', function () {
     $config = [
         'interfaces' => [
             [
-                'path' =>'/Domains/TestDomain/Domain/Interfaces',
+                'path' => '/Domains/TestDomain/Domain/Interfaces',
                 'name' => 'TestDomainRepositoryInterface',
             ]
         ],
@@ -190,7 +190,7 @@ it('creates a new design structure with interfaces without leading slash correct
     $config = [
         'interfaces' => [
             [
-                'path' =>'Domains/TestDomain/Domain/Interfaces',
+                'path' => 'Domains/TestDomain/Domain/Interfaces',
                 'name' => 'TestDomainRepositoryInterface',
             ]
         ],
@@ -210,7 +210,7 @@ it('creates a new design structure with controller correctly', function () {
     $config = [
         'controllers' => [
             [
-                'name' =>'TestDomainController',
+                'name' => 'TestDomainController',
             ],
         ],
     ];
@@ -229,7 +229,7 @@ it('creates a new design structure with controller with resources correctly', fu
     $config = [
         'controllers' => [
             [
-                'name' =>'TestDomainController',
+                'name' => 'TestDomainController',
                 'is_resource' => true,
             ],
         ],
@@ -249,7 +249,7 @@ it('creates a new design structure with api controller correctly', function () {
     $config = [
         'controllers' => [
             [
-                'name' =>'TestDomainController',
+                'name' => 'TestDomainController',
                 'is_api' => true,
             ],
         ],
@@ -269,7 +269,7 @@ it('creates a new design structure with custom path controller correctly', funct
     $config = [
         'controllers' => [
             [
-                'name' =>'../../App/Http/TestDomain/Controllers/TestDomainController',
+                'name' => '../../App/Http/TestDomain/Controllers/TestDomainController',
             ],
         ],
     ];
@@ -290,7 +290,7 @@ it('creates a new design structure with resource correctly', function () {
     $config = [
         'resources' => [
             [
-                'name' =>'TestDomainResource',
+                'name' => 'TestDomainResource',
             ],
         ],
     ];
@@ -309,7 +309,7 @@ it('creates a new design structure with custom path resource correctly', functio
     $config = [
         'resources' => [
             [
-                'name' =>'../../App/Http/TestDomain/Resources/TestDomainResource',
+                'name' => '../../App/Http/TestDomain/Resources/TestDomainResource',
             ],
         ],
     ];
@@ -330,7 +330,7 @@ it('creates a new design structure with middleware correctly', function () {
     $config = [
         'middlewares' => [
             [
-                'name' =>'TestDomainMiddleware',
+                'name' => 'TestDomainMiddleware',
             ],
         ],
     ];
@@ -349,7 +349,7 @@ it('creates a new design structure with custom path middleware correctly', funct
     $config = [
         'middlewares' => [
             [
-                'name' =>'../../App/Http/TestDomain/Middlewares/TestDomainMiddleware',
+                'name' => '../../App/Http/TestDomain/Middlewares/TestDomainMiddleware',
             ],
         ],
     ];
@@ -370,7 +370,7 @@ it('creates a new design structure with blade view correctly', function () {
     $config = [
         'blade_views' => [
             [
-                'name' =>'TestBladeView',
+                'name' => 'TestBladeView',
             ],
         ],
     ];
@@ -426,7 +426,6 @@ it('creates a new design structure with vue options api component correctly', fu
     expect(File::exists(resource_path('js/Pages')))->toBeTrue()
         ->and(File::exists(resource_path('js/Pages/TestVue.vue')))->toBeTrue();
 });
-
 
 it('creates a new design structure with react component correctly', function () {
     //Arrange

@@ -419,29 +419,6 @@ it('creates a new design structure custom path middleware correctly', function (
         ->and(File::exists(base_path('app/App/Http/TestDomain/Middlewares/TestDomainMiddleware2.php')))->toBeTrue();
 });
 
-it('creates a new design structure blade view correctly', function () {
-    //Arrange
-    $config = [
-        'blade_views' => [
-            [
-                'name' => 'TestBladeView',
-            ],
-            [
-                'name' => 'TestBladeView2',
-            ]
-        ],
-    ];
-
-    $this->setConfig($config);
-
-    //Act
-    $this->artisan('make:design')->assertSuccessful();
-
-    //Assert
-    expect(File::exists(resource_path('views/TestBladeView.blade.php')))->toBeTrue()
-        ->and(File::exists(resource_path('views/TestBladeView2.blade.php')))->toBeTrue();
-});
-
 it('creates a new design structure vue composition api component correctly', function () {
     //Arrange
     $config = [

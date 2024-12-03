@@ -1,4 +1,4 @@
-<?php declare(strict_types=1);
+<?php declare( strict_types=1 );
 
 use Illuminate\Support\Facades\File;
 
@@ -7,14 +7,14 @@ it("creates a new design structure with model with leading slash correctly", fun
     $config = [
         "models" => [
             [
-                "path" =>"/Domains/TestDomain/Domain/Models",
+                "path" => "/Domains/TestDomain/Domain/Models",
                 "names" => [
                     "TestDomain",
                     "TestDomain2",
                 ],
             ],
             [
-                "path" =>"/Domains/TestDomain/Domain/Models2",
+                "path" => "/Domains/TestDomain/Domain/Models2",
                 "names" => [
                     "TestDomain3",
                     "TestDomain4",
@@ -441,7 +441,6 @@ it("creates a new design structure with vue composition api component correctly"
         ->and(File::exists(resource_path("js/Pages2/TestVue3.vue")))->toBeTrue();
 });
 
-
 it("creates a new design structure with react component correctly", function () {
     //Arrange
     $config = [
@@ -474,5 +473,3 @@ it("creates a new design structure with react component correctly", function () 
         ->and(File::exists(resource_path("js/Pages2/TestReact2.jsx")))->toBeTrue()
         ->and(File::exists(resource_path("js/Pages2/TestReact3.jsx")))->toBeTrue();
 });
-
-

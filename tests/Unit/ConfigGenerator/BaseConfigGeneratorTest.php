@@ -1,4 +1,4 @@
-<?php declare(strict_types=1);
+<?php declare( strict_types=1 );
 
 use gianluApi\laravelDesign\ConfigGenerator\ControllerConfigGenerator;
 use gianluApi\laravelDesign\ConfigGenerator\CustomCommandConfigGenerator;
@@ -6,10 +6,6 @@ use gianluApi\laravelDesign\ConfigGenerator\LaravelCommandConfigGenerator;
 use gianluApi\laravelDesign\ConfigGenerator\MigrationConfigGenerator;
 use gianluApi\laravelDesign\ConfigGenerator\VueConfigGenerator;
 
-//Single array tests
-
-
-//Single Objects Tests
 it("generates a migration config with correctly", function () {
     //Arrange
     $config = [
