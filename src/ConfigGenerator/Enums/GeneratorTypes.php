@@ -1,6 +1,6 @@
 <?php declare( strict_types=1 );
 
-namespace gianluApi\laravelDesign\GeneratorTypes\Enums;
+namespace gianluApi\laravelDesign\ConfigGenerator\Enums;
 
 enum GeneratorTypes: string
 {

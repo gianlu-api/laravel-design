@@ -3,7 +3,7 @@
 namespace gianluApi\laravelDesign\Commands\Callers;
 
 use gianluApi\laravelDesign\Commands\Selectors\CommandSelector;
-use gianluApi\laravelDesign\GeneratorTypes\Enums\GeneratorTypes;
+use gianluApi\laravelDesign\ConfigGenerator\Enums\GeneratorTypes;
 use Illuminate\Support\Facades\Artisan;
 
 final class CommandCaller

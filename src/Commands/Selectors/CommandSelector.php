@@ -2,7 +2,7 @@
 
 namespace gianluApi\laravelDesign\Commands\Selectors;
 
-use gianluApi\laravelDesign\GeneratorTypes\Enums\GeneratorTypes;
+use gianluApi\laravelDesign\ConfigGenerator\Enums\GeneratorTypes;
 
 final class CommandSelector
 {
