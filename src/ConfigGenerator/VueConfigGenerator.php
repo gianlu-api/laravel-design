@@ -40,7 +40,7 @@ final class VueConfigGenerator extends CustomCommandConfigGenerator
     /**
      * @param array<string, string> $config
      *
-     * @return array<string, bool>|array{}
+     * @return array<string, string>|array{}
      */
     private static function addOption(array $config): array
     {
