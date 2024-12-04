@@ -1,10 +1,10 @@
-<?php declare(strict_types=1);
+<?php declare( strict_types=1 );
 
 use gianluApi\laravelDesign\Commands\Selectors\CommandSelector;
-use gianluApi\laravelDesign\GeneratorTypes\Enums\GeneratorTypes;
+use gianluApi\laravelDesign\ConfigGenerator\Enums\GeneratorTypes;
 
 it('returns migration command correctly', function () {
-   //Act
+    //Act
     $command = CommandSelector::handle(GeneratorTypes::Migration);
 
     //Assert

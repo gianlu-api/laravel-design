@@ -25,7 +25,7 @@ class MakeCommand extends GeneratorCommand
             throw new InvalidArgumentException("path must be a string");
         }
 
-        $namespace = self::checkPath($this->argument('path'));
+        $namespace = self::checkPath($this->argument('path'), false);
 
         return $rootNamespace . $namespace;
     }
