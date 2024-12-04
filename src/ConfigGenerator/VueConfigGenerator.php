@@ -10,15 +10,11 @@ final class VueConfigGenerator extends CustomCommandConfigGenerator
     /**
      * @param array<string, string> $config
      *
-     * @return array<string, string>
+     * @return array<string, string|bool>
      */
     protected static function generateItemFromNameAndPathConfig(array $config): array
     {
-        $configOptions = [];
-
-        if ( isset($config["component_type"]) ) {
-            $configOptions["--type"] = $config["component_type"];
-        }
+        $configOptions = self::addOption($config);
 
         return array_merge([
             "name" => $config["name"],
@@ -29,20 +25,32 @@ final class VueConfigGenerator extends CustomCommandConfigGenerator
     /**
      * @param array<string, string> $config
      *
-     * @return array<string, string>
+     * @return array<string, string|bool>
      */
     protected static function generateItemFromOnlyNameConfig(array $config): array
     {
-        $configOptions = [];
-
-        if ( isset($config["component_type"]) ) {
-            $configOptions["--type"] = $config["component_type"];
-        }
+        $configOptions = self::addOption($config);
 
         return array_merge([
             "name" => Str::afterLast($config["name"], "/"),
             "path" => self::checkPath(Str::beforeLast($config["name"], "/"))
         ], $configOptions);
+    }
+
+    /**
+     * @param array<string, string> $config
+     *
+     * @return array<string, bool>|array{}
+     */
+    private static function addOption(array $config): array
+    {
+        $configOptions = [];
+
+        if ( isset($config["type"]) ) {
+            $configOptions["--type"] = $config["type"];
+        }
+
+        return $configOptions;
     }
 
 }

@@ -20,7 +20,6 @@ it("creates a new design structure with model with leading slash correctly", fun
                     "TestDomain4",
                 ],
             ]
-
         ],
     ];
 
@@ -60,7 +59,6 @@ it("creates a new design structure with class correctly", function () {
                     "TestDomainClass6",
                 ]
             ]
-
         ],
     ];
 
@@ -323,7 +321,6 @@ it("creates a new design structure with custom path controller correctly", funct
                     "TestDomainController4"
                 ],
             ]
-
         ],
     ];
 

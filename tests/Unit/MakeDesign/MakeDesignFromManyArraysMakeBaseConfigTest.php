@@ -254,11 +254,11 @@ it('creates a new design structure controller with resources correctly', functio
         'controllers' => [
             [
                 'name' => 'TestDomainController',
-                'is_resource' => true,
+                'type' => 'resource',
             ],
             [
                 'name' => 'TestDomainController2',
-                'is_resource' => true,
+                'type' => 'resource',
             ]
         ],
     ];
@@ -279,11 +279,11 @@ it('creates a new design structure api controller correctly', function () {
         'controllers' => [
             [
                 'name' => 'TestDomainController',
-                'is_api' => true,
+                'type' => 'api',
             ],
             [
                 'name' => 'TestDomainController2',
-                'is_api' => true,
+                'type' => 'api',
             ]
         ],
     ];
@@ -452,12 +452,12 @@ it('creates a new design structure vue options api component correctly', functio
             [
                 'name' => 'TestVue',
                 'path' => 'js/Pages',
-                'component_type' => 'options',
+                'type' => 'options',
             ],
             [
                 'name' => 'TestVue2',
                 'path' => 'js/Pages',
-                'component_type' => 'options',
+                'type' => 'options',
             ]
         ]
     ];

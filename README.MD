@@ -23,122 +23,7 @@ It is not mandatory to publish the config; you can create your own and specify i
 
 ## Usage
 
-First, you will need to fill out the configuration file as follows.
-```
-[
-    "migrations" => [
-        "tables" => [
-            "name" => "users",
-        ]
-    ],
-    'models' => [
-        [
-            'name' => '/Domains/User/Domain/Models/User',
-        ]
-    ],
-    "classes" => [
-        [
-            "path" =>"/Domains/User/Domain/Services",
-            "name" => "UserService",
-        ],
-        [
-            "path" =>"/Domains/User/Domain/Repositories",
-            "name" => "UserRepository",
-        ]
-    ],
-    "interfaces" => [
-        [
-            "path" =>"/Domains/TestDomain/User/Interfaces",
-            "name" => "UserServiceInterface",
-        ],
-        [
-            "path" =>"/Domains/User/Domain/Interfaces",
-            "name" => "UserRepositoryInterface",
-        ]
-    ],
-    "abstract_classes" => [
-        [
-            "path" =>"/Domains/User/Domain/Abstracts",
-            "name" => "UserAbstract",
-        ]
-    ],
-    "requests" => [
-        [
-            "name" =>"../../App/Http/User/Requests/UserRequest",
-        ]
-    ],
-    "middlewares" => [
-        [
-            "name" =>"../../App/Http/User/Middlewares/UserMiddleware",
-        ]
-    ],
-    "resources" => [
-        [
-            "name" =>"../../App/Http/User/Resources/UserResource",
-        ]
-    ],
-    "controllers" => [
-        [
-            "name" =>"../../App/Http/User/Controllers/UserController",
-        ]
-    ],
-    "blade_views" => [
-        [
-            "name" => "UserPage",
-        ]
-    ],
-    "vue_components" => [
-        [
-            "name" => "UserPage",
-            "path" => "js/Pages",
-        ]
-    ],
-    "react_components" => [
-        [
-            "name" => "UserPage",
-            "path" => "js/Pages",
-        ]
-    ]
-];
-```
-
-If you want to create only specific components, simply leave the unwanted arrays empty. For example, if you need to create only a migration, model, service, and repository.
-
-```
-[
-    "migrations" => [
-        "tables" => [
-            "name" => "users",
-        ],
-    ],
-    'models' => [
-        [
-            'name' => '/Domains/User/Domain/Models/User',
-        ]
-    ],
-    "classes" => [
-        [
-            "path" =>"/Domains/User/Domain/Services",
-            "name" => "UserService",
-        ],
-        [
-            "path" =>"/Domains/User/Domain/Repositories",
-            "name" => "UserRepository",
-        ],
-    ],
-    "interfaces" => [],
-    "abstract_classes" => [],
-    "requests" => [],
-    "middlewares" => [],
-    "resources" => [],
-    "controllers" => [],
-    "blade_views" => [],
-    "vue_components" => [],
-    "react_components" => []
-];
-```
-
-Once the configuration file is ready, if you are using the laravel-design configuration file run:
+First, you will need to fill out the configuration as explained below. Once the configuration file is ready, if you are using the laravel-design configuration file run:
 
 ```bash
 php artisan make:design
@@ -150,179 +35,236 @@ php artisan make:design {your_config_name}
 ```
 ________________________________
 ## Configurations
-### Classes
 
+it is possible to generate the following types of files:
+ - migrations => ```'migrations'```
+ - classes => ```'classes'```
+ - interfaces => ```'interfaces'```
+ - abstract classes => ```'abstract_classes'```
+ - models => ```'models'```
+ - controllers => ```'controllers'```
+   * options: type
+ - requests => ```'requests'```
+ - middlewares => ```'middlewares'```
+ - vue components => ```'vue_components'```
+   * options: type
+ - react components => ```'react_components'```
+ - blade components => ```'blade_views'```
+
+### you can choose between these types of configuration, you can also mix them if you need
+
+- name and path configuration
 ```
-'classes' => [
+'key' => [
    [
        'name' =>'UserService',
        'path' => '/Domains/User/Domain/Services',
    ]
 ]
 ```
-
-### Interfaces
-
 ```
-'interfaces' => [
-   [
-       'name' =>'UserServiceInterface',
-       'path' => '/Domains/User/Domain/Contracts',
-   ]
+'key' => [
+    'name' =>'UserService',
+    'path' => '/Domains/User/Domain/Services',
 ]
 ```
-
-### Abstract Classes
-
+- path and names configuration
 ```
-'abstarct_classes' => [
-   [
-       'name' =>'UserServiceAbstract',
-       'path' => '/Domains/User/Domain/Contracts',
-   ]
+'key' => [
+    'path' => '/Domains/User/Domain/Services',
+    'names' => [
+        'UserRetrieverService',
+        'UserDataAccessService',
+    ]
 ]
 ```
-
-### Models
-Creating a model with the laravel default path:
 ```
-'models' => [
-   [
-       'name' =>'User',
-   ]
+'key' => [
+    [
+        'path' => '/Domains/User/Domain/Services',
+        'names' => [
+            'UserRetrieverService',
+            'UserDataAccessService',
+        ]
+    ],
+    [
+        'path' => '/Domains/User/Domain/Dtos',
+        'names' => [
+            'CreateUserData',
+            'UpdateUserData',
+        ]
+    ]
 ]
 ```
-
-Creating a model with custom path:
+- name configuration
 ```
-'models' => [
-   [
-       'name' =>'/Domains/User/Domain/Models/User',
-   ]
+'key' => [
+    'name' =>'/Domains/User/Domain/Services/UserService',
 ]
 ```
+- mixed configuration example
+```
+'classes' => [
+     [
+       'name' =>'UserType',
+       'path' => '/Domains/User/Domain/Enums',
+    ],
+    [
+        'path' => '/Domains/User/Domain/Services',
+        'names' => [
+            'UserRetrieverService',
+            'UserDataAccessService',
+        ]
+    ],
+    [
+        'path' => '/Domains/User/Domain/Dtos',
+        'names' => [
+            'CreateUserData',
+            'UpdateUserData',
+        ]
+    ]
+    'name' =>'/Domains/User/Domain/Repositories/UserRepository',
+]
+```
+## Migrations configruration
 
-### Controllers
-Creating a controller with the laravel default path:
+```
+'migrations' => [
+    'table' => 'test_domain',
+]
+```
+```
+'migrations' => [
+    'tables' => ['test_domain', 'test_domain_2']
+]
+```
+## Controllers configruration
+it is possible for controllers to choose whether api or resource methods should be created as allowed by Laravel, by adding to the configuration array ```'type' => api``` for api or ```type => resource``` for resources
 ```
 'controllers' => [
-   [
-       'name' =>'UserController',
-   ]
+    [
+       'name' =>'UserType',
+       'path' => '/Domains/User/Domain/Enums',
+       'type' => 'api'
+    ],
 ]
 ```
-Creating a controller with custom path:
 ```
 'controllers' => [
-   [
-       'name' =>'../../App/Http/User/Controllers/UserController',
-   ]
+    [
+       'name' =>'UserType',
+       'path' => '/Domains/User/Domain/Enums',
+       'type' => 'resource'
+    ],
 ]
 ```
-You can create Controllers with resources (with index, create edit, show, destroy, store and update methods), configure the file as follows:
+if you want an empty controller, you can skip the type field
 ```
 'controllers' => [
-   [
-       'name' =>'TestDomainController',
-       'is_resource' => true,
-   ],
+    [
+       'name' =>'UserType',
+       'path' => '/Domains/User/Domain/Enums',
+    ],
 ]
 ```
-
-You can also create api Controllers (with index, show, destroy, store and update methods), configure the file as follows:
-```
-'controllers' => [
-   [
-       'name' =>'TestDomainController',
-       'is_api' => true,
-   ],
-]
-```
-
-### Requests
-Creating a request with the laravel default path:
-```
-'requests' => [
-   [
-       'name' =>'UserRequest',
-   ]
-]
-```
-Creating a request with custom path:
-```
-'requests' => [
-   [
-       'name' =>'../../App/Http/User/Requests/UserRequest',
-   ]
-]
-```
-
-### Middlewares
-Creating a middleware with the laravel default path:
-```
-'requests' => [
-   [
-       'name' =>'UserMiddleware',
-   ]
-]
-```
-Creating a middleware with custom path:
-```
-'requests' => [
-   [
-       'name' =>'../../App/Http/User/Middlewares/UserMiddleware',
-   ]
-]
-```
-
-### Resources
-Creating a resource with the laravel default path:
-```
-'requests' => [
-   [
-       'name' =>'UserResource',
-   ]
-]
-```
-Creating a resource with custom path:
-```
-'requests' => [
-   [
-       'name' =>'../../App/Http/User/Resources/UserResource',
-   ]
-]
-```
-
-### Vue Components
-For Vue components, the default is the Composition API. If you want to create the component using the Options API, configure the file as follows:
+## Vue Components Configuration
+it is possible for vue components to choose options between composition_api ```'type' => 'compositions'``` and ```'type' => 'options'```, by default a compositions component is created
 ```
 'vue_components' => [
     [
-        'name' => 'UserPage',
-        'path' => 'js/Pages/User',
-        'component_type' => 'options',
-    ]
+       'name' =>'UserType',
+       'path' => '/Domains/User/Domain/Enums',
+       'type' => 'options'
+    ],
 ]
 ```
 
-### React Components
+## Configuration Example
+First, you will need to fill out the configuration file as follows.
 ```
-'react_components' => [
-    [
-        'name' => 'UserPage',
-        'path' => 'js/Pages/User',
-        'component_type' => 'options',
+[
+    "migrations" => [
+        "table" => "users"
+    ],
+    'models' => [
+        'name' => '/Domains/User/Domain/Models/User',
+    ],
+    "classes" => [
+        [
+            "path" =>"/Domains/User/Domain/Services",
+            "names" => ["UserRetrieverService", "UserDataAccessService"]
+        ],
+        [
+            "path" =>"/Domains/User/Domain/Repositories",
+            "name" => "UserRepository",
+        ]
+    ],
+    "interfaces" => [
+        "path" =>"/Domains/TestDomain/User/Interfaces",
+        "names" => ["UserServiceRetrieverInterface", "UserDataAccessServiceInterface", "UserRepositoryInterface"]
+    ],
+    "abstract_classes" => [
+        [
+            "path" =>"/Domains/User/Domain/Abstracts",
+            "name" => "UserAbstract",
+        ]
+    ],
+    "requests" => [
+        "name" =>"../../App/Http/User/Requests/UserRequest",
+    ],
+    "middlewares" => [
+        "name" =>"../../App/Http/User/Middlewares/UserMiddleware",
+    ],
+    "resources" => [
+        "name" =>"../../App/Http/User/Resources/UserResource",
+    ],
+    "controllers" => [
+        "name" =>"../../App/Http/User/Controllers/UserController",
+    ],
+    "blade_views" => [
+         "name" => "UserPage",
+    ],
+    "vue_components" => [
+        "name" => "UserPage",
+         "path" => "js/Pages",
+    ],
+    "react_components" => [
+        "name" => "UserPage",
+        "path" => "js/Pages",
     ]
-]
+];
 ```
 
-### Blade Components
+If you want to create only specific components, simply leave the unwanted arrays empty. For example, if you need to create only a migration, model, service, and repository.
+
 ```
-'blade' => [
-    [
-        'name' => 'UserPage',
-    ]
-]
+[
+    "migrations" => [
+        "table" => "users"
+    ],
+    'models' => [
+        'name' => '/Domains/User/Domain/Models/User',
+    ],
+    "classes" => [
+        [
+            "path" =>"/Domains/User/Domain/Services",
+            "names" => ["UserRetrieverService", "UserDataAccessService"]
+        ],
+        [
+            "path" =>"/Domains/User/Domain/Repositories",
+            "name" => "UserRepository",
+        ]
+    ],
+    "interfaces" => [],
+    "abstract_classes" => [],
+    "requests" => [],
+    "middlewares" => [],
+    "resources" => [],
+    "controllers" => [],
+    "blade_views" => [],
+    "vue_components" => [],
+    "react_components" => []
+];
 ```
 ________________________________________________
 ## Laravel Commands

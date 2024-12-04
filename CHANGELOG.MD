@@ -8,3 +8,10 @@
 - make class:abstract command : create a new abstract class
 - make vue command : create a new vue component
 - make react command : create a new react component
+
+# v0.2.0 2024-12-04
+
+## Streamlined config
+
+- possibility of merging names that go under the same path
+- possibility of creating any type of configuration with one or more arrays

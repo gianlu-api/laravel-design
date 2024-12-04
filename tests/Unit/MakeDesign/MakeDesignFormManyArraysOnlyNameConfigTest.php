@@ -2,27 +2,6 @@
 
 use Illuminate\Support\Facades\File;
 
-it('creates a new design structure with migration correctly', function () {
-    $config = [
-        'migration' => [
-            'table_name' => 'test_domain',
-        ]
-    ];
-
-    $this->setConfig($config);
-
-    //Act
-    $this->artisan('make:design')->assertSuccessful();
-
-    $migrationFile = collect(File::files(database_path('migrations')))
-        ->first(fn($file) => str_contains($file->getFilename(), $config['migration']['table_name']));
-
-    //Assert
-    expect(File::exists(base_path('database/migrations')))->toBeTrue()
-        ->and($migrationFile)->not()->toBeNull();
-
-});
-
 it('creates a new design structure with model correctly', function () {
     //Arrange
     $config = [
@@ -50,8 +29,7 @@ it('creates a new design structure with class correctly', function () {
     $config = [
         'classes' => [
             [
-                'path' => '/Domains/TestDomain/Domain/Classes',
-                'name' => 'TestDomainClass',
+                'name' => '/Domains/TestDomain/Domain/Classes/TestDomainClass',
             ],
         ],
     ];
@@ -70,8 +48,7 @@ it('creates a new design structure with class with leading slash correctly', fun
     $config = [
         'classes' => [
             [
-                'path' => 'Domains/TestDomain/Domain/Classes',
-                'name' => 'TestDomainClass',
+                'name' => 'Domains/TestDomain/Domain/Classes\TestDomainClass',
             ],
         ],
     ];
@@ -90,8 +67,7 @@ it('creates a new design structure with abstract class correctly', function () {
     $config = [
         'abstract_classes' => [
             [
-                'path' => '/Domains/TestDomain/Domain/Abstracts',
-                'name' => 'TestDomainAbstract',
+                'name' => '/Domains/TestDomain/Domain/Abstracts/TestDomainAbstract',
             ],
         ],
     ];
@@ -110,8 +86,7 @@ it('creates a new design structure with abstract class with leading slash correc
     $config = [
         'abstract_classes' => [
             [
-                'path' => 'Domains/TestDomain/Domain/Abstracts',
-                'name' => 'TestDomainAbstract',
+                'name' => 'Domains/TestDomain/Domain/Abstracts/TestDomainAbstract',
             ],
         ],
     ];
@@ -170,8 +145,7 @@ it('creates a new design structure with interfaces correctly', function () {
     $config = [
         'interfaces' => [
             [
-                'path' => '/Domains/TestDomain/Domain/Interfaces',
-                'name' => 'TestDomainRepositoryInterface',
+                'name' => '/Domains/TestDomain/Domain/Interfaces/TestDomainRepositoryInterface',
             ]
         ],
     ];
@@ -190,8 +164,7 @@ it('creates a new design structure with interfaces without leading slash correct
     $config = [
         'interfaces' => [
             [
-                'path' => 'Domains/TestDomain/Domain/Interfaces',
-                'name' => 'TestDomainRepositoryInterface',
+                'name' => 'Domains/TestDomain/Domain/Interfaces/TestDomainRepositoryInterface',
             ]
         ],
     ];
@@ -230,7 +203,7 @@ it('creates a new design structure with controller with resources correctly', fu
         'controllers' => [
             [
                 'name' => 'TestDomainController',
-                'is_resource' => true,
+                'type' => 'resource',
             ],
         ],
     ];
@@ -250,7 +223,7 @@ it('creates a new design structure with api controller correctly', function () {
         'controllers' => [
             [
                 'name' => 'TestDomainController',
-                'is_api' => true,
+                'type' => 'api',
             ],
         ],
     ];
@@ -389,8 +362,7 @@ it('creates a new design structure with vue composition api component correctly'
     $config = [
         'vue_components' => [
             [
-                'name' => 'TestVue',
-                'path' => 'js/Pages',
+                'name' => 'js/Pages/TestVue',
             ],
         ]
     ];
@@ -410,11 +382,10 @@ it('creates a new design structure with vue options api component correctly', fu
     $config = [
         'vue_components' => [
             [
-                'name' => 'TestVue',
-                'path' => 'js/Pages',
-                'component_type' => 'options',
-            ],
-        ]
+                'name' => 'js/Pages/TestVue',
+                'type' => 'options',
+            ]
+        ],
     ];
 
     $this->setConfig($config);
@@ -432,8 +403,7 @@ it('creates a new design structure with react component correctly', function () 
     $config = [
         'react_components' => [
             [
-                'name' => 'TestReact',
-                'path' => 'js/Pages',
+                'name' => 'js/Pages/TestReact',
             ],
         ]
     ];

@@ -9,8 +9,7 @@ use gianluApi\laravelDesign\ConfigGenerator\VueConfigGenerator;
 it("generates a migration config with correctly", function () {
     //Arrange
     $config = [
-        "tables" =>
-            ["name" => "testDomain"]
+        "tables" => ["testDomain"]
     ];
     $migrationGenerator = app(MigrationConfigGenerator::class);
 
@@ -193,7 +192,7 @@ it("generates a controller config correctly", function () {
 it("generates a controller with resource config correctly", function () {
     //Arrange
     $config = [
-        ["name" => "app/Http/TestDomain/Controllers/TestDomainController", "is_resource" => true]
+        ["name" => "app/Http/TestDomain/Controllers/TestDomainController", "type" => "resource"]
     ];
     $controllerGenerator = app(ControllerConfigGenerator::class);
 
@@ -212,7 +211,7 @@ it("generates a controller with resource config correctly", function () {
 it("generates a api controller config correctly", function () {
     //Arrange
     $config = [
-        ["name" => "app/Http/TestDomain/Controllers/TestDomainController", "is_api" => true]
+        ["name" => "app/Http/TestDomain/Controllers/TestDomainController", "type" => "api"]
     ];
     $controllerGenerator = app(ControllerConfigGenerator::class);
 
@@ -320,7 +319,7 @@ it("generates a vue options api config correctly", function () {
         [
             "name" => "VueTest",
             "path" => "/resources/js/Pages/",
-            "component_type" => "options",
+            "type" => "options",
         ]
     ];
     $vueGenerator = app(VueConfigGenerator::class);

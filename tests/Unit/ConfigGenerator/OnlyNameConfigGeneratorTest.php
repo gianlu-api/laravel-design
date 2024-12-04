@@ -9,8 +9,7 @@ use gianluApi\laravelDesign\ConfigGenerator\VueConfigGenerator;
 it("generates a migration config with correctly", function () {
     //Arrange
     $config = [
-        "tables" =>
-            ["name" => "testDomain"]
+        "table" => "testDomain"
     ];
     $migrationGenerator = app(MigrationConfigGenerator::class);
 
@@ -26,13 +25,10 @@ it("generates a migration config with correctly", function () {
     ]);
 });
 
-it("generates an abstract class config without leading slash correctly", function () {
+it("generates an abstract class config without leading slash with one name correctly", function () {
     //Arrange
     $config = [
-        [
-            "name" => "testDomainAbstract",
-            "path" => "Domains/TestDomain/Domain/Abstracts/"
-        ]
+        "name" => "Domains/TestDomain/Domain/Abstracts/testDomainAbstract",
     ];
     $abstractClassGenerator = app(CustomCommandConfigGenerator::class);
 
@@ -48,13 +44,10 @@ it("generates an abstract class config without leading slash correctly", functio
     ]);
 });
 
-it("generates an abstract class config with leading slash correctly", function () {
+it("generates an abstract class config with leading slash with one name correctly", function () {
     //Arrange
     $config = [
-        [
-            "name" => "testDomainAbstract",
-            "path" => "/Domains/TestDomain/Domain/Abstracts/"
-        ]
+        "name" => "/Domains/TestDomain/Domain/Abstracts/testDomainAbstract",
     ];
     $abstractClassGenerator = app(CustomCommandConfigGenerator::class);
 
@@ -70,13 +63,10 @@ it("generates an abstract class config with leading slash correctly", function (
     ]);
 });
 
-it("generates an interface config leading slash correctly", function () {
+it("generates an interface config with leading slash with one name correctly", function () {
     //Arrange
     $config = [
-        [
-            "name" => "testDomainInterface",
-            "path" => "/Domains/TestDomain/Domain/Interfaces/"
-        ]
+        "name" => "/Domains/TestDomain/Domain/Interfaces/TestDomainInterface",
     ];
     $interfaceGenerator = app(CustomCommandConfigGenerator::class);
 
@@ -86,19 +76,35 @@ it("generates an interface config leading slash correctly", function () {
     //Assert
     expect($config)->toBe([
         [
-            "name" => "testDomainInterface",
+            "name" => "TestDomainInterface",
             "path" => "/Domains/TestDomain/Domain/Interfaces/",
         ]
     ]);
 });
 
-it("generates a class config with leading slash correctly", function () {
+it("generates an interface config without leading  with one name slash correctly", function () {
     //Arrange
     $config = [
+        "name" => "Domains/TestDomain/Domain/Interfaces/TestDomainInterface",
+    ];
+    $interfaceGenerator = app(CustomCommandConfigGenerator::class);
+
+    //Act
+    $config = $interfaceGenerator->generate($config);
+
+    //Assert
+    expect($config)->toBe([
         [
-            "name" => "testDomainClass",
-            "path" => "/Domains/TestDomain/Domain/Classes/"
+            "name" => "TestDomainInterface",
+            "path" => "/Domains/TestDomain/Domain/Interfaces/",
         ]
+    ]);
+});
+
+it("generates a class config with leading slash with one name correctly", function () {
+    //Arrange
+    $config = [
+        "name" => "/Domains/TestDomain/Domain/Classes/testDomainClass",
     ];
     $classGenerator = app(CustomCommandConfigGenerator::class);
 
@@ -114,35 +120,10 @@ it("generates a class config with leading slash correctly", function () {
     ]);
 });
 
-it("generates an interface config without leading slash correctly", function () {
+it("generates a class config without leading slash with one name correctly", function () {
     //Arrange
     $config = [
-        [
-            "name" => "testDomainInterface",
-            "path" => "Domains/TestDomain/Domain/Interfaces/"
-        ]
-    ];
-    $interfaceGenerator = app(CustomCommandConfigGenerator::class);
-
-    //Act
-    $config = $interfaceGenerator->generate($config);
-
-    //Assert
-    expect($config)->toBe([
-        [
-            "name" => "testDomainInterface",
-            "path" => "/Domains/TestDomain/Domain/Interfaces/",
-        ]
-    ]);
-});
-
-it("generates a class config without leading slash correctly", function () {
-    //Arrange
-    $config = [
-        [
-            "name" => "testDomainClass",
-            "path" => "Domains/TestDomain/Domain/Classes/"
-        ]
+        "name" => "Domains/TestDomain/Domain/Classes/testDomainClass",
     ];
     $classGenerator = app(CustomCommandConfigGenerator::class);
 
@@ -158,10 +139,10 @@ it("generates a class config without leading slash correctly", function () {
     ]);
 });
 
-it("generates a model config correctly", function () {
+it("generates a model config with one name correctly", function () {
     //Arrange
     $config = [
-        ["name" => "app/Domains/TestDomain/Domain/Models/ModelTest"]
+        "name" => "app/Domains/TestDomain/Domain/Models/ModelTest"
     ];
     $modelGenerator = app(LaravelCommandConfigGenerator::class);
 
@@ -174,10 +155,10 @@ it("generates a model config correctly", function () {
     ]);
 });
 
-it("generates a controller config correctly", function () {
+it("generates a controller config with one name correctly", function () {
     //Arrange
     $config = [
-        ["name" => "app/Http/TestDomain/Controllers/TestDomainController"]
+        "name" => "app/Http/TestDomain/Controllers/TestDomainController"
     ];
     $controllerGenerator = app(ControllerConfigGenerator::class);
 
@@ -190,10 +171,11 @@ it("generates a controller config correctly", function () {
     ]);
 });
 
-it("generates a controller with resource config correctly", function () {
+it("generates a controller with resource config with one name correctly", function () {
     //Arrange
     $config = [
-        ["name" => "app/Http/TestDomain/Controllers/TestDomainController", "is_resource" => true]
+        "name" => "app/Http/TestDomain/Controllers/TestDomainController",
+        "type" => "resource"
     ];
     $controllerGenerator = app(ControllerConfigGenerator::class);
 
@@ -209,10 +191,11 @@ it("generates a controller with resource config correctly", function () {
     ]);
 });
 
-it("generates a api controller config correctly", function () {
+it("generates a api controller config with one name correctly", function () {
     //Arrange
     $config = [
-        ["name" => "app/Http/TestDomain/Controllers/TestDomainController", "is_api" => true]
+        "name" => "app/Http/TestDomain/Controllers/TestDomainController",
+        "type" => "api"
     ];
     $controllerGenerator = app(ControllerConfigGenerator::class);
 
@@ -228,10 +211,10 @@ it("generates a api controller config correctly", function () {
     ]);
 });
 
-it("generates a request config correctly", function () {
+it("generates a request config with one name correctly", function () {
     //Arrange
     $config = [
-        ["name" => "app/Http/TestDomain/Requests/TestDomainRequest"]
+        "name" => "app/Http/TestDomain/Requests/TestDomainRequest"
     ];
     $requestGenerator = app(LaravelCommandConfigGenerator::class);
 
@@ -244,10 +227,10 @@ it("generates a request config correctly", function () {
     ]);
 });
 
-it("generates a resource config correctly", function () {
+it("generates a resource config with one name correctly", function () {
     //Arrange
     $config = [
-        ["name" => "app/Http/TestDomain/Resources/TestDomainResource"]
+        "name" => "app/Http/TestDomain/Resources/TestDomainResource"
     ];
     $resourceGenerator = app(LaravelCommandConfigGenerator::class);
 
@@ -260,10 +243,10 @@ it("generates a resource config correctly", function () {
     ]);
 });
 
-it("generates a middleware config correctly", function () {
+it("generates a middleware config with one name correctly", function () {
     //Arrange
     $config = [
-        ["name" => "app/Http/TestDomain/Middlewares/TestDomainMiddleware"]
+        "name" => "app/Http/TestDomain/Middlewares/TestDomainMiddleware"
     ];
     $resourceGenerator = app(LaravelCommandConfigGenerator::class);
 
@@ -276,10 +259,10 @@ it("generates a middleware config correctly", function () {
     ]);
 });
 
-it("generates a blade config correctly", function () {
+it("generates a blade config with one name correctly", function () {
     //Arrange
     $config = [
-        ["name" => "resources/views/BladeView"]
+        "name" => "resources/views/BladeView"
     ];
     $bladeGenerator = app(LaravelCommandConfigGenerator::class);
 
@@ -292,13 +275,10 @@ it("generates a blade config correctly", function () {
     ]);
 });
 
-it("generates a vue composition api config correctly", function () {
+it("generates a vue composition api config with one name correctly", function () {
     //Arrange
     $config = [
-        [
-            "name" => "VueTest",
-            "path" => "resources/js/Pages/"
-        ]
+        "name" => "resources/js/Pages/VueTest",
     ];
     $vueGenerator = app(VueConfigGenerator::class);
 
@@ -314,14 +294,11 @@ it("generates a vue composition api config correctly", function () {
     ]);
 });
 
-it("generates a vue options api config correctly", function () {
+it("generates a vue options api config with one name correctly", function () {
     //Arrange
     $config = [
-        [
-            "name" => "VueTest",
-            "path" => "/resources/js/Pages/",
-            "component_type" => "options",
-        ]
+        "name" => "/resources/js/Pages/VueTest",
+        "type" => "options",
     ];
     $vueGenerator = app(VueConfigGenerator::class);
 
@@ -338,13 +315,10 @@ it("generates a vue options api config correctly", function () {
     ]);
 });
 
-it("generates a react config correctly", function () {
+it("generates a react config with one name correctly", function () {
     //Arrange
     $config = [
-        [
-            "name" => "ReactTest",
-            "path" => "/resources/js/Pages/"
-        ]
+        "name" => "/resources/js/Pages/ReactTest",
     ];
     $reactGenerator = app(CustomCommandConfigGenerator::class);
 

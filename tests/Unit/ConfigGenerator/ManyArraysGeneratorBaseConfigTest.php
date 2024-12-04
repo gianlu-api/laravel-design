@@ -9,9 +9,7 @@ use gianluApi\laravelDesign\ConfigGenerator\VueConfigGenerator;
 it("generates a migration config correctly", function () {
     //Arrange
     $config = [
-        "tables" =>
-            ["name" => "testDomain"],
-        ["name" => "testDomain2"],
+        "tables" => ["testDomain", "testDomain2"],
     ];
     $migrationGenerator = app(MigrationConfigGenerator::class);
 
@@ -250,8 +248,8 @@ it("generates a controller config correctly", function () {
 it("generates a controller with resource config correctly", function () {
     //Arrange
     $config = [
-        ["name" => "app/Http/TestDomain/Controllers/TestDomainController", "is_resource" => true],
-        ["name" => "app/Http/TestDomain/Controllers/TestDomainController2", "is_resource" => true],
+        ["name" => "app/Http/TestDomain/Controllers/TestDomainController", "type" => "resource"],
+        ["name" => "app/Http/TestDomain/Controllers/TestDomainController2", "type" => "resource"],
     ];
     $controllerGenerator = app(ControllerConfigGenerator::class);
 
@@ -274,8 +272,8 @@ it("generates a controller with resource config correctly", function () {
 it("generates a api controller config correctly", function () {
     //Arrange
     $config = [
-        ["name" => "app/Http/TestDomain/Controllers/TestDomainController", "is_api" => true],
-        ["name" => "app/Http/TestDomain/Controllers/TestDomainController2", "is_api" => true],
+        ["name" => "app/Http/TestDomain/Controllers/TestDomainController", "type" => "api"],
+        ["name" => "app/Http/TestDomain/Controllers/TestDomainController2", "type" => "api"],
     ];
     $controllerGenerator = app(ControllerConfigGenerator::class);
 
@@ -403,7 +401,7 @@ it("generates a vue options api config correctly", function () {
         [
             "name" => "VueTest",
             "path" => "/resources/js/Pages/",
-            "component_type" => "options",
+            "type" => "options",
         ],
         [
             "name" => "VueTest2",

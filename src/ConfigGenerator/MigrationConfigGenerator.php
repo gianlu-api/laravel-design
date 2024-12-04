@@ -2,13 +2,14 @@
 
 namespace gianluApi\laravelDesign\ConfigGenerator;
 
+use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
 
 final class MigrationConfigGenerator extends LaravelCommandConfigGenerator
 {
 
     /**
-     * @param array<array<string, string>> $config
+     * @param array<string, array<string, string>>|array<string, string> $config
      *
      * @return array<array<string,string>>
      */
@@ -16,16 +17,34 @@ final class MigrationConfigGenerator extends LaravelCommandConfigGenerator
     {
         $newConfig = [];
 
-        foreach ( $config as $configItem ) {
-            $table = Str::snake(Str::singular($configItem["name"]));
+        if ( Arr::exists($config, "table") && is_string($config['table'])) {
 
-            $newConfig[] = [
-                "name" => "create_{$table}_table",
-                "--create" => $table,
-            ];
+            $newConfig[] = self::generateItem($config['table']);
+
+        } elseif ( Arr::exists($config, "tables") && is_array($config['tables']) ) {
+
+            foreach ( $config['tables'] as $configItem ) {
+                $newConfig[] = self::generateItem($configItem);
+            }
+
         }
 
         return $newConfig;
+    }
+
+    /**
+     * @param string $tableName
+     *
+     * @return array<string,string>
+     */
+    private static function generateItem(string $tableName): array
+    {
+        $table = Str::snake(Str::singular($tableName));
+
+        return [
+            "name" => "create_{$table}_table",
+            "--create" => $table,
+        ];
     }
 
 }
