@@ -12,12 +12,17 @@ final class VueConfigGenerator extends CustomCommandConfigGenerator
      *
      * @return array<string, string|bool>
      */
-    protected static function generateItemFromNameAndPathConfig(array $config): array
+    protected static function generateItemFromNameAndPathConfig(array $config, ?string $name = null): array
     {
         $configOptions = self::addOption($config);
+        $className = $config["name"];
+
+        if ($name) {
+            $className = self::substituteVariables($className, $name);
+        }
 
         return array_merge([
-            "name" => $config["name"],
+            "name" => $className,
             "path" => self::checkPath($config["path"]),
         ], $configOptions);
     }
@@ -27,12 +32,17 @@ final class VueConfigGenerator extends CustomCommandConfigGenerator
      *
      * @return array<string, string|bool>
      */
-    protected static function generateItemFromOnlyNameConfig(array $config): array
+    protected static function generateItemFromOnlyNameConfig(array $config, ?string $name = null): array
     {
         $configOptions = self::addOption($config);
+        $className = $config["name"];
+
+        if ($name) {
+            $className = self::substituteVariables($className, $name);
+        }
 
         return array_merge([
-            "name" => Str::afterLast($config["name"], "/"),
+            "name" => Str::afterLast($className, "/"),
             "path" => self::checkPath(Str::beforeLast($config["name"], "/"))
         ], $configOptions);
     }

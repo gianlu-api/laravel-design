@@ -13,10 +13,16 @@ class CustomCommandConfigGenerator extends AbstractConfigGenerator
      *
      * @return array<string, string>
      */
-    protected static function generateItemFromNameAndPathConfig(array $config): array
+    protected static function generateItemFromNameAndPathConfig(array $config, ?string $name = null): array
     {
+        $className = $config["name"];
+
+        if ($name) {
+            $className = self::substituteVariables($className, $name);
+        }
+
         return [
-            "name" => $config["name"],
+            "name" => $className,
             "path" => self::checkPath($config["path"]),
         ];
     }
@@ -26,10 +32,16 @@ class CustomCommandConfigGenerator extends AbstractConfigGenerator
      *
      * @return array<string, string>
      */
-    protected static function generateItemFromOnlyNameConfig(array $config): array
+    protected static function generateItemFromOnlyNameConfig(array $config, ?string $name = null): array
     {
+        $className = $config["name"];
+
+        if ($name) {
+            $className = self::substituteVariables($className, $name);
+        }
+
         return [
-            "name" => Str::afterLast($config["name"], "/"),
+            "name" => Str::afterLast($className, "/"),
             "path" => self::checkPath(Str::beforeLast($config["name"], "/"))
         ];
     }
@@ -39,7 +51,7 @@ class CustomCommandConfigGenerator extends AbstractConfigGenerator
      *
      * @return list<array<string, string>>
      */
-    protected static function generateItemFromNamesAndPathConfig(array $config): array
+    protected static function generateItemFromNamesAndPathConfig(array $config, ?string $name = null): array
     {
         $newConfig = [];
 
@@ -47,12 +59,16 @@ class CustomCommandConfigGenerator extends AbstractConfigGenerator
             return $newConfig;
         }
 
-        foreach ( $config["names"] as $name ) {
+        foreach ( $config["names"] as $className ) {
             if ( !is_string($config["path"]) ) {
                 continue;
             }
 
-            $newConfig[] = static::generateItemFromNameAndPathConfig(["name" => $name, "path" => $config["path"]]);
+            if ($name) {
+                $className = self::substituteVariables($className, $name);
+            }
+
+            $newConfig[] = static::generateItemFromNameAndPathConfig(["name" => $className, "path" => $config["path"]]);
         }
 
         return $newConfig;

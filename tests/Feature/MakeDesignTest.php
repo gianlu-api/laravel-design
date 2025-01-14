@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\File;
 it("creates a new complete design structure correctly", function () {
     //Arrange
     $config = [
+        "name" => "test_domain",
         "migrations" => [
             "tables" => [
                 "test_domain",

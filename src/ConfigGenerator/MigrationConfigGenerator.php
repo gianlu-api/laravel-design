@@ -13,7 +13,7 @@ final class MigrationConfigGenerator extends LaravelCommandConfigGenerator
      *
      * @return array<array<string,string>>
      */
-    public function generate(array $config): array
+    public function generate(array $config, ?string $name = null): array
     {
         $newConfig = [];
 

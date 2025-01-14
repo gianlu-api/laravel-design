@@ -12,10 +12,16 @@ class LaravelCommandConfigGenerator extends AbstractConfigGenerator
      *
      * @return array<string, string>
      */
-    protected static function generateItemFromNameAndPathConfig(array $config): array
+    protected static function generateItemFromNameAndPathConfig(array $config, ?string $name = null): array
     {
+        $className = $config["name"];
+
+        if ($name) {
+            $className = self::substituteVariables($className, $name);
+        }
+
         return [
-            "name" => self::checkPath($config["path"]) . $config["name"],
+            "name" => self::checkPath($config["path"]) . $className,
         ];
     }
 
@@ -24,10 +30,16 @@ class LaravelCommandConfigGenerator extends AbstractConfigGenerator
      *
      * @return array<string, string>
      */
-    protected static function generateItemFromOnlyNameConfig(array $config): array
+    protected static function generateItemFromOnlyNameConfig(array $config, ?string $name = null): array
     {
+        $className = $config["name"];
+
+        if ($name) {
+            $className = self::substituteVariables($className, $name);
+        }
+
         return [
-            "name" => $config["name"],
+            "name" => $className,
         ];
     }
 
@@ -36,7 +48,7 @@ class LaravelCommandConfigGenerator extends AbstractConfigGenerator
      *
      * @return list<array<string, string>>
      */
-    protected static function generateItemFromNamesAndPathConfig(array $config): array
+    protected static function generateItemFromNamesAndPathConfig(array $config, ?string $name = null): array
     {
         $newConfig = [];
 
@@ -44,12 +56,16 @@ class LaravelCommandConfigGenerator extends AbstractConfigGenerator
             return $newConfig;
         }
 
-        foreach ( $config["names"] as $name ) {
+        foreach ( $config["names"] as $className ) {
             if ( !is_string($config["path"]) ) {
                 continue;
             }
 
-            $newConfig[] = ["name" => self::checkPath($config["path"]) . $name];
+            if ($name) {
+                $className = self::substituteVariables($className, $name);
+            }
+
+            $newConfig[] = ["name" => self::checkPath($config["path"]) . $className];
         }
 
         return $newConfig;
