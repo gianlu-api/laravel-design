@@ -10,25 +10,29 @@ class CustomCommandConfigGenerator extends AbstractConfigGenerator
 
     /**
      * @param array<string, string> $config
+     * @param string|null $name
      *
      * @return array<string, string>
      */
     protected static function generateItemFromNameAndPathConfig(array $config, ?string $name = null): array
     {
         $className = $config["name"];
+        $path = $config['path'];
 
         if ($name) {
             $className = self::substituteVariables($className, $name);
+            $path = self::substituteVariables($config['path'], $name);
         }
 
         return [
             "name" => $className,
-            "path" => self::checkPath($config["path"]),
+            "path" => self::checkPath($path),
         ];
     }
 
     /**
      * @param array<string, string> $config
+     * @param string|null $name
      *
      * @return array<string, string>
      */
@@ -48,6 +52,7 @@ class CustomCommandConfigGenerator extends AbstractConfigGenerator
 
     /**
      * @param array<string, array<string, string>|string> $config
+     * @param string|null $name
      *
      * @return list<array<string, string>>
      */

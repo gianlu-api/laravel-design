@@ -29,7 +29,7 @@ it("generates a migration config correctly", function () {
     ]);
 });
 
-it("generates an abstract class config with correctly", function () {
+it("generates an abstract class correctly", function () {
     //Arrange
     $config = [
         [
@@ -59,7 +59,7 @@ it("generates an abstract class config with correctly", function () {
     ]);
 });
 
-it("generates an interface config with leading slash correctly", function () {
+it("generates an interface config correctly", function () {
     //Arrange
     $config = [
         [
@@ -89,7 +89,7 @@ it("generates an interface config with leading slash correctly", function () {
     ]);
 });
 
-it("generates a class config with leading slash correctly", function () {
+it("generates a class config correctly", function () {
     //Arrange
     $config = [
         [
@@ -119,7 +119,7 @@ it("generates a class config with leading slash correctly", function () {
     ]);
 });
 
-it("generates an abstract class without leading slash config correctly", function () {
+it("generates an abstract class config correctly", function () {
     //Arrange
     $config = [
         [
@@ -145,66 +145,6 @@ it("generates an abstract class without leading slash config correctly", functio
         [
             "name" => "testDomainAbstract2",
             "path" => "/Domains/TestDomain/Domain/Abstracts/",
-        ]
-    ]);
-});
-
-it("generates an interface config without leading slash correctly", function () {
-    //Arrange
-    $config = [
-        [
-            "name" => "testDomainInterface",
-            "path" => "Domains/TestDomain/Domain/Interfaces/"
-        ],
-        [
-            "name" => "testDomainInterface2",
-            "path" => "Domains/TestDomain/Domain/Interfaces/"
-        ]
-    ];
-    $interfaceGenerator = app(CustomCommandConfigGenerator::class);
-
-    //Act
-    $config = $interfaceGenerator->generate($config);
-
-    //Assert
-    expect($config)->toBe([
-        [
-            "name" => "testDomainInterface",
-            "path" => "/Domains/TestDomain/Domain/Interfaces/",
-        ],
-        [
-            "name" => "testDomainInterface2",
-            "path" => "/Domains/TestDomain/Domain/Interfaces/",
-        ]
-    ]);
-});
-
-it("generates a class config without leading slash correctly", function () {
-    //Arrange
-    $config = [
-        [
-            "name" => "testDomainClass",
-            "path" => "Domains/TestDomain/Domain/Classes/"
-        ],
-        [
-            "name" => "testDomainClass2",
-            "path" => "Domains/TestDomain/Domain/Classes/"
-        ]
-    ];
-    $classGenerator = app(CustomCommandConfigGenerator::class);
-
-    //Act
-    $config = $classGenerator->generate($config);
-
-    //Assert
-    expect($config)->toBe([
-        [
-            "name" => "testDomainClass",
-            "path" => "/Domains/TestDomain/Domain/Classes/",
-        ],
-        [
-            "name" => "testDomainClass2",
-            "path" => "/Domains/TestDomain/Domain/Classes/",
         ]
     ]);
 });

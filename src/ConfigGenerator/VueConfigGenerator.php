@@ -9,6 +9,7 @@ final class VueConfigGenerator extends CustomCommandConfigGenerator
 
     /**
      * @param array<string, string> $config
+     * @param string|null $name
      *
      * @return array<string, string|bool>
      */
@@ -29,6 +30,7 @@ final class VueConfigGenerator extends CustomCommandConfigGenerator
 
     /**
      * @param array<string, string> $config
+     * @param string|null $name
      *
      * @return array<string, string|bool>
      */

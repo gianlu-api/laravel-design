@@ -9,6 +9,7 @@ class LaravelCommandConfigGenerator extends AbstractConfigGenerator
 
     /**
      * @param array<string, string> $config
+     * @param string|null $name
      *
      * @return array<string, string>
      */
@@ -27,6 +28,7 @@ class LaravelCommandConfigGenerator extends AbstractConfigGenerator
 
     /**
      * @param array<string, string> $config
+     * @param string|null $name
      *
      * @return array<string, string>
      */
@@ -45,6 +47,7 @@ class LaravelCommandConfigGenerator extends AbstractConfigGenerator
 
     /**
      * @param array<string, array<string, string>|string> $config
+     * @param string|null $name
      *
      * @return list<array<string, string>>
      */

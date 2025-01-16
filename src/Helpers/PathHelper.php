@@ -44,7 +44,7 @@ trait PathHelper
 
     public static function substituteVariables(string $string, string $value): string
     {
-        return preg_replace('/\{\w+\}/', $value, $string);
+        return str_replace('&', $value, $string);
     }
 
 }

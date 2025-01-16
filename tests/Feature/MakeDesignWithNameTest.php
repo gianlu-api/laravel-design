@@ -7,58 +7,58 @@ it("creates a new complete design structure correctly", function () {
     $config = [
         "migrations" => [
             "tables" => [
-                "test_domain",
+                "{}",
             ],
         ],
         'models' => [
             [
-                'name' => '/Domains/TestDomain/Domain/Models/ModelTest',
+                'name' => '/Domains/{}/Domain/Models/{}',
             ]
         ],
         "classes" => [
             [
-                "path" => "/Domains/TestDomain/Domain/Services",
-                "name" => "TestDomainService",
+                "path" => "/Domains/{}/Domain/Services",
+                "name" => "{}Service",
             ],
             [
-                "path" => "/Domains/TestDomain/Domain/Repositories",
-                "name" => "TestDomainRepository",
+                "path" => "/Domains/{}/Domain/Repositories",
+                "name" => "{}Repository",
             ],
         ],
         "interfaces" => [
             [
-                "path" => "/Domains/TestDomain/Domain/Interfaces",
-                "name" => "TestDomainServiceInterface",
+                "path" => "/Domains/{}/Domain/Interfaces",
+                "name" => "{}ServiceInterface",
             ],
             [
-                "path" => "/Domains/TestDomain/Domain/Interfaces",
-                "name" => "TestDomainRepositoryInterface",
+                "path" => "/Domains/{}/Domain/Interfaces",
+                "name" => "{}RepositoryInterface",
             ],
         ],
         "abstract_classes" => [
             [
-                "path" => "/Domains/TestDomain/Domain/Abstracts",
-                "name" => "TestDomainAbstract",
+                "path" => "/Domains/{}/Domain/Abstracts",
+                "name" => "{}Abstract",
             ],
         ],
         "requests" => [
             [
-                "name" => "../../App/Http/TestDomain/Requests/TestDomainRequest",
+                "name" => "../../App/Http/{}/Requests/{}Request",
             ],
         ],
         "middlewares" => [
             [
-                "name" => "../../App/Http/TestDomain/Middlewares/TestDomainMiddleware",
+                "name" => "../../App/Http/{}/Middlewares/{}Middleware",
             ],
         ],
         "resources" => [
             [
-                "name" => "../../App/Http/TestDomain/Resources/TestDomainResource",
+                "name" => "../../App/Http/{}/Resources/{}Resource",
             ]
         ],
         "controllers" => [
             [
-                "name" => "../../App/Http/TestDomain/Controllers/TestDomainController",
+                "name" => "../../App/Http/{}/Controllers/{}Controller",
             ],
         ],
         "blade_views" => [
@@ -83,7 +83,7 @@ it("creates a new complete design structure correctly", function () {
     $this->setConfig($config);
 
     //Act
-    $this->artisan("make:design")->assertSuccessful();
+    $this->artisan("make:design TestDomain")->assertSuccessful();
 
     $migrationFile = collect(File::files(database_path("migrations")))
         ->first(fn($file) => str_contains($file->getFilename(), $config["migrations"]["tables"][0]));
@@ -225,7 +225,7 @@ it("creates a new complete design structure from name and path config without le
     $config = [
         "migrations" => [
             "tables" => [
-               "test_domain",
+                "test_domain",
             ],
         ],
         'models' => [
