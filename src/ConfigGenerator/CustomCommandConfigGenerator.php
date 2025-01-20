@@ -46,7 +46,7 @@ class CustomCommandConfigGenerator extends AbstractConfigGenerator
 
         return [
             "name" => Str::afterLast($className, "/"),
-            "path" => self::checkPath(Str::beforeLast($config["name"], "/"))
+            "path" => self::checkPath(Str::beforeLast($className, "/"))
         ];
     }
 
