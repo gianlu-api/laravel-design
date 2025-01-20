@@ -69,11 +69,14 @@ class CustomCommandConfigGenerator extends AbstractConfigGenerator
                 continue;
             }
 
+            $path = $config["path"];
+
             if ($name) {
                 $className = self::substituteVariables($className, $name);
+                $path = self::substituteVariables($config["path"], $name);
             }
 
-            $newConfig[] = static::generateItemFromNameAndPathConfig(["name" => $className, "path" => $config["path"]]);
+            $newConfig[] = static::generateItemFromNameAndPathConfig(["name" => $className, "path" => $path]);
         }
 
         return $newConfig;

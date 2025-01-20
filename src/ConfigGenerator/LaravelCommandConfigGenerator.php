@@ -64,11 +64,14 @@ class LaravelCommandConfigGenerator extends AbstractConfigGenerator
                 continue;
             }
 
+            $path = $config["path"];
+
             if ($name) {
                 $className = self::substituteVariables($className, $name);
+                $path = self::substituteVariables($config["path"], $name);
             }
 
-            $newConfig[] = ["name" => self::checkPath($config["path"]) . $className];
+            $newConfig[] = ["name" => self::checkPath($path) . $className];
         }
 
         return $newConfig;
