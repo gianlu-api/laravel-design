@@ -31,7 +31,7 @@ php artisan make:design
 Otherwise, if you are using your own configuration file:
 
 ```bash
-php artisan make:design {your_config_name}
+php artisan make:design --config={your_config_name}
 ```
 ________________________________
 ## Configurations
@@ -179,6 +179,57 @@ it is possible for vue components to choose options between composition_api ```'
 ]
 ```
 
+# Name Passed by Command
+If you want, you can also pass the domain name directly to the command, so you never have to change your config structure once it’s defined like this.
+```
+[
+    "migrations" => [
+        "table" => "&"
+    ],
+    'models' => [
+        'name' => '/Domains/&/Domain/Models/&',
+    ],
+    "classes" => [
+        [
+            "path" =>"/Domains/&/Domain/Services",
+            "names" => ["&RetrieverService", "&DataAccessService"]
+        ],
+        [
+            "path" =>"/Domains/&/Domain/Repositories",
+            "name" => "&Repository",
+        ]
+    ],
+    "interfaces" => [
+        "path" =>"/Domains//&/DOmain/Interfaces",
+        "names" => ["&ServiceRetrieverInterface", "&DataAccessServiceInterface", "&RepositoryInterface"]
+    ],
+    "abstract_classes" => [
+        [
+            "path" =>"/Domains/&/Domain/Abstracts",
+            "name" => "&Abstract",
+        ]
+    ],
+    "requests" => [
+        "name" =>"../../App/Http/&/Requests/&Request",
+    ],
+    "middlewares" => [
+        "name" =>"../../App/Http/&/Middlewares/&Middleware",
+    ],
+    "resources" => [
+        "name" =>"../../App/Http/&/Resources/&Resource",
+    ],
+    "controllers" => [
+        "name" =>"../../App/Http/&/Controllers/&Controller",
+    ],
+];
+```
+
+Now you can run the command like this
+
+```bash
+php artisan make:design {name}
+```
+
 ## Configuration Example
 First, you will need to fill out the configuration file as follows.
 ```
@@ -200,7 +251,7 @@ First, you will need to fill out the configuration file as follows.
         ]
     ],
     "interfaces" => [
-        "path" =>"/Domains/TestDomain/User/Interfaces",
+        "path" =>"/Domains/User/Domain/Interfaces",
         "names" => ["UserServiceRetrieverInterface", "UserDataAccessServiceInterface", "UserRepositoryInterface"]
     ],
     "abstract_classes" => [
@@ -268,7 +319,7 @@ If you want to create only specific components, simply leave the unwanted arrays
 ```
 ________________________________________________
 ## Laravel Commands
-Add ```../../``` before the path where you want to create the class; otherwise, the class will be created following Laravel's default path. For example, for the Controller: ```name => ../../App/Http/TestDomain/Controllers/TestDomainController```, the Controller will be created in ```app/App/Http/TestDomain/Controllers/TestDomainController```. On the other hand, if we use ```name => TestDomainController```, it will be created in ```app/Http/Controllers/TestDomainController```.
+Add ```../../``` before the path where you want to create the class; otherwise, the class will be created following Laravel's default path. For example, for the Controller: ```name => ../../App/Http/User/Controllers/UserController```, the Controller will be created in ```app/App/Http/User/Controllers/UserController```. On the other hand, if we use ```name => UserController```, it will be created in ```app/Http/Controllers/UserController```.
 ________________________________________________
 ## Other Commands
 ```bash

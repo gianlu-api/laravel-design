@@ -16,13 +16,15 @@ class LaravelCommandConfigGenerator extends AbstractConfigGenerator
     protected static function generateItemFromNameAndPathConfig(array $config, ?string $name = null): array
     {
         $className = $config["name"];
+        $path = $config["path"];
 
         if ($name) {
             $className = self::substituteVariables($className, $name);
+            $path = self::substituteVariables($config["path"], $name);
         }
 
         return [
-            "name" => self::checkPath($config["path"]) . $className,
+            "name" => self::checkPath($path) . $className,
         ];
     }
 
@@ -71,7 +73,7 @@ class LaravelCommandConfigGenerator extends AbstractConfigGenerator
                 $path = self::substituteVariables($config["path"], $name);
             }
 
-            $newConfig[] = ["name" => self::checkPath($path) . $className];
+            $newConfig[] = static::generateItemFromNameAndPathConfig(["name" => $className, "path" => $path]);
         }
 
         return $newConfig;

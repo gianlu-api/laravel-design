@@ -15,12 +15,14 @@ final class ControllerConfigGenerator extends LaravelCommandConfigGenerator
     {
         $configOptions = self::addOption($config);
         $className = $config["name"];
+        $path = $config["path"];
 
         if ($name) {
             $className = self::substituteVariables($className, $name);
+            $path = self::substituteVariables($config["path"], $name);
         }
 
-        return array_merge(["name" => self::checkPath($config["path"]) . $className], $configOptions);
+        return array_merge(["name" => self::checkPath($path) . $className], $configOptions);
     }
 
     /**

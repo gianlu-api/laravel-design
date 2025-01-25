@@ -7,74 +7,74 @@ it("creates a new complete design structure correctly", function () {
     $config = [
         "migrations" => [
             "tables" => [
-                "{}",
+                "&",
             ],
         ],
         'models' => [
             [
-                'name' => '/Domains/{}/Domain/Models/{}',
+                'name' => '/Domains/&/Domain/Models/&Model',
             ]
         ],
         "classes" => [
             [
-                "path" => "/Domains/{}/Domain/Services",
-                "name" => "{}Service",
+                "path" => "/Domains/&/Domain/Services",
+                "name" => "&Service",
             ],
             [
-                "path" => "/Domains/{}/Domain/Repositories",
-                "name" => "{}Repository",
+                "path" => "/Domains/&/Domain/Repositories",
+                "name" => "&Repository",
             ],
         ],
         "interfaces" => [
             [
-                "path" => "/Domains/{}/Domain/Interfaces",
-                "name" => "{}ServiceInterface",
+                "path" => "/Domains/&/Domain/Interfaces",
+                "name" => "&ServiceInterface",
             ],
             [
-                "path" => "/Domains/{}/Domain/Interfaces",
-                "name" => "{}RepositoryInterface",
+                "path" => "/Domains/&/Domain/Interfaces",
+                "name" => "&RepositoryInterface",
             ],
         ],
         "abstract_classes" => [
             [
-                "path" => "/Domains/{}/Domain/Abstracts",
-                "name" => "{}Abstract",
+                "path" => "/Domains/&/Domain/Abstracts",
+                "name" => "&Abstract",
             ],
         ],
         "requests" => [
             [
-                "name" => "../../App/Http/{}/Requests/{}Request",
+                "name" => "../../App/Http/&/Requests/&Request",
             ],
         ],
         "middlewares" => [
             [
-                "name" => "../../App/Http/{}/Middlewares/{}Middleware",
+                "name" => "../../App/Http/&/Middlewares/&Middleware",
             ],
         ],
         "resources" => [
             [
-                "name" => "../../App/Http/{}/Resources/{}Resource",
+                "name" => "../../App/Http/&/Resources/&Resource",
             ]
         ],
         "controllers" => [
             [
-                "name" => "../../App/Http/{}/Controllers/{}Controller",
+                "name" => "../../App/Http/&/Controllers/&Controller",
             ],
         ],
         "blade_views" => [
             [
-                "name" => "TestBlade",
+                "name" => "&Blade",
             ]
         ],
         "vue_components" => [
             [
-                "name" => "TestVue",
+                "name" => "&Vue",
                 "path" => "js/Pages",
             ],
         ],
         "react_components" => [
             [
-                "name" => "TestReact",
+                "name" => "&React",
                 "path" => "js/Pages",
             ],
         ]
@@ -83,7 +83,7 @@ it("creates a new complete design structure correctly", function () {
     $this->setConfig($config);
 
     //Act
-    $this->artisan("make:design TestDomain")->assertSuccessful();
+    $this->artisan("make:design", ["name" => "TestDomain"])->assertSuccessful();
 
     $migrationFile = collect(File::files(database_path("migrations")))
         ->first(fn($file) => str_contains($file->getFilename(), $config["migrations"]["tables"][0]));
@@ -91,7 +91,7 @@ it("creates a new complete design structure correctly", function () {
     //Assert
     expect($migrationFile)->not()->toBeNull()
         ->and(File::exists(base_path("app/Domains/TestDomain")))->toBeTrue()
-        ->and(File::exists(base_path("app/Domains/TestDomain/Domain/Models/ModelTest.php")))->toBeTrue()
+        ->and(File::exists(base_path("app/Domains/TestDomain/Domain/Models/TestDomainModel.php")))->toBeTrue()
         ->and(File::exists(base_path("app/Domains/TestDomain/Domain/Interfaces/TestDomainServiceInterface.php")))->toBeTrue()
         ->and(File::exists(base_path("app/Domains/TestDomain/Domain/Interfaces/TestDomainRepositoryInterface.php")))->toBeTrue()
         ->and(File::exists(base_path("app/Domains/TestDomain/Domain/Services")))->toBeTrue()
@@ -105,10 +105,10 @@ it("creates a new complete design structure correctly", function () {
         ->and(File::exists(base_path("app/App/Http/TestDomain/Resources/TestDomainResource.php")))->toBeTrue()
         ->and(File::exists(base_path("app/App/Http/TestDomain/Middlewares")))->toBeTrue()
         ->and(File::exists(base_path("app/App/Http/TestDomain/Middlewares/TestDomainMiddleware.php")))->toBeTrue()
-        ->and(File::exists(resource_path("views/TestBlade.blade.php")))->toBeTrue()
+        ->and(File::exists(resource_path("views/TestDomainBlade.blade.php")))->toBeTrue()
         ->and(File::exists(resource_path("js/Pages")))->toBeTrue()
-        ->and(File::exists(resource_path("js/Pages/TestVue.vue")))->toBeTrue()
-        ->and(File::exists(resource_path("js/Pages/TestReact.jsx")))->toBeTrue();
+        ->and(File::exists(resource_path("js/Pages/TestDomainVue.vue")))->toBeTrue()
+        ->and(File::exists(resource_path("js/Pages/TestDomainReact.jsx")))->toBeTrue();
 });
 
 it("creates a new complete design structure without leading slash correctly", function () {
@@ -116,74 +116,74 @@ it("creates a new complete design structure without leading slash correctly", fu
     $config = [
         "migrations" => [
             "tables" => [
-                "test_domain",
+                "&",
             ],
         ],
         'models' => [
             [
-                'name' => 'Domains/TestDomain/Domain/Models/ModelTest',
+                'name' => 'Domains/&/Domain/Models/&Model',
             ]
         ],
         "classes" => [
             [
-                "path" => "Domains/TestDomain/Domain/Services",
-                "name" => "TestDomainService",
+                "path" => "Domains/&/Domain/Services",
+                "name" => "&Service",
             ],
             [
-                "path" => "Domains/TestDomain/Domain/Repositories",
-                "name" => "TestDomainRepository",
+                "path" => "Domains/&/Domain/Repositories",
+                "name" => "&Repository",
             ],
         ],
         "interfaces" => [
             [
-                "path" => "Domains/TestDomain/Domain/Interfaces",
+                "path" => "Domains/&/Domain/Interfaces",
                 "name" => "TestDomainServiceInterface",
             ],
             [
                 "path" => "Domains/TestDomain/Domain/Interfaces",
-                "name" => "TestDomainRepositoryInterface",
+                "name" => "&RepositoryInterface",
             ],
         ],
         "abstract_classes" => [
             [
-                "path" => "Domains/TestDomain/Domain/Abstracts",
-                "name" => "TestDomainAbstract",
+                "path" => "Domains/&/Domain/Abstracts",
+                "name" => "&Abstract",
             ],
         ],
         "requests" => [
             [
-                "name" => "../../App/Http/TestDomain/Requests/TestDomainRequest",
+                "name" => "../../App/Http/&/Requests/&Request",
             ],
         ],
         "middlewares" => [
             [
-                "name" => "../../App/Http/TestDomain/Middlewares/TestDomainMiddleware",
+                "name" => "../../App/Http/&/Middlewares/&Middleware",
             ],
         ],
         "resources" => [
             [
-                "name" => "../../App/Http/TestDomain/Resources/TestDomainResource",
+                "name" => "../../App/Http/&/Resources/&Resource",
             ]
         ],
         "controllers" => [
             [
-                "name" => "../../App/Http/TestDomain/Controllers/TestDomainController",
+                "name" => "../../App/Http/&/Controllers/&Controller",
             ],
         ],
         "blade_views" => [
             [
-                "name" => "TestBlade",
+                "name" => "&Blade",
             ]
         ],
         "vue_components" => [
             [
-                "name" => "TestVue",
+                "name" => "&Vue",
                 "path" => "js/Pages",
             ],
         ],
         "react_components" => [
             [
-                "name" => "TestReact",
+                "name" => "&React",
                 "path" => "js/Pages",
             ],
         ]
@@ -192,7 +192,7 @@ it("creates a new complete design structure without leading slash correctly", fu
     $this->setConfig($config);
 
     //Act
-    $this->artisan("make:design")->assertSuccessful();
+    $this->artisan("make:design", ["name" => "TestDomain"])->assertSuccessful();
 
     $migrationFile = collect(File::files(database_path("migrations")))
         ->first(fn($file) => str_contains($file->getFilename(), $config["migrations"]["tables"][0]));
@@ -200,7 +200,7 @@ it("creates a new complete design structure without leading slash correctly", fu
     //Assert
     expect($migrationFile)->not()->toBeNull()
         ->and(File::exists(base_path("app/Domains/TestDomain")))->toBeTrue()
-        ->and(File::exists(base_path("app/Domains/TestDomain/Domain/Models/ModelTest.php")))->toBeTrue()
+        ->and(File::exists(base_path("app/Domains/TestDomain/Domain/Models/TestDomainModel.php")))->toBeTrue()
         ->and(File::exists(base_path("app/Domains/TestDomain/Domain/Interfaces/TestDomainServiceInterface.php")))->toBeTrue()
         ->and(File::exists(base_path("app/Domains/TestDomain/Domain/Interfaces/TestDomainRepositoryInterface.php")))->toBeTrue()
         ->and(File::exists(base_path("app/Domains/TestDomain/Domain/Services")))->toBeTrue()
@@ -214,10 +214,10 @@ it("creates a new complete design structure without leading slash correctly", fu
         ->and(File::exists(base_path("app/App/Http/TestDomain/Resources/TestDomainResource.php")))->toBeTrue()
         ->and(File::exists(base_path("app/App/Http/TestDomain/Middlewares")))->toBeTrue()
         ->and(File::exists(base_path("app/App/Http/TestDomain/Middlewares/TestDomainMiddleware.php")))->toBeTrue()
-        ->and(File::exists(resource_path("views/TestBlade.blade.php")))->toBeTrue()
+        ->and(File::exists(resource_path("views/TestDomainBlade.blade.php")))->toBeTrue()
         ->and(File::exists(resource_path("js/Pages")))->toBeTrue()
-        ->and(File::exists(resource_path("js/Pages/TestVue.vue")))->toBeTrue()
-        ->and(File::exists(resource_path("js/Pages/TestReact.jsx")))->toBeTrue();
+        ->and(File::exists(resource_path("js/Pages/TestDomainVue.vue")))->toBeTrue()
+        ->and(File::exists(resource_path("js/Pages/TestDomainReact.jsx")))->toBeTrue();
 });
 
 it("creates a new complete design structure from name and path config without leading slash correctly", function () {
@@ -225,29 +225,29 @@ it("creates a new complete design structure from name and path config without le
     $config = [
         "migrations" => [
             "tables" => [
-                "test_domain",
+                "&",
             ],
         ],
         'models' => [
             [
-                'path' => "Domains/TestDomain/Domain/Models",
-                'name' => 'ModelTest',
+                'path' => "Domains/&/Domain/Models",
+                'name' => '&Model',
             ]
         ],
         "classes" => [
             [
-                "path" => "Domains/TestDomain/Domain/Services",
-                "name" => "TestDomainService",
+                "path" => "Domains/&/Domain/Services",
+                "name" => "&Service",
             ],
             [
-                "path" => "Domains/TestDomain/Domain/Repositories",
-                "name" => "TestDomainRepository",
+                "path" => "Domains/&/Domain/Repositories",
+                "name" => "&Repository",
             ],
         ],
         "interfaces" => [
             [
-                "path" => "Domains/TestDomain/Domain/Interfaces",
-                "name" => "TestDomainServiceInterface",
+                "path" => "Domains/&/Domain/Interfaces",
+                "name" => "&ServiceInterface",
             ],
             [
                 "path" => "Domains/TestDomain/Domain/Interfaces",
@@ -256,48 +256,48 @@ it("creates a new complete design structure from name and path config without le
         ],
         "abstract_classes" => [
             [
-                "path" => "Domains/TestDomain/Domain/Abstracts",
-                "name" => "TestDomainAbstract",
+                "path" => "Domains/&/Domain/Abstracts",
+                "name" => "&Abstract",
             ],
         ],
         "requests" => [
             [
-                "path" => "../../App/Http/TestDomain/Requests",
-                "name" => "TestDomainRequest",
+                "path" => "../../App/Http/&/Requests",
+                "name" => "&Request",
             ],
         ],
         "middlewares" => [
             [
-                "path" => "../../App/Http/TestDomain/Middlewares",
-                "name" => "TestDomainMiddleware",
+                "path" => "../../App/Http/&/Middlewares",
+                "name" => "&Middleware",
             ],
         ],
         "resources" => [
             [
-                "path" => "../../App/Http/TestDomain/Resources",
-                "name" => "TestDomainResource",
+                "path" => "../../App/Http/&/Resources",
+                "name" => "&Resource",
             ]
         ],
         "controllers" => [
             [
-                "path" => "../../App/Http/TestDomain/Controllers",
-                "name" => "TestDomainController",
+                "path" => "../../App/Http/&/Controllers",
+                "name" => "&Controller",
             ],
         ],
         "blade_views" => [
             [
-                "name" => "TestBlade",
+                "name" => "&Blade",
             ]
         ],
         "vue_components" => [
             [
-                "name" => "TestVue",
+                "name" => "&Vue",
                 "path" => "js/Pages",
             ],
         ],
         "react_components" => [
             [
-                "name" => "TestReact",
+                "name" => "&React",
                 "path" => "js/Pages",
             ],
         ]
@@ -306,7 +306,7 @@ it("creates a new complete design structure from name and path config without le
     $this->setConfig($config);
 
     //Act
-    $this->artisan("make:design")->assertSuccessful();
+    $this->artisan("make:design", ["name" => "TestDomain"])->assertSuccessful();
 
     $migrationFile = collect(File::files(database_path("migrations")))
         ->first(fn($file) => str_contains($file->getFilename(), $config["migrations"]["tables"][0]));
@@ -314,7 +314,7 @@ it("creates a new complete design structure from name and path config without le
     //Assert
     expect($migrationFile)->not()->toBeNull()
         ->and(File::exists(base_path("app/Domains/TestDomain")))->toBeTrue()
-        ->and(File::exists(base_path("app/Domains/TestDomain/Domain/Models/ModelTest.php")))->toBeTrue()
+        ->and(File::exists(base_path("app/Domains/TestDomain/Domain/Models/TestDomainModel.php")))->toBeTrue()
         ->and(File::exists(base_path("app/Domains/TestDomain/Domain/Interfaces/TestDomainServiceInterface.php")))->toBeTrue()
         ->and(File::exists(base_path("app/Domains/TestDomain/Domain/Interfaces/TestDomainRepositoryInterface.php")))->toBeTrue()
         ->and(File::exists(base_path("app/Domains/TestDomain/Domain/Services")))->toBeTrue()
@@ -328,10 +328,10 @@ it("creates a new complete design structure from name and path config without le
         ->and(File::exists(base_path("app/App/Http/TestDomain/Resources/TestDomainResource.php")))->toBeTrue()
         ->and(File::exists(base_path("app/App/Http/TestDomain/Middlewares")))->toBeTrue()
         ->and(File::exists(base_path("app/App/Http/TestDomain/Middlewares/TestDomainMiddleware.php")))->toBeTrue()
-        ->and(File::exists(resource_path("views/TestBlade.blade.php")))->toBeTrue()
+        ->and(File::exists(resource_path("views/TestDomainBlade.blade.php")))->toBeTrue()
         ->and(File::exists(resource_path("js/Pages")))->toBeTrue()
-        ->and(File::exists(resource_path("js/Pages/TestVue.vue")))->toBeTrue()
-        ->and(File::exists(resource_path("js/Pages/TestReact.jsx")))->toBeTrue();
+        ->and(File::exists(resource_path("js/Pages/TestDomainVue.vue")))->toBeTrue()
+        ->and(File::exists(resource_path("js/Pages/TestDomainReact.jsx")))->toBeTrue();
 });
 
 it("creates a new complete design structure with path and names without leading slash correctly", function () {
@@ -339,72 +339,72 @@ it("creates a new complete design structure with path and names without leading 
     $config = [
         "migrations" => [
             "tables" => [
-                "test_domain",
+                "&",
             ],
         ],
         'models' => [
-            "path" => "Domains/TestDomain/Domain/Models",
+            "path" => "Domains/&/Domain/Models",
             "names" => [
-                "ModelTest",
+                "&Model",
             ]
         ],
         "classes" => [
-            "path" => "Domains/TestDomain/Domain/Services",
+            "path" => "Domains/&/Domain/Services",
             "names" => [
-                "TestDomainService"
+                "&Service"
             ]
         ],
         "interfaces" => [
-            "path" => "Domains/TestDomain/Domain/Interfaces",
+            "path" => "Domains/&/Domain/Interfaces",
             "names" => [
-                "TestDomainServiceInterface"
+                "&ServiceInterface"
             ]
         ],
         "abstract_classes" => [
-            "path" => "Domains/TestDomain/Domain/Abstracts",
+            "path" => "Domains/&/Domain/Abstracts",
             "names" => [
-                "TestDomainAbstract"
+                "&Abstract"
             ]
         ],
         "requests" => [
-            "path" => "../../App/Http/TestDomain/Requests",
+            "path" => "../../App/Http/&/Requests",
             "names" => [
-                "TestDomainRequest"
+                "&Request"
             ]
         ],
         "middlewares" => [
-            "path" => "../../App/Http/TestDomain/Middlewares",
+            "path" => "../../App/Http/&/Middlewares",
             "names" => [
-                "TestDomainMiddleware"
+                "&Middleware"
             ]
         ],
         "resources" => [
-            "path" => "../../App/Http/TestDomain/Resources",
+            "path" => "../../App/Http/&/Resources",
             "names" => [
-                "TestDomainResource"
+                "&Resource"
             ]
         ],
         "controllers" => [
-            "path" => "../../App/Http/TestDomain/Controllers",
+            "path" => "../../App/Http/&/Controllers",
             "names" => [
-                "TestDomainController"
+                "&Controller"
             ]
         ],
         "blade_views" => [
             [
-                "name" => "TestBlade"
+                "name" => "&Blade"
             ]
         ],
         "vue_components" => [
             "path" => "js/Pages",
             "names" => [
-                "TestVue"
+                "&Vue"
             ]
         ],
         "react_components" => [
             "path" => "js/Pages",
             "names" => [
-                "TestReact"
+                "&React"
             ]
         ]
     ];
@@ -412,7 +412,7 @@ it("creates a new complete design structure with path and names without leading 
     $this->setConfig($config);
 
     //Act
-    $this->artisan("make:design")->assertSuccessful();
+    $this->artisan("make:design", ["name" => "TestDomain"])->assertSuccessful();
 
     $migrationFile = collect(File::files(database_path("migrations")))
         ->first(fn($file) => str_contains($file->getFilename(), $config["migrations"]["tables"][0]));
@@ -420,7 +420,7 @@ it("creates a new complete design structure with path and names without leading 
     //Assert
     expect($migrationFile)->not()->toBeNull()
         ->and(File::exists(base_path("app/Domains/TestDomain")))->toBeTrue()
-        ->and(File::exists(base_path("app/Domains/TestDomain/Domain/Models/ModelTest.php")))->toBeTrue()
+        ->and(File::exists(base_path("app/Domains/TestDomain/Domain/Models/TestDomainModel.php")))->toBeTrue()
         ->and(File::exists(base_path("app/Domains/TestDomain/Domain/Interfaces/TestDomainServiceInterface.php")))->toBeTrue()
         ->and(File::exists(base_path("app/Domains/TestDomain/Domain/Services")))->toBeTrue()
         ->and(File::exists(base_path("app/Domains/TestDomain/Domain/Services/TestDomainService.php")))->toBeTrue()
@@ -431,10 +431,10 @@ it("creates a new complete design structure with path and names without leading 
         ->and(File::exists(base_path("app/App/Http/TestDomain/Resources/TestDomainResource.php")))->toBeTrue()
         ->and(File::exists(base_path("app/App/Http/TestDomain/Middlewares")))->toBeTrue()
         ->and(File::exists(base_path("app/App/Http/TestDomain/Middlewares/TestDomainMiddleware.php")))->toBeTrue()
-        ->and(File::exists(resource_path("views/TestBlade.blade.php")))->toBeTrue()
+        ->and(File::exists(resource_path("views/TestDomainBlade.blade.php")))->toBeTrue()
         ->and(File::exists(resource_path("js/Pages")))->toBeTrue()
-        ->and(File::exists(resource_path("js/Pages/TestVue.vue")))->toBeTrue()
-        ->and(File::exists(resource_path("js/Pages/TestReact.jsx")))->toBeTrue();
+        ->and(File::exists(resource_path("js/Pages/TestDomainVue.vue")))->toBeTrue()
+        ->and(File::exists(resource_path("js/Pages/TestDomainReact.jsx")))->toBeTrue();
 });
 
 it("creates a new complete design structure with many arrays path and names without leading slash correctly", function () {
@@ -442,90 +442,90 @@ it("creates a new complete design structure with many arrays path and names with
     $config = [
         "migrations" => [
             "tables" => [
-                "test_domain",
+                "&",
             ],
         ],
         'models' => [
             [
-                "path" => "Domains/TestDomain/Domain/Models",
+                "path" => "Domains/&/Domain/Models",
                 "names" => [
-                    "ModelTest",
+                    "&Model",
                 ]
             ]
         ],
         "classes" => [
             [
-                "path" => "Domains/TestDomain/Domain/Services",
+                "path" => "Domains/&/Domain/Services",
                 "names" => [
-                    "TestDomainService"
+                    "&Service"
                 ]
             ],
             [
-                "path" => "Domains/TestDomain/Domain/Repositories",
+                "path" => "Domains/&/Domain/Repositories",
                 "names" => [
-                    "TestDomainRepository"
+                    "&Repository"
                 ]
             ]
         ],
         "interfaces" => [
             [
-                "path" => "Domains/TestDomain/Domain/Interfaces",
+                "path" => "Domains/&/Domain/Interfaces",
                 "names" => [
-                    "TestDomainServiceInterface",
-                    "TestDomainRepositoryInterface"
+                    "&ServiceInterface",
+                    "&RepositoryInterface"
                 ]
             ]
         ],
         "abstract_classes" => [
             [
-                "path" => "Domains/TestDomain/Domain/Abstracts",
+                "path" => "Domains/&/Domain/Abstracts",
                 "names" => [
-                    "TestDomainAbstract"
+                    "&Abstract"
                 ]
             ]
         ],
         "requests" => [
             [
-                "path" => "../../App/Http/TestDomain/Requests",
+                "path" => "../../App/Http/&/Requests",
                 "names" => [
-                    "TestDomainRequest"
+                    "&Request"
                 ]
             ]
         ],
         "middlewares" => [
             [
-                "path" => "../../App/Http/TestDomain/Middlewares",
+                "path" => "../../App/Http/&/Middlewares",
                 "names" => [
-                    "TestDomainMiddleware"
+                    "&Middleware"
                 ]
             ]
         ],
         "resources" => [
             [
-                "path" => "../../App/Http/TestDomain/Resources",
+                "path" => "../../App/Http/&/Resources",
                 "names" => [
-                    "TestDomainResource"
+                    "&Resource"
                 ]
             ]
         ],
         "controllers" => [
             [
-                "path" => "../../App/Http/TestDomain/Controllers",
+                "path" => "../../App/Http/&/Controllers",
                 "names" => [
-                    "TestDomainController"
+                    "&Controller"
                 ]
             ]
         ],
         "blade_views" => [
             [
-                "name" => "TestBlade"
+                "name" => "&Blade"
             ]
         ],
         "vue_components" => [
             [
                 "path" => "js/Pages",
                 "names" => [
-                    "TestVue"
+                    "&Vue"
                 ]
             ]
         ],
@@ -533,7 +533,7 @@ it("creates a new complete design structure with many arrays path and names with
             [
                 "path" => "js/Pages",
                 "names" => [
-                    "TestReact"
+                    "&React"
                 ]
             ]
         ]
@@ -542,7 +542,7 @@ it("creates a new complete design structure with many arrays path and names with
     $this->setConfig($config);
 
     //Act
-    $this->artisan("make:design")->assertSuccessful();
+    $this->artisan("make:design", ["name" => "TestDomain"])->assertSuccessful();
 
     $migrationFile = collect(File::files(database_path("migrations")))
         ->first(fn($file) => str_contains($file->getFilename(), $config["migrations"]["tables"][0]));
@@ -550,7 +550,7 @@ it("creates a new complete design structure with many arrays path and names with
     //Assert
     expect($migrationFile)->not()->toBeNull()
         ->and(File::exists(base_path("app/Domains/TestDomain")))->toBeTrue()
-        ->and(File::exists(base_path("app/Domains/TestDomain/Domain/Models/ModelTest.php")))->toBeTrue()
+        ->and(File::exists(base_path("app/Domains/TestDomain/Domain/Models/TestDomainModel.php")))->toBeTrue()
         ->and(File::exists(base_path("app/Domains/TestDomain/Domain/Interfaces/TestDomainServiceInterface.php")))->toBeTrue()
         ->and(File::exists(base_path("app/Domains/TestDomain/Domain/Interfaces/TestDomainRepositoryInterface.php")))->toBeTrue()
         ->and(File::exists(base_path("app/Domains/TestDomain/Domain/Services")))->toBeTrue()
@@ -564,10 +564,10 @@ it("creates a new complete design structure with many arrays path and names with
         ->and(File::exists(base_path("app/App/Http/TestDomain/Resources/TestDomainResource.php")))->toBeTrue()
         ->and(File::exists(base_path("app/App/Http/TestDomain/Middlewares")))->toBeTrue()
         ->and(File::exists(base_path("app/App/Http/TestDomain/Middlewares/TestDomainMiddleware.php")))->toBeTrue()
-        ->and(File::exists(resource_path("views/TestBlade.blade.php")))->toBeTrue()
+        ->and(File::exists(resource_path("views/TestDomainBlade.blade.php")))->toBeTrue()
         ->and(File::exists(resource_path("js/Pages")))->toBeTrue()
-        ->and(File::exists(resource_path("js/Pages/TestVue.vue")))->toBeTrue()
-        ->and(File::exists(resource_path("js/Pages/TestReact.jsx")))->toBeTrue();
+        ->and(File::exists(resource_path("js/Pages/TestDomainVue.vue")))->toBeTrue()
+        ->and(File::exists(resource_path("js/Pages/TestDomainReact.jsx")))->toBeTrue();
 });
 
 it("creates a new complete design structure with mixed config correctly", function () {
@@ -579,78 +579,78 @@ it("creates a new complete design structure with mixed config correctly", functi
             ],
         ],
         'models' => [
-            'name' => 'Domains/TestDomain/Domain/Models/ModelTest',
+            'name' => 'Domains/&/Domain/Models/&Model',
         ],
         "classes" => [
             [
-                "path" => "Domains/TestDomain/Domain/Services",
-                "name" => "TestDomainService",
+                "path" => "Domains/&/Domain/Services",
+                "name" => "&Service",
             ],
             [
-                "path" => "Domains/TestDomain/Domain/Repositories",
-                "name" => "TestDomainRepository",
+                "path" => "Domains/&/Domain/Repositories",
+                "name" => "&Repository",
             ]
         ],
         "interfaces" => [
             [
-                "path" => "Domains/TestDomain/Domain/Interfaces",
+                "path" => "Domains/&/Domain/Interfaces",
                 "names" => [
-                    "TestDomainServiceInterface",
-                    "TestDomainRepositoryInterface"
+                    "&ServiceInterface",
+                    "&RepositoryInterface"
                 ]
             ]
         ],
         "abstract_classes" => [
             [
-                "path" => "Domains/TestDomain/Domain/Abstracts",
+                "path" => "Domains/&/Domain/Abstracts",
                 "names" => [
-                    "TestDomainAbstract"
+                    "&Abstract"
                 ]
             ]
         ],
         "requests" => [
             [
-                "name" => "../../App/Http/TestDomain/Requests/TestDomainRequest",
+                "name" => "../../App/Http/&/Requests/&Request",
             ]
         ],
         "middlewares" => [
             [
-                "path" => "../../App/Http/TestDomain/Middlewares",
-                "name" => "TestDomainMiddleware"
+                "path" => "../../App/Http/&/Middlewares",
+                "name" => "&Middleware"
             ]
         ],
         "resources" => [
             [
-                "path" => "../../App/Http/TestDomain/Resources",
+                "path" => "../../App/Http/&/Resources",
                 "names" => [
-                    "TestDomainResource"
+                    "&Resource"
                 ]
             ]
         ],
         "controllers" => [
             [
-                "name" => "../../App/Http/TestDomain/Controllers/TestDomainController",
+                "name" => "../../App/Http/&/Controllers/&Controller",
             ]
         ],
         "blade_views" => [
-            "name" => "TestBlade"
+            "name" => "&Blade"
         ],
         "vue_components" => [
             "path" => "js/Pages",
             "names" => [
-                "TestVue"
+                "&Vue"
             ]
         ],
         "react_components" => [
             "path" => "js/Pages",
-            "name" => "TestReact"
+            "name" => "&React"
         ]
     ];
 
     $this->setConfig($config);
 
     //Act
-    $this->artisan("make:design")->assertSuccessful();
+    $this->artisan("make:design", ["name" => "TestDomain"])->assertSuccessful();
 
     $migrationFile = collect(File::files(database_path("migrations")))
         ->first(fn($file) => str_contains($file->getFilename(), $config["migrations"]["tables"][0]));
@@ -658,7 +658,7 @@ it("creates a new complete design structure with mixed config correctly", functi
     //Assert
     expect($migrationFile)->not()->toBeNull()
         ->and(File::exists(base_path("app/Domains/TestDomain")))->toBeTrue()
-        ->and(File::exists(base_path("app/Domains/TestDomain/Domain/Models/ModelTest.php")))->toBeTrue()
+        ->and(File::exists(base_path("app/Domains/TestDomain/Domain/Models/TestDomainModel.php")))->toBeTrue()
         ->and(File::exists(base_path("app/Domains/TestDomain/Domain/Interfaces/TestDomainServiceInterface.php")))->toBeTrue()
         ->and(File::exists(base_path("app/Domains/TestDomain/Domain/Interfaces/TestDomainRepositoryInterface.php")))->toBeTrue()
         ->and(File::exists(base_path("app/Domains/TestDomain/Domain/Services")))->toBeTrue()
@@ -672,73 +672,73 @@ it("creates a new complete design structure with mixed config correctly", functi
         ->and(File::exists(base_path("app/App/Http/TestDomain/Resources/TestDomainResource.php")))->toBeTrue()
         ->and(File::exists(base_path("app/App/Http/TestDomain/Middlewares")))->toBeTrue()
         ->and(File::exists(base_path("app/App/Http/TestDomain/Middlewares/TestDomainMiddleware.php")))->toBeTrue()
-        ->and(File::exists(resource_path("views/TestBlade.blade.php")))->toBeTrue()
+        ->and(File::exists(resource_path("views/TestDomainBlade.blade.php")))->toBeTrue()
         ->and(File::exists(resource_path("js/Pages")))->toBeTrue()
-        ->and(File::exists(resource_path("js/Pages/TestVue.vue")))->toBeTrue()
-        ->and(File::exists(resource_path("js/Pages/TestReact.jsx")))->toBeTrue();
+        ->and(File::exists(resource_path("js/Pages/TestDomainVue.vue")))->toBeTrue()
+        ->and(File::exists(resource_path("js/Pages/TestDomainReact.jsx")))->toBeTrue();
 });
 
 it("creates a new complete design structure from only name config without leading slash correctly", function () {
     //Arrange
     $config = [
         "migrations" => [
-            "table" => "test_domain",
+            "table" => "&",
         ],
         'models' => [
             [
-                'name' => 'Domains/TestDomain/Domain/Models/ModelTest',
+                'name' => 'Domains/&/Domain/Models/&Model',
             ]
         ],
         "classes" => [
             [
-                "name" => "Domains/TestDomain/Domain/Services/TestDomainService",
+                "name" => "Domains/&/Domain/Services/&Service",
             ],
             [
-                "name" => "Domains/TestDomain/Domain/Repositories/TestDomainRepository",
+                "name" => "Domains/&/Domain/Repositories/&Repository",
             ],
         ],
         "interfaces" => [
             [
-                "name" => "Domains/TestDomain/Domain/Interfaces/TestDomainServiceInterface",
+                "name" => "Domains/&/Domain/Interfaces/&ServiceInterface",
             ],
             [
-                "name" => "Domains/TestDomain/Domain/Interfaces/TestDomainRepositoryInterface",
+                "name" => "Domains/&/Domain/Interfaces/&RepositoryInterface",
             ],
         ],
         "abstract_classes" => [
             [
-                "name" => "Domains/TestDomain/Domain/Abstracts/TestDomainAbstract",
+                "name" => "Domains/&/Domain/Abstracts/&Abstract",
             ],
         ],
         "requests" => [
-            "name" => "../../App/Http/TestDomain/Requests/TestDomainRequest",
+            "name" => "../../App/Http/&/Requests/&Request",
         ],
         "middlewares" => [
-            "name" => "../../App/Http/TestDomain/Middlewares/TestDomainMiddleware",
+            "name" => "../../App/Http/&/Middlewares/&Middleware",
         ],
         "resources" => [
-            "name" => "../../App/Http/TestDomain/Resources/TestDomainResource",
+            "name" => "../../App/Http/&/Resources/&Resource",
         ],
         "controllers" => [
-            "name" => "../../App/Http/TestDomain/Controllers/TestDomainController",
+            "name" => "../../App/Http/&/Controllers/&Controller",
         ],
         "blade_views" => [
             [
-                "name" => "TestBlade",
+                "name" => "&Blade",
             ]
         ],
         "vue_components" => [
-            "name" => "js/Pages/TestVue",
+            "name" => "js/Pages/&Vue",
         ],
         "react_components" => [
-            "name" => "js/Pages/TestReact",
+            "name" => "js/Pages/&React",
         ]
     ];
 
     $this->setConfig($config);
 
     //Act
-    $this->artisan("make:design")->assertSuccessful();
+    $this->artisan("make:design", ["name" => "TestDomain"])->assertSuccessful();
 
     $migrationFile = collect(File::files(database_path("migrations")))
         ->first(fn($file) => str_contains($file->getFilename(), $config["migrations"]["table"]));
@@ -746,7 +746,7 @@ it("creates a new complete design structure from only name config without leadin
     //Assert
     expect($migrationFile)->not()->toBeNull()
         ->and(File::exists(base_path("app/Domains/TestDomain")))->toBeTrue()
-        ->and(File::exists(base_path("app/Domains/TestDomain/Domain/Models/ModelTest.php")))->toBeTrue()
+        ->and(File::exists(base_path("app/Domains/TestDomain/Domain/Models/TestDomainModel.php")))->toBeTrue()
         ->and(File::exists(base_path("app/Domains/TestDomain/Domain/Interfaces/TestDomainServiceInterface.php")))->toBeTrue()
         ->and(File::exists(base_path("app/Domains/TestDomain/Domain/Interfaces/TestDomainRepositoryInterface.php")))->toBeTrue()
         ->and(File::exists(base_path("app/Domains/TestDomain/Domain/Services")))->toBeTrue()
@@ -760,8 +760,8 @@ it("creates a new complete design structure from only name config without leadin
         ->and(File::exists(base_path("app/App/Http/TestDomain/Resources/TestDomainResource.php")))->toBeTrue()
         ->and(File::exists(base_path("app/App/Http/TestDomain/Middlewares")))->toBeTrue()
         ->and(File::exists(base_path("app/App/Http/TestDomain/Middlewares/TestDomainMiddleware.php")))->toBeTrue()
-        ->and(File::exists(resource_path("views/TestBlade.blade.php")))->toBeTrue()
+        ->and(File::exists(resource_path("views/TestDomainBlade.blade.php")))->toBeTrue()
         ->and(File::exists(resource_path("js/Pages")))->toBeTrue()
-        ->and(File::exists(resource_path("js/Pages/TestVue.vue")))->toBeTrue()
-        ->and(File::exists(resource_path("js/Pages/TestReact.jsx")))->toBeTrue();
+        ->and(File::exists(resource_path("js/Pages/TestDomainVue.vue")))->toBeTrue()
+        ->and(File::exists(resource_path("js/Pages/TestDomainReact.jsx")))->toBeTrue();
 });

@@ -46,6 +46,7 @@ class GeneratorItemHandler
 
     /**
      * @param array<string, mixed> $config
+     * @param GeneratorTypes $type
      * @param string|null $name
      *
      * @throws GeneratorTypeException
