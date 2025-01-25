@@ -15,3 +15,9 @@
 
 - possibility of merging names that go under the same path
 - possibility of creating any type of configuration with one or more arrays
+
+# v0.3.0 2025-01-25
+
+## Domain name passed as an argument to the command.
+
+- Ability to pass the domain name directly to the command; where you want it to be replaced in the configurator, insert &.
