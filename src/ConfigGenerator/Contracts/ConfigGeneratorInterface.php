@@ -7,9 +7,10 @@ interface ConfigGeneratorInterface
 
     /**
      * @param array<string, mixed> $config
+     * @param string|null $name
      *
      * @return array<array<string,string>>
      */
-    public function generate(array $config): array;
+    public function generate(array $config, ?string $name = null): array;
 
 }

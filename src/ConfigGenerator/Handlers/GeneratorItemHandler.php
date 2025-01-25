@@ -31,26 +31,29 @@ class GeneratorItemHandler
 
     /**
      * @param array<string, array<string, mixed>> $configs
+     * @param string|null $name
      *
      * @throws GeneratorTypeException
      */
-    public function process(array $configs): void
+    public function process(array $configs, ?string $name = null): void
     {
         foreach ( $configs as $key => $config ) {
             if ( Arr::exists($this->mapping, $key) ) {
-                $this->handleConfigItem($config, $this->mapping[$key]);
+                $this->handleConfigItem($config, $this->mapping[$key], $name);
             }
         }
     }
 
     /**
      * @param array<string, mixed> $config
+     * @param GeneratorTypes $type
+     * @param string|null $name
      *
      * @throws GeneratorTypeException
      */
-    protected function handleConfigItem(array $config, GeneratorTypes $type): void
+    protected function handleConfigItem(array $config, GeneratorTypes $type, ?string $name = null): void
     {
-        $configItem = $this->configGeneratorRegistry->get($type)->generate($config);
+        $configItem = $this->configGeneratorRegistry->get($type)->generate($config, $name);
 
         foreach ( $configItem as $item ) {
             CommandCaller::call($item, $type);

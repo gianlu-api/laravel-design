@@ -2,6 +2,7 @@
 
 namespace gianluApi\laravelDesign\Commands\Console;
 
+use Exception;
 use gianluApi\laravelDesign\ConfigGenerator\Handlers\GeneratorItemHandler;
 use Illuminate\Console\Command;
 use Symfony\Component\Console\Command\Command as CommandAlias;
@@ -10,13 +11,14 @@ use Throwable;
 class DesignMakeCommand extends Command
 {
 
-    protected $signature = "make:design {--config}";
+    protected $signature = "make:design {name?} {--config}";
     protected $description = "Create a new design structure";
 
     public function handle(GeneratorItemHandler $typeHandler): int
     {
         try {
             $configOption = $this->option("config");
+            $name = $this->argument("name");
 
             if ( is_string($configOption) || is_array($configOption) ) {
                 $config = config($configOption);
@@ -24,8 +26,12 @@ class DesignMakeCommand extends Command
                 $config = config("laravel-design");
             }
 
+            if ( isset($name) && !is_string($name) ) {
+                throw new Exception("name must be a string");
+            }
+
             /** @var array<string, array<string, mixed>> $config */
-            $typeHandler->process($config);
+            $typeHandler->process($config, $name);
 
             $this->output->success("Design created successfully");
 

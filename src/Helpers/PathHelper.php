@@ -7,8 +7,12 @@ use Illuminate\Support\Str;
 trait PathHelper
 {
 
-    public static function checkPath(string $path, bool $trailingSlash = true): string
+    public static function checkPath(string $path, bool $trailingSlash = true, ?string $name = null): string
     {
+        if ($name) {
+            $path = self::substituteVariables($path, $name);
+        }
+
         $path = self::addLeadingSlash($path);
 
         if ($trailingSlash) {
@@ -36,6 +40,11 @@ trait PathHelper
     public static function addTrailingSlash(string $path): string
     {
         return Str::finish($path, '/');
+    }
+
+    public static function substituteVariables(string $string, string $value): string
+    {
+        return str_replace('&', $value, $string);
     }
 
 }
