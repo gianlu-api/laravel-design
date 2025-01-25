@@ -26,6 +26,10 @@ class DesignMakeCommand extends Command
                 $config = config("laravel-design");
             }
 
+            if ( isset($name) && !is_string($name) ) {
+                throw new Exception("name must be a string");
+            }
+
             /** @var array<string, array<string, mixed>> $config */
             $typeHandler->process($config, $name);
 

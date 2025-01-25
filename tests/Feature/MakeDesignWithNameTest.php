@@ -86,7 +86,7 @@ it("creates a new complete design structure correctly", function () {
     $this->artisan("make:design", ["name" => "TestDomain"])->assertSuccessful();
 
     $migrationFile = collect(File::files(database_path("migrations")))
-        ->first(fn($file) => str_contains($file->getFilename(), $config["migrations"]["tables"][0]));
+        ->first(fn($file) => str_contains($file->getFilename(), "test_domain"));
 
     //Assert
     expect($migrationFile)->not()->toBeNull()
@@ -195,7 +195,7 @@ it("creates a new complete design structure without leading slash correctly", fu
     $this->artisan("make:design", ["name" => "TestDomain"])->assertSuccessful();
 
     $migrationFile = collect(File::files(database_path("migrations")))
-        ->first(fn($file) => str_contains($file->getFilename(), $config["migrations"]["tables"][0]));
+        ->first(fn($file) => str_contains($file->getFilename(), "test_domain"));
 
     //Assert
     expect($migrationFile)->not()->toBeNull()
@@ -309,7 +309,7 @@ it("creates a new complete design structure from name and path config without le
     $this->artisan("make:design", ["name" => "TestDomain"])->assertSuccessful();
 
     $migrationFile = collect(File::files(database_path("migrations")))
-        ->first(fn($file) => str_contains($file->getFilename(), $config["migrations"]["tables"][0]));
+        ->first(fn($file) => str_contains($file->getFilename(), "test_domain"));
 
     //Assert
     expect($migrationFile)->not()->toBeNull()
@@ -415,7 +415,7 @@ it("creates a new complete design structure with path and names without leading 
     $this->artisan("make:design", ["name" => "TestDomain"])->assertSuccessful();
 
     $migrationFile = collect(File::files(database_path("migrations")))
-        ->first(fn($file) => str_contains($file->getFilename(), $config["migrations"]["tables"][0]));
+        ->first(fn($file) => str_contains($file->getFilename(), "test_domain"));
 
     //Assert
     expect($migrationFile)->not()->toBeNull()
@@ -442,7 +442,7 @@ it("creates a new complete design structure with many arrays path and names with
     $config = [
         "migrations" => [
             "tables" => [
-                "&",
+                'test_domain', '&'
             ],
         ],
         'models' => [
@@ -545,7 +545,7 @@ it("creates a new complete design structure with many arrays path and names with
     $this->artisan("make:design", ["name" => "TestDomain"])->assertSuccessful();
 
     $migrationFile = collect(File::files(database_path("migrations")))
-        ->first(fn($file) => str_contains($file->getFilename(), $config["migrations"]["tables"][0]));
+        ->first(fn($file) => str_contains($file->getFilename(), "test_domain"));
 
     //Assert
     expect($migrationFile)->not()->toBeNull()
@@ -653,7 +653,7 @@ it("creates a new complete design structure with mixed config correctly", functi
     $this->artisan("make:design", ["name" => "TestDomain"])->assertSuccessful();
 
     $migrationFile = collect(File::files(database_path("migrations")))
-        ->first(fn($file) => str_contains($file->getFilename(), $config["migrations"]["tables"][0]));
+        ->first(fn($file) => str_contains($file->getFilename(), "test_domain"));
 
     //Assert
     expect($migrationFile)->not()->toBeNull()
@@ -741,7 +741,7 @@ it("creates a new complete design structure from only name config without leadin
     $this->artisan("make:design", ["name" => "TestDomain"])->assertSuccessful();
 
     $migrationFile = collect(File::files(database_path("migrations")))
-        ->first(fn($file) => str_contains($file->getFilename(), $config["migrations"]["table"]));
+        ->first(fn($file) => str_contains($file->getFilename(), "test_domain"));
 
     //Assert
     expect($migrationFile)->not()->toBeNull()
