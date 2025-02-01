@@ -140,44 +140,9 @@ it is possible to generate the following types of files:
 ```
 ## Controllers configruration
 it is possible for controllers to choose whether api or resource methods should be created as allowed by Laravel, by adding to the configuration array ```'type' => api``` for api or ```type => resource``` for resources
-```
-'controllers' => [
-    [
-       'name' =>'UserType',
-       'path' => '/Domains/User/Domain/Enums',
-       'type' => 'api'
-    ],
-]
-```
-```
-'controllers' => [
-    [
-       'name' =>'UserType',
-       'path' => '/Domains/User/Domain/Enums',
-       'type' => 'resource'
-    ],
-]
-```
-if you want an empty controller, you can skip the type field
-```
-'controllers' => [
-    [
-       'name' =>'UserType',
-       'path' => '/Domains/User/Domain/Enums',
-    ],
-]
-```
+
 ## Vue Components Configuration
 it is possible for vue components to choose options between composition_api ```'type' => 'compositions'``` and ```'type' => 'options'```, by default a compositions component is created
-```
-'vue_components' => [
-    [
-       'name' =>'UserType',
-       'path' => '/Domains/User/Domain/Enums',
-       'type' => 'options'
-    ],
-]
-```
 
 # Name Passed by Command
 If you want, you can also pass the domain name directly to the command, so you never have to change your config structure once it’s defined like this.

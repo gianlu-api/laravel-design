@@ -21,3 +21,9 @@
 ## Domain name passed as an argument to the command.
 
 - Ability to pass the domain name directly to the command; where you want it to be replaced in the configurator, insert &.
+
+# v0.4.0 2025-02-01
+
+## Added Support For Laravel Controller, Resource, Middleware and Resource Commands with custom names
+
+- custom name: ../../Http/Test/Controllers/TestController e.g.
