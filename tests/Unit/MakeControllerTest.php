@@ -12,7 +12,6 @@ it('creates a new controller correctly', function () {
     $this->artisan('make:controller', $config)->assertSuccessful();
 
     //Assert
-    //Assert
     expect(File::exists(base_path('app/Http/Controllers')))->toBeTrue()
         ->and(File::exists(base_path('app/Http/Controllers/TestController.php')))->toBeTrue();
 });
@@ -58,7 +57,6 @@ it('creates a new controller with custom name correctly', function () {
     //Act
     $this->artisan('make:controller', $config)->assertSuccessful();
 
-    //Assert
     //Assert
     expect(File::exists(base_path('app/Http/Test/Controllers')))->toBeTrue()
         ->and(File::exists(base_path('app/Http/Test/Controllers/TestController.php')))->toBeTrue();
@@ -106,7 +104,6 @@ it('creates a new api controller correctly', function () {
     //Act
     $this->artisan('make:controller', $config)->assertSuccessful();
 
-    //Assert
     //Assert
     expect(File::exists(base_path('app/Http/Controllers')))->toBeTrue()
         ->and(File::exists(base_path('app/Http/Controllers/TestController.php')))->toBeTrue();
@@ -194,7 +191,6 @@ it('creates a api new controller with custom name correctly', function () {
     $this->artisan('make:controller', $config)->assertSuccessful();
 
     //Assert
-    //Assert
     expect(File::exists(base_path('app/Http/Test/Controllers')))->toBeTrue()
         ->and(File::exists(base_path('app/Http/Test/Controllers/TestController.php')))->toBeTrue();
 });
@@ -280,7 +276,6 @@ it('creates a resource new controller correctly', function () {
     //Act
     $this->artisan('make:controller', $config)->assertSuccessful();
 
-    //Assert
     //Assert
     expect(File::exists(base_path('app/Http/Controllers')))->toBeTrue()
         ->and(File::exists(base_path('app/Http/Controllers/TestController.php')))->toBeTrue();
@@ -384,7 +379,6 @@ it('creates a resource new controller with custom name correctly', function () {
     $this->artisan('make:controller', $config)->assertSuccessful();
 
     //Assert
-    //Assert
     expect(File::exists(base_path('app/Http/Test/Controllers')))->toBeTrue()
         ->and(File::exists(base_path('app/Http/Test/Controllers/TestController.php')))->toBeTrue();
 });
@@ -487,7 +481,6 @@ it('creates a invokable new controller correctly', function () {
     $this->artisan('make:controller', $config)->assertSuccessful();
 
     //Assert
-    //Assert
     expect(File::exists(base_path('app/Http/Controllers')))->toBeTrue()
         ->and(File::exists(base_path('app/Http/Controllers/TestController.php')))->toBeTrue();
 });
@@ -541,7 +534,6 @@ it('creates a invokable new controller with custom name correctly', function () 
     //Act
     $this->artisan('make:controller', $config)->assertSuccessful();
 
-    //Assert
     //Assert
     expect(File::exists(base_path('app/Http/Test/Controllers')))->toBeTrue()
         ->and(File::exists(base_path('app/Http/Test/Controllers/TestController.php')))->toBeTrue();
