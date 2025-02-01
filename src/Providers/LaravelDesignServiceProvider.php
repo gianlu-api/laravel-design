@@ -6,6 +6,10 @@ use gianluApi\laravelDesign\Commands\Console\AbstractClassMakeCommand;
 use gianluApi\laravelDesign\Commands\Console\ClassMakeCommand;
 use gianluApi\laravelDesign\Commands\Console\DesignMakeCommand;
 use gianluApi\laravelDesign\Commands\Console\InterfaceMakeCommand;
+use gianluApi\laravelDesign\Commands\Console\Laravel\ControllerMakeCommand;
+use gianluApi\laravelDesign\Commands\Console\Laravel\MiddlewareMakeCommand;
+use gianluApi\laravelDesign\Commands\Console\Laravel\RequestMakeCommand;
+use gianluApi\laravelDesign\Commands\Console\Laravel\ResourceMakeCommand;
 use gianluApi\laravelDesign\Commands\Console\Views\ReactMakeCommand;
 use gianluApi\laravelDesign\Commands\Console\Views\VueMakeCommand;
 use gianluApi\laravelDesign\ConfigGenerator\ControllerConfigGenerator;
@@ -34,7 +38,11 @@ class LaravelDesignServiceProvider extends ServiceProvider
             InterfaceMakeCommand::class,
             AbstractClassMakeCommand::class,
             VueMakeCommand::class,
-            ReactMakeCommand::class
+            ReactMakeCommand::class,
+            ControllerMakeCommand::class,
+            RequestMakeCommand::class,
+            MiddlewareMakeCommand::class,
+            ResourceMakeCommand::class
         ]);
 
         $this->configGenerator();
