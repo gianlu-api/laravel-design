@@ -31,7 +31,32 @@ class ControllerMakeCommand extends LaravelControllerMakeCommand
     {
         $namespace = self::checkNamespaceForClassBuild($name);
 
-        return parent::buildClass($namespace);
+        $replace = [];
+
+        if ($this->option('parent')) {
+            $replace = $this->buildParentReplacements();
+        }
+
+        if ($this->option('model')) {
+            $replace = $this->buildModelReplacements($replace);
+        }
+
+        if ($this->option('creatable')) {
+            $replace['abort(404);'] = '//';
+        }
+
+        $baseControllerExists = file_exists($this->getPath($namespace));
+
+        if ($baseControllerExists) {
+            $replace["use {$namespace}\Controller;\n"] = '';
+        } else {
+            $replace[' extends Controller'] = '';
+            $replace["use App\Http\Controllers\Controller;\n"] = '';
+        }
+
+        return str_replace(
+            array_keys($replace), array_values($replace), parent::buildClass($namespace)
+        );
     }
 
 }
