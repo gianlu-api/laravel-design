@@ -11,6 +11,8 @@ class MiddlewareMakeCommand extends LaravelMiddlewareMakeCommand
 
     use NamespaceHelper;
 
+    protected $name = 'design:middleware';
+
     /**
      * @param $name
      *
@@ -29,12 +31,8 @@ class MiddlewareMakeCommand extends LaravelMiddlewareMakeCommand
      */
     protected function buildClass($name): string
     {
-        $className = self::checkClassName($name);
         $namespace = self::checkNamespaceForClassBuild($name);
 
-        $stub = $this->files->get($this->getStub());
-
-        return $this->replaceNamespace($stub, $namespace)->replaceClass($stub, $className);
+        return parent::buildClass($namespace);
     }
-
 }

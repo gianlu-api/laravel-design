@@ -83,7 +83,7 @@ it("creates a new complete design structure correctly", function () {
     $this->setConfig($config);
 
     //Act
-    $this->artisan("make:design", ["name" => "TestDomain"])->assertSuccessful();
+    $this->artisan("design", ["name" => "TestDomain"])->assertSuccessful();
 
     $migrationFile = collect(File::files(database_path("migrations")))
         ->first(fn($file) => str_contains($file->getFilename(), "test_domain"));
@@ -192,7 +192,7 @@ it("creates a new complete design structure without leading slash correctly", fu
     $this->setConfig($config);
 
     //Act
-    $this->artisan("make:design", ["name" => "TestDomain"])->assertSuccessful();
+    $this->artisan("design", ["name" => "TestDomain"])->assertSuccessful();
 
     $migrationFile = collect(File::files(database_path("migrations")))
         ->first(fn($file) => str_contains($file->getFilename(), "test_domain"));
@@ -306,7 +306,7 @@ it("creates a new complete design structure from name and path config without le
     $this->setConfig($config);
 
     //Act
-    $this->artisan("make:design", ["name" => "TestDomain"])->assertSuccessful();
+    $this->artisan("design", ["name" => "TestDomain"])->assertSuccessful();
 
     $migrationFile = collect(File::files(database_path("migrations")))
         ->first(fn($file) => str_contains($file->getFilename(), "test_domain"));
@@ -412,7 +412,7 @@ it("creates a new complete design structure with path and names without leading 
     $this->setConfig($config);
 
     //Act
-    $this->artisan("make:design", ["name" => "TestDomain"])->assertSuccessful();
+    $this->artisan("design", ["name" => "TestDomain"])->assertSuccessful();
 
     $migrationFile = collect(File::files(database_path("migrations")))
         ->first(fn($file) => str_contains($file->getFilename(), "test_domain"));
@@ -542,7 +542,7 @@ it("creates a new complete design structure with many arrays path and names with
     $this->setConfig($config);
 
     //Act
-    $this->artisan("make:design", ["name" => "TestDomain"])->assertSuccessful();
+    $this->artisan("design", ["name" => "TestDomain"])->assertSuccessful();
 
     $migrationFile = collect(File::files(database_path("migrations")))
         ->first(fn($file) => str_contains($file->getFilename(), "test_domain"));
@@ -650,7 +650,7 @@ it("creates a new complete design structure with mixed config correctly", functi
     $this->setConfig($config);
 
     //Act
-    $this->artisan("make:design", ["name" => "TestDomain"])->assertSuccessful();
+    $this->artisan("design", ["name" => "TestDomain"])->assertSuccessful();
 
     $migrationFile = collect(File::files(database_path("migrations")))
         ->first(fn($file) => str_contains($file->getFilename(), "test_domain"));
@@ -738,7 +738,7 @@ it("creates a new complete design structure from only name config without leadin
     $this->setConfig($config);
 
     //Act
-    $this->artisan("make:design", ["name" => "TestDomain"])->assertSuccessful();
+    $this->artisan("design", ["name" => "TestDomain"])->assertSuccessful();
 
     $migrationFile = collect(File::files(database_path("migrations")))
         ->first(fn($file) => str_contains($file->getFilename(), "test_domain"));

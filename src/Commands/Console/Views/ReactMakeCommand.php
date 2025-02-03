@@ -9,7 +9,7 @@ use InvalidArgumentException;
 class ReactMakeCommand extends GeneratorCommand
 {
 
-    protected $signature = 'make:view:react {name} {path?}';
+    protected $signature = 'design:view:react {name} {path?}';
     protected $description = 'Create new react file';
     protected $type = 'React';
 

@@ -9,7 +9,7 @@ use InvalidArgumentException;
 class VueMakeCommand extends GeneratorCommand
 {
 
-    protected $signature = 'make:view:vue {name} {path?} {--type=composition}';
+    protected $signature = 'design:view:vue {name} {path?} {--type=composition}';
     protected $description = 'Create new vue file';
     protected $type = 'Vue';
 

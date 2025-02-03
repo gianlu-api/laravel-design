@@ -10,7 +10,7 @@ it('creates a new abstract class correctly', function () {
     ];
 
     //Act
-    $this->artisan('make:class:abstract', $config)->assertSuccessful();
+    $this->artisan('design:class:abstract', $config)->assertSuccessful();
 
     //Assert
     expect(File::exists(base_path('app/AbstractClasses')))->toBeTrue()
@@ -25,7 +25,7 @@ it('creates a new abstract class without leading slash correctly', function () {
     ];
 
     //Act
-    $this->artisan('make:class:abstract', $config)->assertSuccessful();
+    $this->artisan('design:class:abstract', $config)->assertSuccessful();
 
     //Assert
     expect(File::exists(base_path('app/AbstractClasses')))->toBeTrue()
@@ -40,7 +40,7 @@ it('creates a new abstract class content correctly', function () {
     ];
 
     //Act
-    $this->artisan('make:class:abstract', $config)->assertSuccessful();
+    $this->artisan('design:class:abstract', $config)->assertSuccessful();
 
     //Assert
     expect(File::exists(base_path('app/AbstractClasses')))->toBeTrue()

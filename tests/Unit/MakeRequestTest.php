@@ -9,7 +9,7 @@ it('creates a new Request correctly', function () {
     ];
 
     //Act
-    $this->artisan('make:request', $config)->assertSuccessful();
+    $this->artisan('design:request', $config)->assertSuccessful();
 
     //Assert
     //Assert
@@ -24,7 +24,7 @@ it('creates a new Request content correctly', function () {
     ];
 
     //Act
-    $this->artisan('make:request', $config)->assertSuccessful();
+    $this->artisan('design:request', $config)->assertSuccessful();
 
     //Assert
     expect(File::exists(base_path('app/Http/Requests')))->toBeTrue()
@@ -73,7 +73,7 @@ it('creates a new Request with custom name correctly', function () {
     ];
 
     //Act
-    $this->artisan('make:request', $config)->assertSuccessful();
+    $this->artisan('design:request', $config)->assertSuccessful();
 
     //Assert
     expect(File::exists(base_path('app/Http/Test/Requests')))->toBeTrue()
@@ -87,7 +87,7 @@ it('creates a new Request with custom name content correctly', function () {
     ];
 
     //Act
-    $this->artisan('make:request', $config)->assertSuccessful();
+    $this->artisan('design:request', $config)->assertSuccessful();
 
     //Assert
     expect(File::exists(base_path('app/Http/Test/Requests')))->toBeTrue()

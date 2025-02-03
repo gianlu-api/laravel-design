@@ -10,7 +10,7 @@ it('creates a new interface correctly', function () {
     ];
 
     //Act
-    $this->artisan('make:interface', $config)->assertSuccessful();
+    $this->artisan('design:interface', $config)->assertSuccessful();
 
     //Assert
     expect(File::exists(base_path('app/Interfaces')))->toBeTrue()
@@ -25,7 +25,7 @@ it('creates a new interface content correctly', function () {
     ];
 
     //Act
-    $this->artisan('make:interface', $config)->assertSuccessful();
+    $this->artisan('design:interface', $config)->assertSuccessful();
 
     //Assert
     expect(File::exists(base_path('app/Interfaces')))->toBeTrue()

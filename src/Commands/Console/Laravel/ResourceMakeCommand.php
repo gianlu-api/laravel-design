@@ -11,6 +11,8 @@ class ResourceMakeCommand extends LaravelResourceMakeCommand
 
     use NamespaceHelper;
 
+    protected $name = 'design:resource';
+
     /**
      * @param $name
      *
@@ -29,12 +31,9 @@ class ResourceMakeCommand extends LaravelResourceMakeCommand
      */
     protected function buildClass($name): string
     {
-        $className = self::checkClassName($name);
         $namespace = self::checkNamespaceForClassBuild($name);
 
-        $stub = $this->files->get($this->getStub());
-
-        return $this->replaceNamespace($stub, $namespace)->replaceClass($stub, $className);
+        return parent::buildClass($namespace);
     }
 
 }

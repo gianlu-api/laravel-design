@@ -3,13 +3,14 @@
 namespace gianluApi\laravelDesign\Commands\Console\Laravel;
 
 use gianluApi\laravelDesign\Helpers\NamespaceHelper;
-use Illuminate\Contracts\Filesystem\FileNotFoundException;
 use Illuminate\Routing\Console\ControllerMakeCommand as LaravelControllerMakeCommand;
 
 class ControllerMakeCommand extends LaravelControllerMakeCommand
 {
 
     use NamespaceHelper;
+
+    protected $name = 'design:controller';
 
     /**
      * @param $name
@@ -25,16 +26,12 @@ class ControllerMakeCommand extends LaravelControllerMakeCommand
      * @param $name
      *
      * @return string
-     * @throws FileNotFoundException
      */
     protected function buildClass($name): string
     {
-        $className = self::checkClassName($name);
         $namespace = self::checkNamespaceForClassBuild($name);
 
-        $stub = $this->files->get($this->getStub());
-
-        return $this->replaceNamespace($stub, $namespace)->replaceClass($stub, $className);
+        return parent::buildClass($namespace);
     }
 
 }
