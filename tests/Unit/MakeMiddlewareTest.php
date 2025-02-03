@@ -9,7 +9,7 @@ it('creates a new Middleware correctly', function () {
     ];
 
     //Act
-    $this->artisan('make:middleware', $config)->assertSuccessful();
+    $this->artisan('design:middleware', $config)->assertSuccessful();
 
     //Assert
     expect(File::exists(base_path('app/Http/Middleware')))->toBeTrue()
@@ -23,7 +23,7 @@ it('creates a new Middleware content correctly', function () {
     ];
 
     //Act
-    $this->artisan('make:middleware', $config)->assertSuccessful();
+    $this->artisan('design:middleware', $config)->assertSuccessful();
 
     //Assert
     expect(File::exists(base_path('app/Http/Middleware')))->toBeTrue()
@@ -64,7 +64,7 @@ it('creates a new Middleware with custom name correctly', function () {
     ];
 
     //Act
-    $this->artisan('make:middleware', $config)->assertSuccessful();
+    $this->artisan('design:middleware', $config)->assertSuccessful();
 
     //Assert
     expect(File::exists(base_path('app/Http/Test/Middlewares')))->toBeTrue()
@@ -78,7 +78,7 @@ it('creates a new Middleware with custom name content correctly', function () {
     ];
 
     //Act
-    $this->artisan('make:middleware', $config)->assertSuccessful();
+    $this->artisan('design:middleware', $config)->assertSuccessful();
 
     //Assert
     expect(File::exists(base_path('app/Http/Test/Middlewares')))->toBeTrue()

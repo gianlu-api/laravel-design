@@ -11,7 +11,7 @@ use Throwable;
 class DesignMakeCommand extends Command
 {
 
-    protected $signature = "make:design {name?} {--config}";
+    protected $signature = "design {name?} {--config}";
     protected $description = "Create a new design structure";
 
     public function handle(GeneratorItemHandler $typeHandler): int

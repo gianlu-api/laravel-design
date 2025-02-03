@@ -10,7 +10,7 @@ it('creates a new class correctly', function () {
     ];
 
     //Act
-    $this->artisan('make:class', $config)->assertSuccessful();
+    $this->artisan('design:class', $config)->assertSuccessful();
 
     //Assert
     expect(File::exists(base_path('app/Classes')))->toBeTrue()
@@ -25,7 +25,7 @@ it('creates a new class content correctly', function () {
     ];
 
     //Act
-    $this->artisan('make:class', $config)->assertSuccessful();
+    $this->artisan('design:class', $config)->assertSuccessful();
 
     //Assert
     expect(File::exists(base_path('app/Classes')))->toBeTrue()

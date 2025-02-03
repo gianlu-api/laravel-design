@@ -10,7 +10,7 @@ it('creates a new react component correctly', function () {
     ];
 
     //Act
-    $this->artisan('make:view:react', $config)->assertSuccessful();
+    $this->artisan('design:view:react', $config)->assertSuccessful();
 
     //Assert
     expect(File::exists(resource_path('js/Pages')))->toBeTrue()
@@ -25,7 +25,7 @@ it('creates a new react component content correctly', function () {
     ];
 
     //Act
-    $this->artisan('make:view:react', $config)->assertSuccessful();
+    $this->artisan('design:view:react', $config)->assertSuccessful();
 
     //Assert
     expect(File::exists(resource_path('js/Pages')))->toBeTrue()

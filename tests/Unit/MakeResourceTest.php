@@ -9,7 +9,7 @@ it('creates a new Resource correctly', function () {
     ];
 
     //Act
-    $this->artisan('make:resource', $config)->assertSuccessful();
+    $this->artisan('design:resource', $config)->assertSuccessful();
 
     //Assert
     expect(File::exists(base_path('app/Http/Resources')))->toBeTrue()
@@ -23,7 +23,7 @@ it('creates a new Resource content correctly', function () {
     ];
 
     //Act
-    $this->artisan('make:resource', $config)->assertSuccessful();
+    $this->artisan('design:resource', $config)->assertSuccessful();
 
     //Assert
     expect(File::exists(base_path('app/Http/Resources')))->toBeTrue()
@@ -63,7 +63,7 @@ it('creates a new Resource with custom name correctly', function () {
     ];
 
     //Act
-    $this->artisan('make:resource', $config)->assertSuccessful();
+    $this->artisan('design:resource', $config)->assertSuccessful();
 
     //Assert
     expect(File::exists(base_path('app/Http/Test/Resources')))->toBeTrue()
@@ -77,7 +77,7 @@ it('creates a new Resource with custom name content correctly', function () {
     ];
 
     //Act
-    $this->artisan('make:resource', $config)->assertSuccessful();
+    $this->artisan('design:resource', $config)->assertSuccessful();
 
     //Assert
     expect(File::exists(base_path('app/Http/Test/Resources')))->toBeTrue()

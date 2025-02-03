@@ -9,7 +9,7 @@ it('creates a new controller correctly', function () {
     ];
 
     //Act
-    $this->artisan('make:controller', $config)->assertSuccessful();
+    $this->artisan('design:controller', $config)->assertSuccessful();
 
     //Assert
     expect(File::exists(base_path('app/Http/Controllers')))->toBeTrue()
@@ -23,7 +23,7 @@ it('creates a new controller content correctly', function () {
     ];
 
     //Act
-    $this->artisan('make:controller', $config)->assertSuccessful();
+    $this->artisan('design:controller', $config)->assertSuccessful();
 
     //Assert
     expect(File::exists(base_path('app/Http/Controllers')))->toBeTrue()
@@ -34,10 +34,9 @@ it('creates a new controller content correctly', function () {
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class TestController extends Controller
+class TestController
 {
     //
 }
@@ -55,7 +54,7 @@ it('creates a new controller with custom name correctly', function () {
     ];
 
     //Act
-    $this->artisan('make:controller', $config)->assertSuccessful();
+    $this->artisan('design:controller', $config)->assertSuccessful();
 
     //Assert
     expect(File::exists(base_path('app/Http/Test/Controllers')))->toBeTrue()
@@ -69,7 +68,7 @@ it('creates a new controller with custom name content correctly', function () {
     ];
 
     //Act
-    $this->artisan('make:controller', $config)->assertSuccessful();
+    $this->artisan('design:controller', $config)->assertSuccessful();
 
     //Assert
     expect(File::exists(base_path('app/Http/Test/Controllers')))->toBeTrue()
@@ -80,10 +79,9 @@ it('creates a new controller with custom name content correctly', function () {
 
 namespace App\Http\Test\Controllers;
 
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class TestController extends Controller
+class TestController
 {
     //
 }
@@ -102,7 +100,7 @@ it('creates a new api controller correctly', function () {
     ];
 
     //Act
-    $this->artisan('make:controller', $config)->assertSuccessful();
+    $this->artisan('design:controller', $config)->assertSuccessful();
 
     //Assert
     expect(File::exists(base_path('app/Http/Controllers')))->toBeTrue()
@@ -117,7 +115,7 @@ it('creates a new api controller content correctly', function () {
     ];
 
     //Act
-    $this->artisan('make:controller', $config)->assertSuccessful();
+    $this->artisan('design:controller', $config)->assertSuccessful();
 
     //Assert
     expect(File::exists(base_path('app/Http/Controllers')))->toBeTrue()
@@ -128,10 +126,9 @@ it('creates a new api controller content correctly', function () {
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class TestController extends Controller
+class TestController
 {
     /**
      * Display a listing of the resource.
@@ -188,7 +185,7 @@ it('creates a api new controller with custom name correctly', function () {
     ];
 
     //Act
-    $this->artisan('make:controller', $config)->assertSuccessful();
+    $this->artisan('design:controller', $config)->assertSuccessful();
 
     //Assert
     expect(File::exists(base_path('app/Http/Test/Controllers')))->toBeTrue()
@@ -203,7 +200,7 @@ it('creates a new api controller with custom name content correctly', function (
     ];
 
     //Act
-    $this->artisan('make:controller', $config)->assertSuccessful();
+    $this->artisan('design:controller', $config)->assertSuccessful();
 
     //Assert
     expect(File::exists(base_path('app/Http/Test/Controllers')))->toBeTrue()
@@ -214,10 +211,9 @@ it('creates a new api controller with custom name content correctly', function (
 
 namespace App\Http\Test\Controllers;
 
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class TestController extends Controller
+class TestController
 {
     /**
      * Display a listing of the resource.
@@ -274,7 +270,7 @@ it('creates a resource new controller correctly', function () {
     ];
 
     //Act
-    $this->artisan('make:controller', $config)->assertSuccessful();
+    $this->artisan('design:controller', $config)->assertSuccessful();
 
     //Assert
     expect(File::exists(base_path('app/Http/Controllers')))->toBeTrue()
@@ -289,7 +285,7 @@ it('creates a new resource controller content correctly', function () {
     ];
 
     //Act
-    $this->artisan('make:controller', $config)->assertSuccessful();
+    $this->artisan('design:controller', $config)->assertSuccessful();
 
     //Assert
     expect(File::exists(base_path('app/Http/Controllers')))->toBeTrue()
@@ -300,10 +296,9 @@ it('creates a new resource controller content correctly', function () {
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class TestController extends Controller
+class TestController
 {
     /**
      * Display a listing of the resource.
@@ -376,7 +371,7 @@ it('creates a resource new controller with custom name correctly', function () {
     ];
 
     //Act
-    $this->artisan('make:controller', $config)->assertSuccessful();
+    $this->artisan('design:controller', $config)->assertSuccessful();
 
     //Assert
     expect(File::exists(base_path('app/Http/Test/Controllers')))->toBeTrue()
@@ -391,7 +386,7 @@ it('creates a new resource controller with custom name content correctly', funct
     ];
 
     //Act
-    $this->artisan('make:controller', $config)->assertSuccessful();
+    $this->artisan('design:controller', $config)->assertSuccessful();
 
     //Assert
     expect(File::exists(base_path('app/Http/Test/Controllers')))->toBeTrue()
@@ -402,10 +397,9 @@ it('creates a new resource controller with custom name content correctly', funct
 
 namespace App\Http\Test\Controllers;
 
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class TestController extends Controller
+class TestController
 {
     /**
      * Display a listing of the resource.
@@ -478,7 +472,7 @@ it('creates a invokable new controller correctly', function () {
     ];
 
     //Act
-    $this->artisan('make:controller', $config)->assertSuccessful();
+    $this->artisan('design:controller', $config)->assertSuccessful();
 
     //Assert
     expect(File::exists(base_path('app/Http/Controllers')))->toBeTrue()
@@ -493,7 +487,7 @@ it('creates a new invokable controller content correctly', function () {
     ];
 
     //Act
-    $this->artisan('make:controller', $config)->assertSuccessful();
+    $this->artisan('design:controller', $config)->assertSuccessful();
 
     //Assert
     expect(File::exists(base_path('app/Http/Controllers')))->toBeTrue()
@@ -504,10 +498,9 @@ it('creates a new invokable controller content correctly', function () {
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class TestController extends Controller
+class TestController
 {
     /**
      * Handle the incoming request.
@@ -532,7 +525,7 @@ it('creates a invokable new controller with custom name correctly', function () 
     ];
 
     //Act
-    $this->artisan('make:controller', $config)->assertSuccessful();
+    $this->artisan('design:controller', $config)->assertSuccessful();
 
     //Assert
     expect(File::exists(base_path('app/Http/Test/Controllers')))->toBeTrue()
@@ -547,7 +540,7 @@ it('creates a new invokable controller with custom name content correctly', func
     ];
 
     //Act
-    $this->artisan('make:controller', $config)->assertSuccessful();
+    $this->artisan('design:controller', $config)->assertSuccessful();
 
     //Assert
     expect(File::exists(base_path('app/Http/Test/Controllers')))->toBeTrue()
@@ -558,10 +551,9 @@ it('creates a new invokable controller with custom name content correctly', func
 
 namespace App\Http\Test\Controllers;
 
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class TestController extends Controller
+class TestController
 {
     /**
      * Handle the incoming request.

@@ -27,3 +27,7 @@
 ## Added Support For Laravel Controller, Resource, Middleware and Resource Commands with custom names
 
 - custom name: ../../Http/Test/Controllers/TestController e.g.
+
+# v0.5.0 2025-02-01
+
+## Fixed Controller Command, Changed Signature of the commands

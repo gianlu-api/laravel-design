@@ -11,17 +11,17 @@ final class CommandSelector
     {
         return match ( $type ) {
             GeneratorTypes::Migration => "make:migration",
-            GeneratorTypes::CustomClass => "make:class",
-            GeneratorTypes::Interface => "make:interface",
-            GeneratorTypes::AbstractClass => "make:class:abstract",
+            GeneratorTypes::CustomClass => "design:class",
+            GeneratorTypes::Interface => "design:interface",
+            GeneratorTypes::AbstractClass => "design:class:abstract",
             GeneratorTypes::Model => "make:model",
-            GeneratorTypes::Controller => "make:controller",
-            GeneratorTypes::Request => "make:request",
-            GeneratorTypes::Resource => "make:resource",
-            GeneratorTypes::Middleware => "make:middleware",
+            GeneratorTypes::Controller => "design:controller",
+            GeneratorTypes::Request => "design:request",
+            GeneratorTypes::Resource => "design:resource",
+            GeneratorTypes::Middleware => "design:middleware",
             GeneratorTypes::Blade => "make:view",
-            GeneratorTypes::Vue => "make:view:vue",
-            GeneratorTypes::React => "make:view:react",
+            GeneratorTypes::Vue => "design:view:vue",
+            GeneratorTypes::React => "design:view:react",
         };
     }
 

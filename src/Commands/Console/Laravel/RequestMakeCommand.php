@@ -12,6 +12,8 @@ class RequestMakeCommand extends LaravelRequestMakeCommand
 
     use NamespaceHelper;
 
+    protected $name = 'design:request';
+
     /**
      * @param $name
      *
@@ -30,12 +32,9 @@ class RequestMakeCommand extends LaravelRequestMakeCommand
      */
     protected function buildClass($name): string
     {
-        $className = self::checkClassName($name);
         $namespace = self::checkNamespaceForClassBuild($name);
 
-        $stub = $this->files->get($this->getStub());
-
-        return $this->replaceNamespace($stub, $namespace)->replaceClass($stub, $className);
+        return parent::buildClass($namespace);
     }
 
 }

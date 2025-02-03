@@ -26,12 +26,12 @@ It is not mandatory to publish the config; you can create your own and specify i
 First, you will need to fill out the configuration as explained below. Once the configuration file is ready, if you are using the laravel-design configuration file run:
 
 ```bash
-php artisan make:design
+php artisan design
 ```
 Otherwise, if you are using your own configuration file:
 
 ```bash
-php artisan make:design --config={your_config_name}
+php artisan design --config={your_config_name}
 ```
 ________________________________
 ## Configurations
@@ -192,7 +192,7 @@ If you want, you can also pass the domain name directly to the command, so you n
 Now you can run the command like this
 
 ```bash
-php artisan make:design {name}
+php artisan design {name}
 ```
 
 ## Configuration Example
@@ -288,21 +288,21 @@ Add ```../../``` before the path where you want to create the class; otherwise, 
 ________________________________________________
 ## Other Commands
 ```bash
-php artisan make:class {class_name} {class_path}
+php artisan design:class {class_name} {class_path}
 ```
 
 ```bash
-php artisan make:interface {interface_name} {interface_path}
+php artisan design:interface {interface_name} {interface_path}
 ```
 
 ```bash
-php artisan make:class:abstract {abstarct_class_name} {abstract_class_path}
+php artisan design:class:abstract {abstarct_class_name} {abstract_class_path}
 ```
 
 ```bash
-php artisan make:view:vue {vue_component_name} {vue_component_path} {--type=options || compositions}
+php artisan design:view:vue {vue_component_name} {vue_component_path} {--type=options || compositions}
 ```
 Default type for Vue components is composition api.
 ```bash
-php artisan make:view:react {react_component_name} {react_component_path}
+php artisan design:view:react {react_component_name} {react_component_path}
 ```
