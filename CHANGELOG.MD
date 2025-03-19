@@ -31,3 +31,9 @@
 # v0.5.0 2025-02-01
 
 ## Fixed Controller Command, Changed Signature of the commands
+
+# v0.6.0 2025-03-19 
+
+## Dropped Support For Laravel 10, Added Support For Laravel 12
+
+
