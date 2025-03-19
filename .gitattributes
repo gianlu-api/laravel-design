@@ -1,0 +1,8 @@
+/tests/            export-ignore
+/.github/          export-ignore
+.editorconfig      export-ignore
+CHANGELOG.md       export-ignore
+README.md          export-ignore
+phpstan.neon       export-ignore
+phpunit.xml        export-ignore
+LICENSE            export-ignore
