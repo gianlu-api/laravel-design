@@ -1,4 +1,6 @@
-<?php declare( strict_types=1 );
+<?php
+
+declare(strict_types=1);
 
 namespace gianluApi\laravelDesign\Helpers;
 
@@ -6,10 +8,9 @@ use Illuminate\Support\Str;
 
 trait NamespaceHelper
 {
-
     public static function checkNamespace(string $namespace): string
     {
-        if ( Str::contains($namespace, "\..") ) {
+        if (Str::contains($namespace, "\..")) {
             $namespace = 'App' . Str::afterLast($namespace, "\..");
         }
 
@@ -18,7 +19,7 @@ trait NamespaceHelper
 
     public static function checkClassName(string $className): string
     {
-        if ( Str::contains($className, "\..") ) {
+        if (Str::contains($className, "\..")) {
             return Str::afterLast($className, '\\');
         }
 
@@ -27,7 +28,7 @@ trait NamespaceHelper
 
     public static function checkNamespaceForClassBuild(string $namespace): string
     {
-        if ( Str::contains($namespace, "\..") ) {
+        if (Str::contains($namespace, "\..")) {
             return 'App' . Str::afterLast($namespace, "\..");
         }
 

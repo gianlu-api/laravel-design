@@ -1,4 +1,6 @@
-<?php declare( strict_types=1 );
+<?php
+
+declare(strict_types=1);
 
 namespace gianluApi\laravelDesign\Commands\Console\Views;
 
@@ -8,7 +10,6 @@ use InvalidArgumentException;
 
 class ReactMakeCommand extends GeneratorCommand
 {
-
     protected $signature = 'design:view:react {name} {path?}';
     protected $description = 'Create new react file';
     protected $type = 'React';
@@ -27,13 +28,13 @@ class ReactMakeCommand extends GeneratorCommand
     {
         $path = $this->argument('path') ?? resource_path('js/Pages');
 
-        if ( !is_string($path) ) {
+        if (!is_string($path)) {
             throw new InvalidArgumentException("path must be a string");
         }
 
         $name = $this->argument('name');
 
-        if ( !is_string($name) ) {
+        if (!is_string($name)) {
             throw new InvalidArgumentException("name must be a string");
         }
 
@@ -52,7 +53,7 @@ class ReactMakeCommand extends GeneratorCommand
 
         $name = $this->argument('name');
 
-        if ( !is_string($name) ) {
+        if (!is_string($name)) {
             throw new InvalidArgumentException("name must be a string");
         }
 

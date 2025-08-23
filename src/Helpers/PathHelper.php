@@ -1,4 +1,6 @@
-<?php declare( strict_types=1 );
+<?php
+
+declare(strict_types=1);
 
 namespace gianluApi\laravelDesign\Helpers;
 
@@ -6,7 +8,6 @@ use Illuminate\Support\Str;
 
 trait PathHelper
 {
-
     public static function checkPath(string $path, bool $trailingSlash = true, ?string $name = null): string
     {
         if ($name) {
@@ -24,7 +25,7 @@ trait PathHelper
 
     public static function addLeadingSlash(string $path): string
     {
-        return Str::startsWith($path,'app') ? $path : Str::start($path, "/");
+        return Str::startsWith($path, 'app') ? $path : Str::start($path, "/");
     }
 
     public static function removeLeadingSlash(string $path): string

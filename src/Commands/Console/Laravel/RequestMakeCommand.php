@@ -1,15 +1,15 @@
-<?php declare( strict_types=1 );
+<?php
+
+declare(strict_types=1);
 
 namespace gianluApi\laravelDesign\Commands\Console\Laravel;
 
 use gianluApi\laravelDesign\Helpers\NamespaceHelper;
 use Illuminate\Contracts\Filesystem\FileNotFoundException;
 use Illuminate\Foundation\Console\RequestMakeCommand as LaravelRequestMakeCommand;
-use Illuminate\Support\Str;
 
 class RequestMakeCommand extends LaravelRequestMakeCommand
 {
-
     use NamespaceHelper;
 
     protected $name = 'design:request';

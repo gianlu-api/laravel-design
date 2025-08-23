@@ -1,14 +1,15 @@
-<?php declare( strict_types=1 );
+<?php
+
+declare(strict_types=1);
 
 namespace gianluApi\laravelDesign\Commands\Console\Laravel;
 
 use gianluApi\laravelDesign\Helpers\NamespaceHelper;
 use Illuminate\Contracts\Filesystem\FileNotFoundException;
-use \Illuminate\Foundation\Console\ResourceMakeCommand as LaravelResourceMakeCommand;
+use Illuminate\Foundation\Console\ResourceMakeCommand as LaravelResourceMakeCommand;
 
 class ResourceMakeCommand extends LaravelResourceMakeCommand
 {
-
     use NamespaceHelper;
 
     protected $name = 'design:resource';

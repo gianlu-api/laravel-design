@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 use gianluApi\laravelDesign\ConfigGenerator\ControllerConfigGenerator;
 
@@ -8,7 +10,7 @@ beforeAll(function () use (&$controllerGenerator) {
     $controllerGenerator = app(ControllerConfigGenerator::class);
 });
 
-CONST controller = "ControllerConfig";
+const controller = "ControllerConfig";
 
 it("generates a controller config correctly", function () use (&$controllerGenerator) {
     //Arrange
@@ -59,7 +61,7 @@ it("generates a api controller config from name array correctly", function () us
     ]);
 });
 
-it("generates a api controller config from name array with name correctly", function ()  use (&$controllerGenerator) {
+it("generates a api controller config from name array with name correctly", function () use (&$controllerGenerator) {
     //Arrange
     $config = [
         ["name" => "app/Http/&/Controllers/&Controller", "type" => "api"]

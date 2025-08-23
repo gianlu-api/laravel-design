@@ -1,4 +1,6 @@
-<?php declare( strict_types=1 );
+<?php
+
+declare(strict_types=1);
 
 namespace gianluApi\laravelDesign\Commands\Selectors;
 
@@ -6,10 +8,9 @@ use gianluApi\laravelDesign\ConfigGenerator\Enums\GeneratorTypes;
 
 final class CommandSelector
 {
-
     public static function handle(GeneratorTypes $type): string
     {
-        return match ( $type ) {
+        return match ($type) {
             GeneratorTypes::Migration => "make:migration",
             GeneratorTypes::CustomClass => "design:class",
             GeneratorTypes::Interface => "design:interface",

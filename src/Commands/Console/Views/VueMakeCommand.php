@@ -1,4 +1,6 @@
-<?php declare( strict_types=1 );
+<?php
+
+declare(strict_types=1);
 
 namespace gianluApi\laravelDesign\Commands\Console\Views;
 
@@ -8,7 +10,6 @@ use InvalidArgumentException;
 
 class VueMakeCommand extends GeneratorCommand
 {
-
     protected $signature = 'design:view:vue {name} {path?} {--type=composition}';
     protected $description = 'Create new vue file';
     protected $type = 'Vue';
@@ -17,7 +18,7 @@ class VueMakeCommand extends GeneratorCommand
     {
         $type = $this->option('type');
 
-        if ( $type === 'options' ) {
+        if ($type === 'options') {
             return __DIR__ . '/../../../../stubs/VueOptionsApi.stub';
         }
 
@@ -33,13 +34,13 @@ class VueMakeCommand extends GeneratorCommand
     {
         $path = $this->argument('path') ?? resource_path('js/Pages');
 
-        if ( !is_string($path) ) {
+        if (!is_string($path)) {
             throw new InvalidArgumentException("path must be a string");
         }
 
         $name = $this->argument('name');
 
-        if ( !is_string($name) ) {
+        if (!is_string($name)) {
             throw new InvalidArgumentException("name must be a string");
         }
 
@@ -58,7 +59,7 @@ class VueMakeCommand extends GeneratorCommand
 
         $name = $this->argument('name');
 
-        if ( !is_string($name) ) {
+        if (!is_string($name)) {
             throw new InvalidArgumentException("name must be a string");
         }
 

@@ -1,4 +1,6 @@
-<?php declare( strict_types=1 );
+<?php
+
+declare(strict_types=1);
 
 namespace gianluApi\laravelDesign\ConfigGenerator\Registries;
 
@@ -9,7 +11,6 @@ use Illuminate\Support\Arr;
 
 class ConfigGeneratorRegistry
 {
-
     /**
      * @var array<string, ConfigGeneratorInterface>
      */
@@ -27,7 +28,7 @@ class ConfigGeneratorRegistry
      */
     public function get(GeneratorTypes $type): ConfigGeneratorInterface
     {
-        if ( !Arr::exists($this->types, $type->value) ) {
+        if (!Arr::exists($this->types, $type->value)) {
             GeneratorTypeException::InvalidType();
         }
 

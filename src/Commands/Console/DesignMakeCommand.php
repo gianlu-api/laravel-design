@@ -1,4 +1,6 @@
-<?php declare( strict_types=1 );
+<?php
+
+declare(strict_types=1);
 
 namespace gianluApi\laravelDesign\Commands\Console;
 
@@ -10,7 +12,6 @@ use Throwable;
 
 class DesignMakeCommand extends Command
 {
-
     protected $signature = "design {name?} {--config}";
     protected $description = "Create a new design structure";
 
@@ -20,13 +21,13 @@ class DesignMakeCommand extends Command
             $configOption = $this->option("config");
             $name = $this->argument("name");
 
-            if ( is_string($configOption) || is_array($configOption) ) {
+            if (is_string($configOption) || is_array($configOption)) {
                 $config = config($configOption);
             } else {
                 $config = config("laravel-design");
             }
 
-            if ( isset($name) && !is_string($name) ) {
+            if (isset($name) && !is_string($name)) {
                 throw new Exception("name must be a string");
             }
 

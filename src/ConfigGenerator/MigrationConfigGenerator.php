@@ -1,4 +1,6 @@
-<?php declare( strict_types=1 );
+<?php
+
+declare(strict_types=1);
 
 namespace gianluApi\laravelDesign\ConfigGenerator;
 
@@ -7,7 +9,6 @@ use Illuminate\Support\Str;
 
 final class MigrationConfigGenerator extends LaravelCommandConfigGenerator
 {
-
     /**
      * @param array<string, array<string, string>>|array<string, string> $config
      * @param string|null $name
@@ -18,13 +19,13 @@ final class MigrationConfigGenerator extends LaravelCommandConfigGenerator
     {
         $newConfig = [];
 
-        if ( Arr::exists($config, "table") && is_string($config['table'])) {
+        if (Arr::exists($config, "table") && is_string($config['table'])) {
 
             $newConfig[] = self::generateItem($config['table'], $name);
 
-        } elseif ( Arr::exists($config, "tables") && is_array($config['tables']) ) {
+        } elseif (Arr::exists($config, "tables") && is_array($config['tables'])) {
 
-            foreach ( $config['tables'] as $configItem ) {
+            foreach ($config['tables'] as $configItem) {
                 $newConfig[] = self::generateItem($configItem, $name);
             }
 

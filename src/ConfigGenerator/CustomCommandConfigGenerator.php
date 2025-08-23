@@ -1,4 +1,6 @@
-<?php declare( strict_types=1 );
+<?php
+
+declare(strict_types=1);
 
 namespace gianluApi\laravelDesign\ConfigGenerator;
 
@@ -7,7 +9,6 @@ use Illuminate\Support\Str;
 
 class CustomCommandConfigGenerator extends AbstractConfigGenerator
 {
-
     /**
      * @param array<string, string> $config
      * @param string|null $name
@@ -60,12 +61,12 @@ class CustomCommandConfigGenerator extends AbstractConfigGenerator
     {
         $newConfig = [];
 
-        if ( !is_array($config["names"]) ) {
+        if (!is_array($config["names"])) {
             return $newConfig;
         }
 
-        foreach ( $config["names"] as $className ) {
-            if ( !is_string($config["path"]) ) {
+        foreach ($config["names"] as $className) {
+            if (!is_string($config["path"])) {
                 continue;
             }
 

@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 use gianluApi\laravelDesign\ConfigGenerator\VueConfigGenerator;
 
@@ -8,7 +10,7 @@ beforeAll(function () use (&$vueGenerator) {
     $vueGenerator = app(VueConfigGenerator::class);
 });
 
-CONST vue = 'VueConfig';
+const vue = 'VueConfig';
 
 it("generates a vue composition api config correctly", function () use (&$vueGenerator) {
     //Arrange

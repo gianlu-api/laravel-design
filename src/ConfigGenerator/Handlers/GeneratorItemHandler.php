@@ -1,4 +1,6 @@
-<?php declare( strict_types=1 );
+<?php
+
+declare(strict_types=1);
 
 namespace gianluApi\laravelDesign\ConfigGenerator\Handlers;
 
@@ -10,8 +12,9 @@ use Illuminate\Support\Arr;
 
 class GeneratorItemHandler
 {
-
-    public function __construct(private readonly ConfigGeneratorRegistry $configGeneratorRegistry) {}
+    public function __construct(private readonly ConfigGeneratorRegistry $configGeneratorRegistry)
+    {
+    }
 
     /** @var array<string, GeneratorTypes> */
     protected array $mapping = [
@@ -37,8 +40,8 @@ class GeneratorItemHandler
      */
     public function process(array $configs, ?string $name = null): void
     {
-        foreach ( $configs as $key => $config ) {
-            if ( Arr::exists($this->mapping, $key) ) {
+        foreach ($configs as $key => $config) {
+            if (Arr::exists($this->mapping, $key)) {
                 $this->handleConfigItem($config, $this->mapping[$key], $name);
             }
         }
@@ -55,7 +58,7 @@ class GeneratorItemHandler
     {
         $configItem = $this->configGeneratorRegistry->get($type)->generate($config, $name);
 
-        foreach ( $configItem as $item ) {
+        foreach ($configItem as $item) {
             CommandCaller::call($item, $type);
         }
     }

@@ -1,10 +1,11 @@
-<?php declare( strict_types=1 );
+<?php
+
+declare(strict_types=1);
 
 namespace gianluApi\laravelDesign\Commands\Console;
 
 class ClassMakeCommand extends MakeCommand
 {
-
     protected $signature = 'design:class {name} {path}';
     protected $description = 'Create new class';
     protected $type = 'Class';

@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 use GianluApi\LaravelDesign\Test\PathHelperWrapper;
 
@@ -97,4 +99,3 @@ it('checks if path is valid and correct it substituting variables', function () 
     //Assert
     expect($path)->toBe('/test/laravel/laravel');
 });
-

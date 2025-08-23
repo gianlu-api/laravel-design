@@ -1,4 +1,6 @@
-<?php declare( strict_types=1 );
+<?php
+
+declare(strict_types=1);
 
 namespace gianluApi\laravelDesign\ConfigGenerator\Contracts;
 
@@ -7,7 +9,6 @@ use Illuminate\Support\Arr;
 
 abstract class AbstractConfigGenerator implements ConfigGeneratorInterface
 {
-
     use PathHelper;
 
     /**
@@ -19,29 +20,29 @@ abstract class AbstractConfigGenerator implements ConfigGeneratorInterface
     {
         $newConfig = [];
 
-        if ( Arr::isAssoc($config) ) {
-            if ( Arr::exists($config, "names") && Arr::exists($config, "path") ) {
+        if (Arr::isAssoc($config)) {
+            if (Arr::exists($config, "names") && Arr::exists($config, "path")) {
                 $newConfig = static::generateItemFromNamesAndPathConfig($config, $name);
             }
 
-            if ( Arr::exists($config, "name") && Arr::exists($config, "path") ) {
+            if (Arr::exists($config, "name") && Arr::exists($config, "path")) {
                 $newConfig[] = static::generateItemFromNameAndPathConfig($config, $name);
             }
 
-            if ( Arr::exists($config, "name") && !Arr::exists($config, "path") ) {
+            if (Arr::exists($config, "name") && !Arr::exists($config, "path")) {
                 $newConfig[] = static::generateItemFromOnlyNameConfig($config, $name);
             }
         } else {
-            foreach ( $config as $configItem ) {
-                if ( Arr::exists($configItem, "name") && Arr::exists($configItem, "path") ) {
+            foreach ($config as $configItem) {
+                if (Arr::exists($configItem, "name") && Arr::exists($configItem, "path")) {
                     $newConfig[] = static::generateItemFromNameAndPathConfig($configItem, $name);
                 }
 
-                if ( Arr::exists($configItem, "name") && !Arr::exists($configItem, "path") ) {
+                if (Arr::exists($configItem, "name") && !Arr::exists($configItem, "path")) {
                     $newConfig[] = static::generateItemFromOnlyNameConfig($configItem, $name);
                 }
 
-                if ( Arr::exists($configItem, "names") && Arr::exists($configItem, "path") ) {
+                if (Arr::exists($configItem, "names") && Arr::exists($configItem, "path")) {
                     $newConfig = array_merge($newConfig, static::generateItemFromNamesAndPathConfig($configItem, $name));
                 }
             }

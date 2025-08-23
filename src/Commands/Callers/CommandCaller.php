@@ -1,4 +1,6 @@
-<?php declare( strict_types=1 );
+<?php
+
+declare(strict_types=1);
 
 namespace gianluApi\laravelDesign\Commands\Callers;
 
@@ -8,7 +10,6 @@ use Illuminate\Support\Facades\Artisan;
 
 final class CommandCaller
 {
-
     /**
      *
      * @param array<string, mixed> $config

@@ -1,4 +1,6 @@
-<?php declare( strict_types=1 );
+<?php
+
+declare(strict_types=1);
 
 namespace gianluApi\laravelDesign\ConfigGenerator;
 
@@ -6,7 +8,6 @@ use Illuminate\Support\Str;
 
 final class VueConfigGenerator extends CustomCommandConfigGenerator
 {
-
     /**
      * @param array<string, string> $config
      * @param string|null $name
@@ -58,7 +59,7 @@ final class VueConfigGenerator extends CustomCommandConfigGenerator
     {
         $configOptions = [];
 
-        if ( isset($config["type"]) ) {
+        if (isset($config["type"])) {
             $configOptions["--type"] = $config["type"];
         }
 

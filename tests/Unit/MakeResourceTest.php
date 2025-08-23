@@ -1,4 +1,6 @@
-<?php declare( strict_types=1 );
+<?php
+
+declare(strict_types=1);
 
 use Illuminate\Support\Facades\File;
 
@@ -109,4 +111,3 @@ PHP;
     $actualContent = file_get_contents(base_path('app/Http/Test/Resources/TestResource.php'));
     expect($actualContent)->toBe($expectedContent);
 });
-

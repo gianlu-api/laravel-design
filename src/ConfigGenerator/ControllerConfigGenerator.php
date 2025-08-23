@@ -1,10 +1,11 @@
-<?php declare( strict_types=1 );
+<?php
+
+declare(strict_types=1);
 
 namespace gianluApi\laravelDesign\ConfigGenerator;
 
 final class ControllerConfigGenerator extends LaravelCommandConfigGenerator
 {
-
     /**
      * @param array<string, string> $config
      * @param string|null $name
@@ -52,7 +53,7 @@ final class ControllerConfigGenerator extends LaravelCommandConfigGenerator
     {
         $configOptions = [];
 
-        if ( isset($config["type"]) ) {
+        if (isset($config["type"])) {
             $configOptions["--" . $config["type"]] = true;
         }
 

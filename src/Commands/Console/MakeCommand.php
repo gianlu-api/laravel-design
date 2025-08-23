@@ -1,4 +1,6 @@
-<?php declare( strict_types=1 );
+<?php
+
+declare(strict_types=1);
 
 namespace gianluApi\laravelDesign\Commands\Console;
 
@@ -8,7 +10,6 @@ use InvalidArgumentException;
 
 class MakeCommand extends GeneratorCommand
 {
-
     use PathHelper;
 
     protected function getStub(): string

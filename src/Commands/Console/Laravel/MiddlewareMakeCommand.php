@@ -1,14 +1,15 @@
-<?php declare( strict_types=1 );
+<?php
+
+declare(strict_types=1);
 
 namespace gianluApi\laravelDesign\Commands\Console\Laravel;
 
 use gianluApi\laravelDesign\Helpers\NamespaceHelper;
 use Illuminate\Contracts\Filesystem\FileNotFoundException;
-use \Illuminate\Routing\Console\MiddlewareMakeCommand as LaravelMiddlewareMakeCommand;
+use Illuminate\Routing\Console\MiddlewareMakeCommand as LaravelMiddlewareMakeCommand;
 
 class MiddlewareMakeCommand extends LaravelMiddlewareMakeCommand
 {
-
     use NamespaceHelper;
 
     protected $name = 'design:middleware';

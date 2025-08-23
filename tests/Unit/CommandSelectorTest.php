@@ -1,4 +1,6 @@
-<?php declare( strict_types=1 );
+<?php
+
+declare(strict_types=1);
 
 use gianluApi\laravelDesign\Commands\Selectors\CommandSelector;
 use gianluApi\laravelDesign\ConfigGenerator\Enums\GeneratorTypes;

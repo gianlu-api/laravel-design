@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 use gianluApi\laravelDesign\ConfigGenerator\CustomCommandConfigGenerator;
 
@@ -8,7 +10,7 @@ beforeAll(function () use (&$customCommandConfigGenerator) {
     $customCommandConfigGenerator = app(CustomCommandConfigGenerator::class);
 });
 
-CONST custom = "CustomConfig";
+const custom = "CustomConfig";
 
 it("generates a class config from path and names array correctly", function () use (&$customCommandConfigGenerator) {
     //Arrange

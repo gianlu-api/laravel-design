@@ -1,4 +1,6 @@
-<?php declare( strict_types=1 );
+<?php
+
+declare(strict_types=1);
 
 namespace gianluApi\laravelDesign\Commands\Console\Laravel;
 
@@ -7,7 +9,6 @@ use Illuminate\Routing\Console\ControllerMakeCommand as LaravelControllerMakeCom
 
 class ControllerMakeCommand extends LaravelControllerMakeCommand
 {
-
     use NamespaceHelper;
 
     protected $name = 'design:controller';
@@ -55,7 +56,9 @@ class ControllerMakeCommand extends LaravelControllerMakeCommand
         }
 
         return str_replace(
-            array_keys($replace), array_values($replace), parent::buildClass($namespace)
+            array_keys($replace),
+            array_values($replace),
+            parent::buildClass($namespace)
         );
     }
 

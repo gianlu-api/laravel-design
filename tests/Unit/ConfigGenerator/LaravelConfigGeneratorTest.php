@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 use gianluApi\laravelDesign\ConfigGenerator\LaravelCommandConfigGenerator;
 
@@ -8,7 +10,7 @@ beforeAll(function () use (&$laravelCommandConfigGenerator) {
     $laravelCommandConfigGenerator = app(LaravelCommandConfigGenerator::class);
 });
 
-CONST laravel = "LaravelConfig";
+const laravel = "LaravelConfig";
 
 it("generates a model config from path and names array correctly", function () use (&$laravelCommandConfigGenerator) {
     //Arrange

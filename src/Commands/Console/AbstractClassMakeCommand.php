@@ -1,10 +1,11 @@
-<?php declare( strict_types=1 );
+<?php
+
+declare(strict_types=1);
 
 namespace gianluApi\laravelDesign\Commands\Console;
 
 class AbstractClassMakeCommand extends MakeCommand
 {
-
     protected $signature = 'design:class:abstract {name} {path}';
     protected $description = 'Create new abstract class';
     protected $type = 'Abstract Class';
