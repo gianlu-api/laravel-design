@@ -48,3 +48,36 @@ PHP;
     $actualContent = file_get_contents(base_path('app/Classes/TestClass.php'));
     expect($actualContent)->toBe($expectedContent);
 });
+
+it('creates a new strict types class content correctly', function () {
+    //Arrange
+    $config = [
+        'name' => 'TestClass',
+        'path' => '/Classes',
+        '--strict_types' => true,
+    ];
+
+    //Act
+    $this->artisan('design:class', $config)->assertSuccessful();
+
+    //Assert
+    expect(File::exists(base_path('app/Classes')))->toBeTrue()
+        ->and(File::exists(base_path('app/Classes/TestClass.php')))->toBeTrue();
+
+    $expectedContent = <<<'PHP'
+<?php
+
+declare(strict_types=1);
+
+namespace App\Classes;
+
+class TestClass
+{
+
+}
+
+PHP;
+
+    $actualContent = file_get_contents(base_path('app/Classes/TestClass.php'));
+    expect($actualContent)->toBe($expectedContent);
+});

@@ -11,13 +11,16 @@ abstract class AbstractConfigGenerator implements ConfigGeneratorInterface
 {
     use PathHelper;
 
+    protected bool $isStrictTypes = false;
+
     /**
      * @param array<string, array<string, string>> $config
      *
      * @return array<int|string, array<string, string>|string>
      */
-    public function generate(array $config, ?string $name = null): array
+    public function generate(array $config, ?string $name = null, bool $isStrictTypes = false): array
     {
+        $this->isStrictTypes = $isStrictTypes;
         $newConfig = [];
 
         if (Arr::isAssoc($config)) {
@@ -71,5 +74,12 @@ abstract class AbstractConfigGenerator implements ConfigGeneratorInterface
      * @return array<string,string>
      */
     abstract protected static function generateItemFromNamesAndPathConfig(array $config, ?string $name = null): array;
+
+    protected function addOptionsToConfig(array $config): array
+    {
+        $config['--strict_types'] = $this->isStrictTypes;
+
+        return $config;
+    }
 
 }

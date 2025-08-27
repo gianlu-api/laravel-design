@@ -6,6 +6,7 @@ namespace gianluApi\laravelDesign\ConfigGenerator;
 
 use gianluApi\laravelDesign\ConfigGenerator\Contracts\AbstractConfigGenerator;
 use Illuminate\Support\Str;
+use phpDocumentor\Reflection\Types\Self_;
 
 class CustomCommandConfigGenerator extends AbstractConfigGenerator
 {
@@ -25,10 +26,12 @@ class CustomCommandConfigGenerator extends AbstractConfigGenerator
             $path = self::substituteVariables($config['path'], $name);
         }
 
-        return [
+        $config = [
             "name" => $className,
             "path" => self::checkPath($path),
         ];
+
+        return static::addOptionsToConfig($config);
     }
 
     /**
@@ -45,10 +48,12 @@ class CustomCommandConfigGenerator extends AbstractConfigGenerator
             $className = self::substituteVariables($className, $name);
         }
 
-        return [
+        $config = [
             "name" => Str::afterLast($className, "/"),
             "path" => self::checkPath(Str::beforeLast($className, "/"))
         ];
+
+        return static::addOptionsToConfig($config);
     }
 
     /**
@@ -80,7 +85,7 @@ class CustomCommandConfigGenerator extends AbstractConfigGenerator
             $newConfig[] = static::generateItemFromNameAndPathConfig(["name" => $className, "path" => $path]);
         }
 
-        return $newConfig;
+        return self::addOptionsToConfig($newConfig);
     }
 
 }

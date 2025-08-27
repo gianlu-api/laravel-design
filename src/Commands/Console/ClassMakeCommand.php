@@ -6,7 +6,7 @@ namespace gianluApi\laravelDesign\Commands\Console;
 
 class ClassMakeCommand extends MakeCommand
 {
-    protected $signature = 'design:class {name} {path}';
+    protected $signature = 'design:class {name} {path} {--strict_types : Enable strict types}';
     protected $description = 'Create new class';
     protected $type = 'Class';
 

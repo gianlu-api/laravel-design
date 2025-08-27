@@ -40,9 +40,11 @@ class GeneratorItemHandler
      */
     public function process(array $configs, ?string $name = null): void
     {
+        $isStrictTypes = $configs['strict_types'] ?? false;
+
         foreach ($configs as $key => $config) {
             if (Arr::exists($this->mapping, $key)) {
-                $this->handleConfigItem($config, $this->mapping[$key], $name);
+                $this->handleConfigItem($config, $this->mapping[$key], $name, $isStrictTypes);
             }
         }
     }
@@ -51,12 +53,13 @@ class GeneratorItemHandler
      * @param array<string, mixed> $config
      * @param GeneratorTypes $type
      * @param string|null $name
+     * @param bool $isStrictTypes
      *
      * @throws GeneratorTypeException
      */
-    protected function handleConfigItem(array $config, GeneratorTypes $type, ?string $name = null): void
+    protected function handleConfigItem(array $config, GeneratorTypes $type, ?string $name = null, bool $isStrictTypes = false): void
     {
-        $configItem = $this->configGeneratorRegistry->get($type)->generate($config, $name);
+        $configItem = $this->configGeneratorRegistry->get($type)->generate($config, $name, $isStrictTypes);
 
         foreach ($configItem as $item) {
             CommandCaller::call($item, $type);

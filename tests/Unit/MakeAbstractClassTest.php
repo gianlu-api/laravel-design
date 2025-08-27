@@ -63,3 +63,36 @@ PHP;
     $actualContent = file_get_contents(base_path('app/AbstractClasses/TestAbstractClass.php'));
     expect($actualContent)->toBe($expectedContent);
 });
+
+it('creates a new strict types abstract class content correctly', function () {
+    //Arrange
+    $config = [
+        'name' => 'TestAbstractClass',
+        'path' => '/AbstractClasses',
+        '--strict_types' => true,
+    ];
+
+    //Act
+    $this->artisan('design:class:abstract', $config)->assertSuccessful();
+
+    //Assert
+    expect(File::exists(base_path('app/AbstractClasses')))->toBeTrue()
+        ->and(File::exists(base_path('app/AbstractClasses/TestAbstractClass.php')))->toBeTrue();
+
+    $expectedContent = <<<'PHP'
+<?php
+
+declare(strict_types=1);
+
+namespace App\AbstractClasses;
+
+abstract class TestAbstractClass
+{
+
+}
+
+PHP;
+
+    $actualContent = file_get_contents(base_path('app/AbstractClasses/TestAbstractClass.php'));
+    expect($actualContent)->toBe($expectedContent);
+});

@@ -6,6 +6,7 @@ namespace gianluApi\laravelDesign\Commands\Console;
 
 use gianluApi\laravelDesign\Helpers\PathHelper;
 use Illuminate\Console\GeneratorCommand;
+use Illuminate\Contracts\Filesystem\FileNotFoundException;
 use InvalidArgumentException;
 
 class MakeCommand extends GeneratorCommand
@@ -29,6 +30,27 @@ class MakeCommand extends GeneratorCommand
         $namespace = self::checkPath($this->argument('path'), false);
 
         return $rootNamespace . $namespace;
+    }
+
+    /**
+     * Build the class with the given name.
+     *
+     * @param  string  $name
+     * @return string
+     *
+     * @throws FileNotFoundException
+     */
+    protected function buildClass($name): string
+    {
+        $stub = $this->files->get($this->getStub());
+
+        if ($this->option('strict_types')) {
+            $stub = str_replace('{{ strict_types }}', 'declare(strict_types=1);', $stub);
+        } else {
+            $stub = str_replace('{{ strict_types }}', '', $stub);
+        }
+
+        return $this->replaceNamespace($stub, $name)->replaceClass($stub, $name);
     }
 
 }

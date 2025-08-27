@@ -1,5 +1,7 @@
 <?php
 
+{{ strict_types }}
+
 namespace {{ namespace }};
 
 abstract class {{ class }}
