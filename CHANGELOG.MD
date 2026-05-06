@@ -38,4 +38,4 @@
 
 # v0.7.0 2025-05-06
 
-## Added Support For Laravel 13, Dropped php8.2
+## Added Support For Laravel 13
