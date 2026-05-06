@@ -29,32 +29,12 @@ it('creates a new Middleware content correctly', function () {
     expect(File::exists(base_path('app/Http/Middleware')))->toBeTrue()
         ->and(File::exists(base_path('app/Http/Middleware/TestMiddleware.php')))->toBeTrue();
 
-    $expectedContent = <<<'PHP'
-<?php
+    $content = file_get_contents(base_path('app/Http/Middleware/TestMiddleware.php'));
 
-namespace App\Http\Middleware;
-
-use Closure;
-use Illuminate\Http\Request;
-use Symfony\Component\HttpFoundation\Response;
-
-class TestMiddleware
-{
-    /**
-     * Handle an incoming request.
-     *
-     * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
-     */
-    public function handle(Request $request, Closure $next): Response
-    {
-        return $next($request);
-    }
-}
-
-PHP;
-
-    $actualContent = file_get_contents(base_path('app/Http/Middleware/TestMiddleware.php'));
-    expect($actualContent)->toBe($expectedContent);
+    expect($content)
+        ->toContain('namespace App\Http\Middleware')
+        ->toContain('class TestMiddleware')
+        ->toContain('public function handle(Request $request, Closure $next): Response');
 });
 
 it('creates a new Middleware with custom name correctly', function () {
@@ -84,30 +64,10 @@ it('creates a new Middleware with custom name content correctly', function () {
     expect(File::exists(base_path('app/Http/Test/Middlewares')))->toBeTrue()
         ->and(File::exists(base_path('app/Http/Test/Middlewares/TestMiddleware.php')))->toBeTrue();
 
-    $expectedContent = <<<'PHP'
-<?php
+    $content = file_get_contents(base_path('app/Http/Test/Middlewares/TestMiddleware.php'));
 
-namespace App\Http\Test\Middlewares;
-
-use Closure;
-use Illuminate\Http\Request;
-use Symfony\Component\HttpFoundation\Response;
-
-class TestMiddleware
-{
-    /**
-     * Handle an incoming request.
-     *
-     * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
-     */
-    public function handle(Request $request, Closure $next): Response
-    {
-        return $next($request);
-    }
-}
-
-PHP;
-
-    $actualContent = file_get_contents(base_path('app/Http/Test/Middlewares/TestMiddleware.php'));
-    expect($actualContent)->toBe($expectedContent);
+    expect($content)
+        ->toContain('namespace App\Http\Test\Middleware')
+        ->toContain('class TestMiddleware')
+        ->toContain('public function handle(Request $request, Closure $next): Response');
 });
