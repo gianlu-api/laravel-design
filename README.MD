@@ -7,8 +7,8 @@ Laravel Design is the library that allows you to quickly generate the architectu
 
 ## Requirements
 
-- PHP ^8.1
-- Laravel ^10 || ^11
+- PHP ^8.2
+- Laravel > 11
 
 ## Installation
 ```bash
