@@ -36,4 +36,6 @@
 
 ## Dropped Support For Laravel 10, Added Support For Laravel 12
 
+# v0.7.0 2025-05-06
 
+## Added Support For Laravel 13
