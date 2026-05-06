@@ -21,7 +21,7 @@
     }
   ],
   "require": {
-    "php": "^8.2",
+    "php": "^8.3",
     "illuminate/console": "^11 || ^12 || ^13",
     "illuminate/support": "^11 || ^12 || ^13"
   },
