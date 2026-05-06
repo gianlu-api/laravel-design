@@ -11,7 +11,7 @@ abstract class AbstractConfigGenerator implements ConfigGeneratorInterface
     use PathHelper;
 
     /**
-     * @param array<string, array<string, string>> $config
+     * @param array<int|string, array<string, string>> $config
      *
      * @return array<int|string, array<string, string>|string>
      */
@@ -20,6 +20,7 @@ abstract class AbstractConfigGenerator implements ConfigGeneratorInterface
         $newConfig = [];
 
         if ( Arr::isAssoc($config) ) {
+            /** @var array<string, array<string, string>> $config */
             if ( Arr::exists($config, "names") && Arr::exists($config, "path") ) {
                 $newConfig = static::generateItemFromNamesAndPathConfig($config, $name);
             }
@@ -32,6 +33,7 @@ abstract class AbstractConfigGenerator implements ConfigGeneratorInterface
                 $newConfig[] = static::generateItemFromOnlyNameConfig($config, $name);
             }
         } else {
+            /** @var array<int, array<string, string>> $config */
             foreach ( $config as $configItem ) {
                 if ( Arr::exists($configItem, "name") && Arr::exists($configItem, "path") ) {
                     $newConfig[] = static::generateItemFromNameAndPathConfig($configItem, $name);

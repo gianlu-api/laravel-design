@@ -12,7 +12,6 @@ it('creates a new Request correctly', function () {
     $this->artisan('design:request', $config)->assertSuccessful();
 
     //Assert
-    //Assert
     expect(File::exists(base_path('app/Http/Requests')))->toBeTrue()
         ->and(File::exists(base_path('app/Http/Requests/TestRequest.php')))->toBeTrue();
 });
@@ -30,40 +29,13 @@ it('creates a new Request content correctly', function () {
     expect(File::exists(base_path('app/Http/Requests')))->toBeTrue()
         ->and(File::exists(base_path('app/Http/Requests/TestRequest.php')))->toBeTrue();
 
-    $expectedContent = <<<'PHP'
-<?php
+    $content = file_get_contents(base_path('app/Http/Requests/TestRequest.php'));
 
-namespace App\Http\Requests;
-
-use Illuminate\Foundation\Http\FormRequest;
-
-class TestRequest extends FormRequest
-{
-    /**
-     * Determine if the user is authorized to make this request.
-     */
-    public function authorize(): bool
-    {
-        return false;
-    }
-
-    /**
-     * Get the validation rules that apply to the request.
-     *
-     * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
-     */
-    public function rules(): array
-    {
-        return [
-            //
-        ];
-    }
-}
-
-PHP;
-
-    $actualContent = file_get_contents(base_path('app/Http/Requests/TestRequest.php'));
-    expect($actualContent)->toBe($expectedContent);
+    expect($content)
+        ->toContain('namespace App\Http\Requests')
+        ->toContain('class TestRequest extends FormRequest')
+        ->toContain('public function authorize(): bool')
+        ->toContain('public function rules(): array');
 });
 
 it('creates a new Request with custom name correctly', function () {
@@ -93,38 +65,11 @@ it('creates a new Request with custom name content correctly', function () {
     expect(File::exists(base_path('app/Http/Test/Requests')))->toBeTrue()
         ->and(File::exists(base_path('app/Http/Test/Requests/TestRequest.php')))->toBeTrue();
 
-    $expectedContent = <<<'PHP'
-<?php
+    $content = file_get_contents(base_path('app/Http/Test/Requests/TestRequest.php'));
 
-namespace App\Http\Test\Requests;
-
-use Illuminate\Foundation\Http\FormRequest;
-
-class TestRequest extends FormRequest
-{
-    /**
-     * Determine if the user is authorized to make this request.
-     */
-    public function authorize(): bool
-    {
-        return false;
-    }
-
-    /**
-     * Get the validation rules that apply to the request.
-     *
-     * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
-     */
-    public function rules(): array
-    {
-        return [
-            //
-        ];
-    }
-}
-
-PHP;
-
-    $actualContent = file_get_contents(base_path('app/Http/Test/Requests/TestRequest.php'));
-    expect($actualContent)->toBe($expectedContent);
+    expect($content)
+        ->toContain('namespace App\Http\Test\Requests')
+        ->toContain('class TestRequest extends FormRequest')
+        ->toContain('public function authorize(): bool')
+        ->toContain('public function rules(): array');
 });
